@@ -3,172 +3,282 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thamara Teixeira | Studio de Beleza</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Thamara Teixeira — Studio de Beleza & Cursos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --gold: #C9A96E;
+            --gold-dark: #9A7A4A;
             --black: #0E0E0E;
             --white: #FFFFFF;
             --off-white: #FAF8F5;
-            --grey: #222222;
+            --grey-dark: #161616;
+            --border: rgba(201,169,110,0.3);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body { font-family: 'Montserrat', sans-serif; background-color: var(--black); color: var(--white); line-height: 1.6; }
-        
-        /* Cabeçalho */
-        header { padding: 40px 20px; text-align: center; background: var(--black); border-bottom: 1px solid var(--gold); }
-        .logo { font-family: 'Playfair Display', serif; font-size: 2.5rem; letter-spacing: 4px; text-transform: uppercase; }
-        .logo span { color: var(--gold); }
-        .subtitle { font-size: 0.8rem; letter-spacing: 5px; text-transform: uppercase; color: var(--gold); margin-top: 10px; }
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+        /* HEADER & NAV */
+        nav {
+            position: fixed; width: 100%; top: 0; z-index: 1000;
+            background: rgba(14, 14, 14, 0.98);
+            border-bottom: 1px solid var(--border);
+            padding: 15px 50px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .nav-logo { font-family: 'Playfair Display', serif; color: var(--white); text-decoration: none; font-size: 1.3rem; letter-spacing: 2px; }
+        .nav-logo span { color: var(--gold); font-style: italic; }
+        .nav-links a { color: var(--white); text-decoration: none; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; margin-left: 30px; transition: 0.3s; }
+        .nav-links a:hover { color: var(--gold); }
 
-        /* Sistema de Abas */
-        .tab-container { margin-top: 30px; }
-        .tab-menu { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 40px; }
+        /* HERO */
+        .hero {
+            height: 100vh;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; background: radial-gradient(circle, #1a1a1a 0%, #0e0e0e 100%);
+            padding: 0 20px;
+        }
+        .hero-eyebrow { font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 15px; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 400; line-height: 1.1; margin-bottom: 25px; }
+        .hero h1 em { color: var(--gold); font-style: italic; }
+        .btn-main { 
+            padding: 18px 45px; border: 1px solid var(--gold); color: var(--gold); 
+            text-decoration: none; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; transition: 0.4s;
+        }
+        .btn-main:hover { background: var(--gold); color: var(--black); }
+
+        /* SECTIONS */
+        section { padding: 100px 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 400; margin-bottom: 10px; }
+        .section-header h2 em { color: var(--gold); font-style: italic; }
+        .divider { width: 50px; height: 1px; background: var(--gold); margin: 20px auto; }
+
+        /* SOBRE */
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .about-img-box { position: relative; border: 1px solid var(--gold); padding: 15px; }
+        .about-img-box img { width: 100%; display: block; filter: sepia(20%); }
+        .about-text h3 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 20px; }
+        .about-text p { color: #aaa; margin-bottom: 20px; font-weight: 300; font-size: 0.95rem; }
+
+        /* SISTEMA DE ABAS */
+        .tabs-nav { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 50px; }
         .tab-btn { 
-            background: transparent; border: 1px solid var(--gold); color: var(--gold); 
-            padding: 10px 25px; cursor: pointer; text-transform: uppercase; font-size: 0.7rem; 
+            background: transparent; border: 1px solid #333; color: #777; 
+            padding: 12px 30px; cursor: pointer; text-transform: uppercase; font-size: 0.65rem; 
             letter-spacing: 2px; transition: 0.3s;
         }
-        .tab-btn.active, .tab-btn:hover { background: var(--gold); color: var(--black); }
+        .tab-btn.active { border-color: var(--gold); color: var(--gold); background: rgba(201, 169, 110, 0.05); }
 
-        .tab-content { display: none; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; animation: fadeIn 0.5s; }
-        .tab-content.active { display: grid; }
+        .tab-pane { display: none; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; animation: fadeInUp 0.5s ease forwards; }
+        .tab-pane.active { display: grid; }
 
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        /* CARDS */
+        .card { background: var(--grey-dark); border: 1px solid #222; overflow: hidden; transition: 0.4s; }
+        .card:hover { border-color: var(--gold); transform: translateY(-10px); }
+        .card-img-wrap { width: 100%; height: 350px; overflow: hidden; border-bottom: 1px solid var(--border); }
+        .card-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
+        .card:hover .card-img-wrap img { transform: scale(1.1); }
+        .card-body { padding: 25px; text-align: center; }
+        .card-body h4 { font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 8px; color: var(--gold); }
+        .card-body p { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: #666; }
+        .price-tag { display: block; margin-top: 15px; font-family: 'Playfair Display', serif; color: var(--white); font-size: 1.1rem; }
 
-        /* Cards de Serviço */
-        .card { background: var(--grey); border: 1px solid #333; overflow: hidden; transition: 0.3s; }
-        .card:hover { border-color: var(--gold); transform: translateY(-5px); }
-        .card-img { width: 100%; height: 280px; object-fit: cover; border-bottom: 1px solid var(--gold); }
-        .card-body { padding: 20px; text-align: center; }
-        .card-body h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 10px; color: var(--gold); }
-        .card-body p { font-size: 0.85rem; color: #bbb; height: 40px; }
+        /* LOCALIZAÇÃO */
+        .location-box { background: var(--off-white); color: var(--black); border-radius: 2px; overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; }
+        .location-info { padding: 60px; }
+        .location-info h3 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 20px; }
+        .map-iframe { width: 100%; height: 100%; min-height: 400px; border: 0; filter: grayscale(1) invert(0.9); }
 
-        /* Seção Localização */
-        .location { background: var(--off-white); color: var(--black); padding: 60px 20px; text-align: center; }
-        .location h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 20px; }
-        .location p { margin-bottom: 30px; font-weight: 400; }
-        .map-box { width: 100%; max-width: 900px; height: 400px; margin: 0 auto; background: #ddd; border: 2px solid var(--gold); }
+        /* FOOTER */
+        footer { padding: 80px 20px; text-align: center; background: #080808; border-top: 1px solid #1a1a1a; }
+        .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 15px; }
+        .footer-logo span { color: var(--gold); }
+        .footer-socials a { color: var(--gold); text-decoration: none; margin: 0 15px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; }
 
-        footer { padding: 40px; text-align: center; font-size: 0.7rem; letter-spacing: 2px; border-top: 1px solid #333; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        @media (max-width: 600px) {
-            .logo { font-size: 1.8rem; }
-            .tab-btn { width: 100%; }
+        @media (max-width: 850px) {
+            .about-grid, .location-box { grid-template-columns: 1fr; }
+            nav { padding: 15px 20px; }
+            .nav-links { display: none; }
+            .location-info { padding: 40px 20px; }
         }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="logo">Thamara <span>Teixeira</span></div>
-    <div class="subtitle">Especialista em Olhar</div>
-</header>
+    <nav>
+        <a href="#" class="nav-logo">THAMARA <span>TEIXEIRA</span></a>
+        <div class="nav-links">
+            <a href="#sobre">Sobre</a>
+            <a href="#experiencia">Experiências</a>
+            <a href="#cursos">Cursos</a>
+            <a href="#localizacao">Localização</a>
+        </div>
+    </nav>
 
-<div class="container">
-    <div class="tab-menu">
-        <button class="tab-btn active" onclick="openTab(event, 'sobrancelhas')">Sobrancelhas</button>
-        <button class="tab-btn" onclick="openTab(event, 'cilios')">Cílios</button>
-        <button class="tab-btn" onclick="openTab(event, 'rosto')">Lábios & Rosto</button>
-        <button class="tab-btn" onclick="openTab(event, 'cursos')">Cursos</button>
-    </div>
+    <section class="hero">
+        <span class="hero-eyebrow">Studio & Academy</span>
+        <h1>Onde a Arte encontra<br>o seu <em>Olhar</em></h1>
+        <a href="https://wa.me/5531972574829" class="btn-main">Agendar Consultoria</a>
+    </section>
 
-    <div id="sobrancelhas" class="tab-content active">
-        <div class="card">
-            <img src="personalizado.jpg" class="card-img" alt="Design" onerror="this.src='personalizado.jpeg'">
-            <div class="card-body"><h3>Design Personalizado</h3><p>Simetria facial exclusiva.</p></div>
+    <section id="sobre" class="container">
+        <div class="about-grid">
+            <div class="about-img-box">
+                <img src="thamara_profile.jpg" alt="Thamara Teixeira" onerror="this.src='https://via.placeholder.com/600x800?text=Thamara+Teixeira'">
+            </div>
+            <div class="about-text">
+                <span style="color: var(--gold); text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px;">Minha Trajetória</span>
+                <h3>Transformando Olhares desde 2019</h3>
+                <p>Sou Thamara Teixeira, especialista em visagismo facial e reconstrução do olhar. Acredito que a beleza real não é sobre mudar quem você é, mas sim despertar a sua versão mais confiante.</p>
+                <p>Com anos de experiência e formações nacionais e internacionais, trago ao meu studio o que há de mais moderno em Brow Lamination, Lash Lifting e Micropigmentação.</p>
+                <div class="divider" style="margin: 30px 0;"></div>
+                <p style="font-style: italic; color: var(--gold);">"A sua beleza é a minha maior inspiração."</p>
+            </div>
         </div>
-        <div class="card">
-            <img src="henna.jpg" class="card-img" alt="Henna" onerror="this.src='henna.jpeg'">
-            <div class="card-body"><h3>Design com Henna</h3><p>Definição e preenchimento.</p></div>
-        </div>
-        <div class="card">
-            <img src="brow.jpg" class="card-img" alt="Brow" onerror="this.src='brow.jpeg'">
-            <div class="card-body"><h3>Brow Lamination</h3><p>Volume e alinhamento.</p></div>
-        </div>
-        <div class="card">
-            <img src="micro.jpg" class="card-img" alt="Micro" onerror="this.src='micro.jpeg'">
-            <div class="card-body"><h3>Micropigmentação</h3><p>Naturalidade duradoura.</p></div>
-        </div>
-        <div class="card">
-            <img src="reconst.jpg" class="card-img" alt="Reconst" onerror="this.src='reconst.jpeg'">
-            <div class="card-body"><h3>Reconstrução</h3><p>Recuperação de fios.</p></div>
-        </div>
-    </div>
+    </section>
 
-    <div id="cilios" class="tab-content">
-        <div class="card">
-            <img src="lash.jpg" class="card-img" alt="Lash" onerror="this.src='lash.jpeg'">
-            <div class="card-body"><h3>Lash Lifting</h3><p>Curvatura dos fios naturais.</p></div>
-        </div>
-        <div class="card">
-            <img src="alongamento.jpg" class="card-img" alt="Alongamento" onerror="this.src='alongamento.jpeg'">
-            <div class="card-body"><h3>Alongamento</h3><p>Cílios volumosos e longos.</p></div>
-        </div>
-    </div>
+    <section id="experiencia" style="background: #090909;">
+        <div class="container">
+            <div class="section-header">
+                <h2>Menu de <em>Serviços</em></h2>
+                <div class="divider"></div>
+            </div>
 
-    <div id="rosto" class="tab-content">
-        <div class="card">
-            <img src="buco.jpg" class="card-img" alt="Buço" onerror="this.src='buco.jpeg'">
-            <div class="card-body"><h3>Buço</h3><p>Epilação egípcia/cera.</p></div>
-        </div>
-        <div class="card">
-            <img src="spa_labial.jpg" class="card-img" alt="Spa" onerror="this.src='spa_labial.jpeg'">
-            <div class="card-body"><h3>Spa Labial</h3><p>Hidratação e brilho.</p></div>
-        </div>
-        <div class="card">
-            <img src="hidra.jpg" class="card-img" alt="Hidra" onerror="this.src='hidra.jpeg'">
-            <div class="card-body"><h3>Hidra Lips</h3><p>Tratamento labial profundo.</p></div>
-        </div>
-        <div class="card">
-            <img src="rosto.jpg" class="card-img" alt="Rosto" onerror="this.src='rosto.jpeg'">
-            <div class="card-body"><h3>Tratamento Facial</h3><p>Limpeza e cuidado.</p></div>
-        </div>
-    </div>
+            <div class="tabs-nav">
+                <button class="tab-btn active" onclick="openTab(event, 'sobrancelhas')">Sobrancelhas</button>
+                <button class="tab-btn" onclick="openTab(event, 'cilios')">Cílios</button>
+                <button class="tab-btn" onclick="openTab(event, 'rosto')">Rosto & Lábios</button>
+                <button class="tab-btn" onclick="openTab(event, 'combos')">Combos VIP</button>
+            </div>
 
-    <div id="cursos" class="tab-content">
-        <div class="card">
-            <img src="curso_iniciante.jpg" class="card-img" alt="Iniciante" onerror="this.src='curso_iniciante.jpeg'">
-            <div class="card-body"><h3>Curso Iniciante</h3><p>O começo da sua carreira.</p></div>
+            <div id="sobrancelhas" class="tab-pane active">
+                <div class="card">
+                    <div class="card-img-wrap"><img src="personalizado.jpg" onerror="this.src='personalizado.jpeg'"></div>
+                    <div class="card-body"><h4>Design Personalizado</h4><p>Visagismo & Simetria</p><span class="price-tag">R$ 40,00</span></div>
+                </div>
+                <div class="card">
+                    <div class="card-img-wrap"><img src="henna.jpg" onerror="this.src='henna.jpeg'"></div>
+                    <div class="card-body"><h4>Design com Henna</h4><p>Definição Premium</p><span class="price-tag">R$ 50,00</span></div>
+                </div>
+                <div class="card">
+                    <div class="card-img-wrap"><img src="brow.jpg" onerror="this.src='brow.jpeg'"></div>
+                    <div class="card-body"><h4>Brow Lamination</h4><p>Efeito Editorial</p><span class="price-tag">R$ 120,00</span></div>
+                </div>
+                <div class="card">
+                    <div class="card-img-wrap"><img src="micro.jpg" onerror="this.src='micro.jpeg'"></div>
+                    <div class="card-body"><h4>Micropigmentação</h4><p>Naturalidade Fio a Fio</p><span class="price-tag">Consultar</span></div>
+                </div>
+                <div class="card">
+                    <div class="card-img-wrap"><img src="reconst.jpg" onerror="this.src='reconst.jpeg'"></div>
+                    <div class="card-body"><h4>Reconstrução</h4><p>Terapia de fios</p><span class="price-tag">R$ 80,00</span></div>
+                </div>
+            </div>
+
+            <div id="cilios" class="tab-pane">
+                <div class="card">
+                    <div class="card-img-wrap"><img src="lash.jpg" onerror="this.src='lash.jpeg'"></div>
+                    <div class="card-body"><h4>Lash Lifting</h4><p>Curvatura Natural</p><span class="price-tag">R$ 120,00</span></div>
+                </div>
+                <div class="card">
+                    <div class="card-img-wrap"><img src="alongamento.jpg" onerror="this.src='alongamento.jpeg'"></div>
+                    <div class="card-body"><h4>Alongamento</h4><p>Volume & Extensão</p><span class="price-tag">R$ 120,00</span></div>
+                </div>
+            </div>
+
+            <div id="rosto" class="tab-pane">
+                <div class="card">
+                    <div class="card-img-wrap"><img src="buco.jpg" onerror="this.src='buco.jpeg'"></div>
+                    <div class="card-body"><h4>Buço</h4><p>Linha Egípcia</p><span class="price-tag">R$ 20,00</span></div>
+                </div>
+                <div class="card">
+                    <div class="card-img-wrap"><img src="spa_labial.jpg" onerror="this.src='spa_labial.jpeg'"></div>
+                    <div class="card-body"><h4>Spa Labial</h4><p>Nutrição Intensa</p><span class="price-tag">Consultar</span></div>
+                </div>
+                <div class="card">
+                    <div class="card-img-wrap"><img src="hidra.jpg" onerror="this.src='hidra.jpeg'"></div>
+                    <div class="card-body"><h4>Hidra Lips</h4><p>Lábios Renovados</p><span class="price-tag">Consultar</span></div>
+                </div>
+            </div>
+
+            <div id="combos" class="tab-pane">
+                <div class="card">
+                    <div class="card-img-wrap"><img src="combo.jpg" onerror="this.src='combo.jpeg'"></div>
+                    <div class="card-body"><h4>Combo Essencial</h4><p>Design + Henna + Buço</p><span class="price-tag">R$ 60,00</span></div>
+                </div>
+                <div class="card">
+                    <div class="card-img-wrap"><img src="combo_premium.jpg" onerror="this.src='combo_premium.jpeg'"></div>
+                    <div class="card-body"><h4>Combo Premium</h4><p>Brow + Lash Lifting</p><span class="price-tag">R$ 220,00</span></div>
+                </div>
+                <div class="card">
+                    <div class="card-img-wrap"><img src="combo_perso.jpg" onerror="this.src='combo_perso.jpeg'"></div>
+                    <div class="card-body"><h4>Full Face VIP</h4><p>Protocolo Completo</p><span class="price-tag">Consultar</span></div>
+                </div>
+            </div>
         </div>
-        <div class="card">
-            <img src="curso_aperfeicoamento.jpg" class="card-img" alt="Aperfeiçoamento" onerror="this.src='curso_aperfeicoamento.jpeg'">
-            <div class="card-body"><h3>Aperfeiçoamento</h3><p>Técnicas avançadas.</p></div>
+    </section>
+
+    <section id="cursos" class="container">
+        <div class="section-header">
+            <h2>Nossos <em>Cursos</em></h2>
+            <div class="divider"></div>
         </div>
-    </div>
-</div>
+        <div class="tab-pane active" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));">
+            <div class="card">
+                <div class="card-img-wrap"><img src="curso_iniciante.jpg" onerror="this.src='curso_iniciante.jpeg'"></div>
+                <div class="card-body"><h4>Iniciante Formação</h4><p>O primeiro passo na carreira</p></div>
+            </div>
+            <div class="card">
+                <div class="card-img-wrap"><img src="curso_aperfeicoamento.jpg" onerror="this.src='curso_aperfeicoamento.jpeg'"></div>
+                <div class="card-body"><h4>Aperfeiçoamento</h4><p>Técnicas avançadas para profissionais</p></div>
+            </div>
+        </div>
+    </section>
 
-<section class="location">
-    <div class="container">
-        <h2>Nossa Localização</h2>
-        <p>Visite nosso studio para uma experiência única de beleza.</p>
-        <iframe class="map-box" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3749.191264626154!2d-44.1983!3d-19.9678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDU4JzA0LjEiUyA0NMKwMTEnNTMuOSJX!5e0!3m2!1spt-BR!2sbr!4v1620000000000" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-    </div>
-</section>
+    <section id="localizacao" class="container">
+        <div class="location-box">
+            <div class="location-info">
+                <h3>Onde estamos</h3>
+                <p><strong>Endereço:</strong><br>Av. Principal da Estética, 1234 — Sala 405<br>Bairro Nobre — Belo Horizonte/MG</p>
+                <br>
+                <p><strong>Horário:</strong><br>Terça a Sábado: 09h às 19h</p>
+                <br>
+                <a href="https://wa.me/5531972574829" class="btn-main" style="border-color: #000; color: #000;">Como Chegar</a>
+            </div>
+            <iframe class="map-iframe" src="https://www.google.com/maps/embed?pb=YOUR_EMBED_CODE_HERE"></iframe>
+        </div>
+    </section>
 
-<footer>
-    &copy; 2026 THAMARA TEIXEIRA - TODOS OS DIREITOS RESERVADOS
-</footer>
+    <footer>
+        <div class="footer-logo">THAMARA <span>TEIXEIRA</span></div>
+        <div class="footer-socials">
+            <a href="#">Instagram</a>
+            <a href="#">WhatsApp</a>
+            <a href="#">Facebook</a>
+        </div>
+        <p style="margin-top: 40px; color: #333; font-size: 0.6rem; letter-spacing: 1px;">© 2026 THAMARA TEIXEIRA. TODOS OS DIREITOS RESERVADOS.</p>
+    </footer>
 
-<script>
-    function openTab(evt, tabName) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tab-content");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabPane, tabBtn;
+            tabPane = document.getElementsByClassName("tab-pane");
+            for (i = 0; i < tabPane.length; i++) {
+                tabPane[i].style.display = "none";
+                tabPane[i].classList.remove("active");
+            }
+            tabBtn = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tabBtn.length; i++) {
+                tabBtn[i].classList.remove("active");
+            }
+            document.getElementById(tabName).style.display = "grid";
+            evt.currentTarget.classList.add("active");
         }
-        tablinks = document.getElementsByClassName("tab-btn");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-        document.getElementById(tabName).style.display = "grid";
-        evt.currentTarget.className += " active";
-    }
-</script>
-
+    </script>
 </body>
 </html>
