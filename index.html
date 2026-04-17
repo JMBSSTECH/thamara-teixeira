@@ -1,197 +1,158 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Thamara Teixeira — Boutique de Olhar</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
-<style>
-    :root {
-        --gold: #C9A96E;
-        --gold-dark: #9A7A4A;
-        --black: #0E0E0E;
-        --off-white: #FAF8F5;
-        --white: #FFFFFF;
-        --text-mid: #555550;
-        --border: rgba(201,169,110,0.2);
-        --serif: 'Playfair Display', serif;
-        --sans: 'Montserrat', sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thamara Teixeira | Studio de Beleza</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #C9A96E;
+            --black: #0E0E0E;
+            --white: #FFFFFF;
+            --off-white: #FAF8F5;
+            --grey: #222222;
+        }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: var(--sans); background: var(--off-white); color: var(--black); line-height: 1.6; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; background-color: var(--black); color: var(--white); line-height: 1.6; }
+        
+        /* Cabeçalho */
+        header { padding: 40px 20px; text-align: center; background: var(--black); border-bottom: 1px solid var(--gold); }
+        .logo { font-family: 'Playfair Display', serif; font-size: 2.5rem; letter-spacing: 4px; text-transform: uppercase; }
+        .logo span { color: var(--gold); }
+        .subtitle { font-size: 0.8rem; letter-spacing: 5px; text-transform: uppercase; color: var(--gold); margin-top: 10px; }
 
-    /* Estilo Fino */
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-    .section-title { font-family: var(--serif); font-size: 2.5rem; text-align: center; margin-bottom: 3rem; font-weight: 400; }
-    .section-title em { color: var(--gold); font-style: italic; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
 
-    /* Header */
-    nav { 
-        background: var(--black); padding: 1.5rem 2rem; display: flex; justify-content: space-between; align-items: center; 
-        position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--gold-dark);
-    }
-    .nav-logo { font-family: var(--serif); color: var(--white); text-decoration: none; font-size: 1.4rem; letter-spacing: 2px; }
-    .nav-logo span { color: var(--gold); }
-    .nav-links a { color: var(--white); text-decoration: none; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; margin-left: 2rem; transition: 0.3s; }
-    .nav-links a:hover { color: var(--gold); }
+        /* Sistema de Abas */
+        .tab-container { margin-top: 30px; }
+        .tab-menu { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 40px; }
+        .tab-btn { 
+            background: transparent; border: 1px solid var(--gold); color: var(--gold); 
+            padding: 10px 25px; cursor: pointer; text-transform: uppercase; font-size: 0.7rem; 
+            letter-spacing: 2px; transition: 0.3s;
+        }
+        .tab-btn.active, .tab-btn:hover { background: var(--gold); color: var(--black); }
 
-    /* Sistema de Abas (Menu de Serviços) */
-    .services-nav { display: flex; justify-content: center; gap: 2rem; margin-bottom: 3rem; border-bottom: 1px solid var(--border); }
-    .tab-btn { 
-        background: none; border: none; padding: 1rem 2rem; font-family: var(--sans); 
-        font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; 
-        color: var(--text-mid); position: relative; transition: 0.3s;
-    }
-    .tab-btn.active { color: var(--gold); font-weight: 500; }
-    .tab-btn.active::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: var(--gold); }
+        .tab-content { display: none; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; animation: fadeIn 0.5s; }
+        .tab-content.active { display: grid; }
 
-    .tab-content { display: none; animation: fadeIn 0.5s ease; }
-    .tab-content.active { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        /* Cards de Serviço */
+        .card { background: var(--grey); border: 1px solid #333; overflow: hidden; transition: 0.3s; }
+        .card:hover { border-color: var(--gold); transform: translateY(-5px); }
+        .card-img { width: 100%; height: 280px; object-fit: cover; border-bottom: 1px solid var(--gold); }
+        .card-body { padding: 20px; text-align: center; }
+        .card-body h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 10px; color: var(--gold); }
+        .card-body p { font-size: 0.85rem; color: #bbb; height: 40px; }
 
-    /* Cards de Serviço */
-    .service-card { background: var(--white); border: 1px solid var(--border); overflow: hidden; transition: 0.4s; }
-    .service-card:hover { transform: translateY(-5px); border-color: var(--gold); }
-    .service-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-bottom: 1px solid var(--border); }
-    .service-info { padding: 1.5rem; text-align: center; }
-    .service-info h3 { font-family: var(--serif); font-size: 1.2rem; margin-bottom: 0.5rem; }
-    .service-price { color: var(--gold); font-family: var(--serif); font-size: 1.3rem; display: block; margin-top: 1rem; }
+        /* Seção Localização */
+        .location { background: var(--off-white); color: var(--black); padding: 60px 20px; text-align: center; }
+        .location h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 20px; }
+        .location p { margin-bottom: 30px; font-weight: 400; }
+        .map-box { width: 100%; max-width: 900px; height: 400px; margin: 0 auto; background: #ddd; border: 2px solid var(--gold); }
 
-    /* Localização */
-    .location-section { background: var(--black); color: var(--white); padding: 5rem 0; }
-    .location-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-    .map-placeholder { width: 100%; height: 400px; background: #222; border: 1px solid var(--gold); display: flex; align-items: center; justify-content: center; }
-    .address-info h2 { font-family: var(--serif); font-size: 2rem; margin-bottom: 1.5rem; color: var(--gold); }
-    .address-info p { margin-bottom: 1rem; opacity: 0.8; font-weight: 300; }
+        footer { padding: 40px; text-align: center; font-size: 0.7rem; letter-spacing: 2px; border-top: 1px solid #333; }
 
-    /* Responsivo */
-    @media (max-width: 768px) {
-        .location-grid { grid-template-columns: 1fr; }
-        .services-nav { flex-wrap: wrap; gap: 0.5rem; }
-        .tab-btn { padding: 0.5rem 1rem; font-size: 0.7rem; }
-    }
-</style>
+        @media (max-width: 600px) {
+            .logo { font-size: 1.8rem; }
+            .tab-btn { width: 100%; }
+        }
+    </style>
 </head>
 <body>
 
-<nav>
-    <a href="#" class="nav-logo">THAMARA <span>TEIXEIRA</span></a>
-    <div class="nav-links">
-        <a href="#servicos">Procedimentos</a>
-        <a href="#cursos">Cursos</a>
-        <a href="#localizacao">Onde Estamos</a>
+<header>
+    <div class="logo">Thamara <span>Teixeira</span></div>
+    <div class="subtitle">Especialista em Olhar</div>
+</header>
+
+<div class="container">
+    <div class="tab-menu">
+        <button class="tab-btn active" onclick="openTab(event, 'sobrancelhas')">Sobrancelhas</button>
+        <button class="tab-btn" onclick="openTab(event, 'cilios')">Cílios</button>
+        <button class="tab-btn" onclick="openTab(event, 'rosto')">Lábios & Rosto</button>
+        <button class="tab-btn" onclick="openTab(event, 'cursos')">Cursos</button>
     </div>
-</nav>
 
-<section id="servicos" style="padding: 5rem 0;">
+    <div id="sobrancelhas" class="tab-content active">
+        <div class="card">
+            <img src="personalizado.jpg" class="card-img" alt="Design" onerror="this.src='personalizado.jpeg'">
+            <div class="card-body"><h3>Design Personalizado</h3><p>Simetria facial exclusiva.</p></div>
+        </div>
+        <div class="card">
+            <img src="henna.jpg" class="card-img" alt="Henna" onerror="this.src='henna.jpeg'">
+            <div class="card-body"><h3>Design com Henna</h3><p>Definição e preenchimento.</p></div>
+        </div>
+        <div class="card">
+            <img src="brow.jpg" class="card-img" alt="Brow" onerror="this.src='brow.jpeg'">
+            <div class="card-body"><h3>Brow Lamination</h3><p>Volume e alinhamento.</p></div>
+        </div>
+        <div class="card">
+            <img src="micro.jpg" class="card-img" alt="Micro" onerror="this.src='micro.jpeg'">
+            <div class="card-body"><h3>Micropigmentação</h3><p>Naturalidade duradoura.</p></div>
+        </div>
+        <div class="card">
+            <img src="reconst.jpg" class="card-img" alt="Reconst" onerror="this.src='reconst.jpeg'">
+            <div class="card-body"><h3>Reconstrução</h3><p>Recuperação de fios.</p></div>
+        </div>
+    </div>
+
+    <div id="cilios" class="tab-content">
+        <div class="card">
+            <img src="lash.jpg" class="card-img" alt="Lash" onerror="this.src='lash.jpeg'">
+            <div class="card-body"><h3>Lash Lifting</h3><p>Curvatura dos fios naturais.</p></div>
+        </div>
+        <div class="card">
+            <img src="alongamento.jpg" class="card-img" alt="Alongamento" onerror="this.src='alongamento.jpeg'">
+            <div class="card-body"><h3>Alongamento</h3><p>Cílios volumosos e longos.</p></div>
+        </div>
+    </div>
+
+    <div id="rosto" class="tab-content">
+        <div class="card">
+            <img src="buco.jpg" class="card-img" alt="Buço" onerror="this.src='buco.jpeg'">
+            <div class="card-body"><h3>Buço</h3><p>Epilação egípcia/cera.</p></div>
+        </div>
+        <div class="card">
+            <img src="spa_labial.jpg" class="card-img" alt="Spa" onerror="this.src='spa_labial.jpeg'">
+            <div class="card-body"><h3>Spa Labial</h3><p>Hidratação e brilho.</p></div>
+        </div>
+        <div class="card">
+            <img src="hidra.jpg" class="card-img" alt="Hidra" onerror="this.src='hidra.jpeg'">
+            <div class="card-body"><h3>Hidra Lips</h3><p>Tratamento labial profundo.</p></div>
+        </div>
+        <div class="card">
+            <img src="rosto.jpg" class="card-img" alt="Rosto" onerror="this.src='rosto.jpeg'">
+            <div class="card-body"><h3>Tratamento Facial</h3><p>Limpeza e cuidado.</p></div>
+        </div>
+    </div>
+
+    <div id="cursos" class="tab-content">
+        <div class="card">
+            <img src="curso_iniciante.jpg" class="card-img" alt="Iniciante" onerror="this.src='curso_iniciante.jpeg'">
+            <div class="card-body"><h3>Curso Iniciante</h3><p>O começo da sua carreira.</p></div>
+        </div>
+        <div class="card">
+            <img src="curso_aperfeicoamento.jpg" class="card-img" alt="Aperfeiçoamento" onerror="this.src='curso_aperfeicoamento.jpeg'">
+            <div class="card-body"><h3>Aperfeiçoamento</h3><p>Técnicas avançadas.</p></div>
+        </div>
+    </div>
+</div>
+
+<section class="location">
     <div class="container">
-        <h2 class="section-title">Menu de <em>Experiências</em></h2>
-        
-        <div class="services-nav">
-            <button class="tab-btn active" onclick="openTab(event, 'sobrancelhas')">Sobrancelhas</button>
-            <button class="tab-btn" onclick="openTab(event, 'cilios')">Cílios</button>
-            <button class="tab-btn" onclick="openTab(event, 'rosto')">Lábios & Rosto</button>
-            <button class="tab-btn" onclick="openTab(event, 'combos')">Combos</button>
-        </div>
-
-        <div id="sobrancelhas" class="tab-content active">
-            <div class="service-card">
-                <img src="personalizado.jpg" class="service-img" alt="Design" onerror="this.src='https://via.placeholder.com/400x400?text=Design'">
-                <div class="service-info">
-                    <h3>Design Personalizado</h3>
-                    <p>Mapeamento facial exclusivo e acabamento de alta precisão.</p>
-                    <span class="service-price">R$ 40,00</span>
-                </div>
-            </div>
-            <div class="service-card">
-                <img src="henna.jpg" class="service-img" alt="Henna" onerror="this.src='https://via.placeholder.com/400x400?text=Henna'">
-                <div class="service-info">
-                    <h3>Design com Henna</h3>
-                    <p>Definição marcante com pigmentação premium.</p>
-                    <span class="service-price">R$ 50,00</span>
-                </div>
-            </div>
-            <div class="service-card">
-                <img src="brow.jpg" class="service-img" alt="Brow" onerror="this.src='https://via.placeholder.com/400x400?text=Brow'">
-                <div class="service-info">
-                    <h3>Brow Lamination</h3>
-                    <p>Fios alinhados e volumosos com efeito editorial.</p>
-                    <span class="service-price">R$ 120,00</span>
-                </div>
-            </div>
-        </div>
-
-        <div id="cilios" class="tab-content">
-            <div class="service-card">
-                <img src="lash.jpg" class="service-img" alt="Lash" onerror="this.src='https://via.placeholder.com/400x400?text=Lash'">
-                <div class="service-info">
-                    <h3>Lash Lifting</h3>
-                    <p>Curvatura natural e nutrição para os seus cílios.</p>
-                    <span class="service-price">R$ 120,00</span>
-                </div>
-            </div>
-            <div class="service-card">
-                <img src="alongamento.jpg" class="service-img" alt="Alongamento" onerror="this.src='https://via.placeholder.com/400x400?text=Alongamento'">
-                <div class="service-info">
-                    <h3>Alongamento Fio a Fio</h3>
-                    <p>Extensões leves para um olhar sofisticado 24h.</p>
-                    <span class="service-price">R$ 120,00</span>
-                </div>
-            </div>
-        </div>
-
-        <div id="rosto" class="tab-content">
-            <div class="service-card">
-                <img src="spa_labial.jpg" class="service-img" alt="Spa" onerror="this.src='https://via.placeholder.com/400x400?text=Spa'">
-                <div class="service-info">
-                    <h3>Spa Labial</h3>
-                    <p>Revitalização e hidratação profunda dos lábios.</p>
-                    <span class="service-price">Consulte</span>
-                </div>
-            </div>
-            <div class="service-card">
-                <img src="buco.jpg" class="service-img" alt="Buço" onerror="this.src='https://via.placeholder.com/400x400?text=Buço'">
-                <div class="service-info">
-                    <h3>Epilação Egípcia (Buço)</h3>
-                    <p>Remoção de pelos com técnica de linha.</p>
-                    <span class="service-price">R$ 20,00</span>
-                </div>
-            </div>
-        </div>
-
-        <div id="combos" class="tab-content">
-            <div class="service-card">
-                <img src="combo_premium.jpg" class="service-img" alt="Combo" onerror="this.src='https://via.placeholder.com/400x400?text=Combo'">
-                <div class="service-info">
-                    <h3>Combo VIP</h3>
-                    <p>Lash Lifting + Brow Lamination + Spa Labial.</p>
-                    <span class="service-price">R$ 220,00</span>
-                </div>
-            </div>
-        </div>
+        <h2>Nossa Localização</h2>
+        <p>Visite nosso studio para uma experiência única de beleza.</p>
+        <iframe class="map-box" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3749.191264626154!2d-44.1983!3d-19.9678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDU4JzA0LjEiUyA0NMKwMTEnNTMuOSJX!5e0!3m2!1spt-BR!2sbr!4v1620000000000" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
     </div>
 </section>
 
-<section id="localizacao" class="location-section">
-    <div class="container">
-        <div class="location-grid">
-            <div class="address-info">
-                <h2>Onde estamos <em>localizados</em></h2>
-                <p><strong>Endereço:</strong><br>Av. Principal, 1234 — Edifício Prime, Sala 402<br>Bairro Estética, Belo Horizonte - MG</p>
-                <p><strong>Horário de Atendimento:</strong><br>Terça a Sábado: 09h às 19h</p>
-                <p><strong>Dica:</strong> Temos estacionamento privativo no local para sua maior comodidade.</p>
-                <br>
-                <a href="https://wa.me/5531972574829" style="color: var(--gold); text-decoration: none; border: 1px solid var(--gold); padding: 10px 20px; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px;">Traçar Rota no GPS</a>
-            </div>
-            <div class="map-placeholder">
-                <p style="color: var(--gold); text-align: center; padding: 20px;">[ Aqui entrará o seu Mapa do Google ]<br><span style="font-size: 0.8rem; color: #666;">(Insira o código de incorporação aqui)</span></p>
-            </div>
-        </div>
-    </div>
-</section>
+<footer>
+    &copy; 2026 THAMARA TEIXEIRA - TODOS OS DIREITOS RESERVADOS
+</footer>
 
 <script>
     function openTab(evt, tabName) {
@@ -199,14 +160,12 @@
         tabcontent = document.getElementsByClassName("tab-content");
         for (i = 0; i < tabcontent.length; i++) {
             tabcontent[i].style.display = "none";
-            tabcontent[i].classList.remove("active");
         }
         tablinks = document.getElementsByClassName("tab-btn");
         for (i = 0; i < tablinks.length; i++) {
             tablinks[i].className = tablinks[i].className.replace(" active", "");
         }
         document.getElementById(tabName).style.display = "grid";
-        document.getElementById(tabName).classList.add("active");
         evt.currentTarget.className += " active";
     }
 </script>
