@@ -3,126 +3,1169 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Thamara Teixeira | Designer de Sobrancelhas</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,600;0,900;1,400;1,600&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<title>Thamara Teixeira — Designer de Sobrancelhas</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root {
-  --black:     #0C0C0C; --charcoal:  #181818; --graphite:  #272727;
-  --panel:     #1E1E1E; --silver:    #6A6A6A; --ash:       #A5A5A5;
-  --frost:     #E6E2DD; --white:     #F8F6F3; --rg:        #C4856A;
-  --rg-lt:     #D9A08A; --rg-pale:   rgba(196,133,106,0.10);
-  --rg-border: rgba(196,133,106,0.22); --ease: cubic-bezier(0.4,0,0.2,1);
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth; cursor:none}
-body{font-family:'Outfit',sans-serif;background:var(--black);color:var(--frost);overflow-x:hidden}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-#cd,#cr{position:fixed;top:0;left:0;pointer-events:none;transform:translate(-50%,-50%); z-index:9999}
-#cd{width:7px;height:7px;border-radius:50%;background:var(--rg)}
-#cr{width:30px;height:30px;border-radius:50%;border:1px solid rgba(196,133,106,.55);transition:width .4s,height .4s}
+  :root {
+    --gold: #C9A96E;
+    --gold-light: #E8D5B0;
+    --gold-dark: #9A7A4A;
+    --black: #0E0E0E;
+    --off-white: #FAF8F5;
+    --cream: #F4F0E8;
+    --text-dark: #1A1A1A;
+    --text-mid: #555550;
+    --text-light: #888882;
+    --border: rgba(201,169,110,0.25);
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'Montserrat', sans-serif;
+  }
 
-nav{position:fixed;top:0;width:100%;z-index:1000;padding:1.6rem 6%;display:flex;align-items:center;justify-content:space-between;transition:all .5s var(--ease)}
-nav.sc{background:rgba(12,12,12,.93);backdrop-filter:blur(22px);padding:1rem 6%;border-bottom:1px solid var(--rg-border)}
-.nlogo-main{font-family:'Bodoni Moda',serif;font-size:1.2rem;font-weight:600;color:var(--white);letter-spacing:.05em}
-.nlogo-sub{font-size:.52rem;letter-spacing:.46em;text-transform:uppercase;color:var(--rg);display:block}
+  html { scroll-behavior: smooth; }
 
-.hero{min-height:100vh;display:flex;align-items:center;padding:0 6%;background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('img_recepcao.jpeg'); background-size: cover; background-position: center;}
-.hero-h1{font-family:'Bodoni Moda',serif;font-size:clamp(3rem,6vw,5.5rem);font-weight:900;color:var(--white);margin-bottom:2rem}
-.hero-h1 em{font-style:italic;color:var(--rg);font-weight:400}
+  body {
+    font-family: var(--sans);
+    background: var(--off-white);
+    color: var(--text-dark);
+    font-size: 15px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
 
-.mtable{max-width:1000px;margin:0 auto}
-.mitem{display:grid;grid-template-columns:1fr auto;padding:1.8rem 0;border-bottom:1px solid rgba(255,255,255,.06);cursor:pointer;transition:0.3s;align-items:center}
-.mitem:hover{padding-left:1rem; border-bottom-color: var(--rg)}
-.mname{font-family:'Bodoni Moda',serif;font-size:1.4rem;color:var(--white)}
-.mprice{font-family:'Bodoni Moda',serif;font-size:1.5rem;color:var(--rg);font-weight:700}
-.mdesc{font-size:0.8rem;color:var(--silver);margin-top:4px}
-.sbadge{display:inline-block;font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;background:var(--rg);color:var(--black);padding:.2rem .6rem;margin-bottom:0.4rem}
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(250,248,245,0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 72px;
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    letter-spacing: 0.08em;
+    color: var(--text-dark);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--gold); font-style: italic; }
+  .nav-links {
+    display: flex; gap: 2.5rem; list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.6rem 1.4rem;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+  .nav-cta:hover { background: var(--gold); color: #fff; }
+  .nav-burger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; }
+  .nav-burger span { display: block; width: 22px; height: 1px; background: var(--text-dark); transition: 0.3s; }
 
-.modal{position:fixed;inset:0;z-index:2000;background:var(--black);transform:translateY(100%);transition:transform .6s var(--ease);overflow-y:auto;visibility:hidden}
-.modal.open{transform:none;visibility:visible}
-.mtop{padding:1.2rem 6%; border-bottom:1px solid var(--rg-border); display:flex; justify-content:space-between; align-items:center; background:var(--charcoal); position:sticky; top:0; z-index:10}
-.mbody{padding:4rem 6%; display:grid; grid-template-columns:1fr 1fr; gap:4rem; max-width:1200px; margin:0 auto}
-.mimg{width:100%; aspect-ratio:1/1; object-fit:cover; border:1px solid var(--rg-border)}
-.mclose{background:none; border:1px solid var(--rg); color:var(--rg); padding:0.5rem 1.5rem; cursor:pointer; font-family:'Outfit'}
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center;
+    padding: 8rem 2rem 4rem;
+    background: var(--off-white);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(201,169,110,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-size: 0.65rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--text-dark);
+    max-width: 800px;
+    margin-bottom: 0.4rem;
+  }
+  .hero h1 em { color: var(--gold); font-style: italic; }
+  .hero-sub {
+    font-family: var(--serif);
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    font-style: italic;
+    color: var(--text-light);
+    margin-bottom: 2.5rem;
+  }
+  .hero-desc {
+    max-width: 460px;
+    color: var(--text-mid);
+    font-size: 0.85rem;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+  .btn-primary {
+    padding: 0.85rem 2.2rem;
+    background: var(--gold);
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--gold-dark); transform: translateY(-1px); }
+  .btn-ghost {
+    padding: 0.85rem 2.2rem;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+  }
+  .btn-ghost:hover { background: var(--gold); color: #fff; transform: translateY(-1px); }
+  .hero-ornament {
+    margin-top: 4rem;
+    display: flex; align-items: center; gap: 1rem;
+    opacity: 0.4;
+  }
+  .hero-ornament::before, .hero-ornament::after {
+    content: ''; flex: 1; height: 1px; background: var(--gold);
+    max-width: 80px;
+  }
+  .hero-ornament span { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
 
-footer{padding:4rem 6%; background:var(--charcoal); border-top:1px solid var(--rg-border); text-align:center}
-.rv{opacity:0;transform:translateY(20px);transition:0.8s ease-out}
-.rv.on{opacity:1;transform:none}
+  /* ── SECTIONS ── */
+  section { padding: 6rem 2rem; }
+  .container { max-width: 1200px; margin: 0 auto; }
 
-@media(max-width:900px){.mbody{grid-template-columns:1fr} html{cursor:auto} #cd,#cr{display:none}}
+  .section-header { text-align: center; margin-bottom: 4rem; }
+  .section-eyebrow {
+    font-size: 0.65rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+  }
+  .section-title em { color: var(--gold); font-style: italic; }
+  .section-divider {
+    display: flex; align-items: center; gap: 0.8rem; justify-content: center;
+    margin-top: 1.2rem;
+  }
+  .section-divider::before, .section-divider::after {
+    content: ''; width: 40px; height: 1px; background: var(--gold); opacity: 0.5;
+  }
+  .section-divider span { width: 6px; height: 6px; border: 1px solid var(--gold); transform: rotate(45deg); display: block; }
+
+  /* ── SOBRE ── */
+  .sobre { background: var(--cream); }
+  .sobre-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .sobre-img-wrap {
+    position: relative;
+  }
+  .sobre-img-wrap img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    display: block;
+  }
+  .sobre-img-wrap::after {
+    content: '';
+    position: absolute;
+    inset: -12px -12px 12px 12px;
+    border: 1px solid var(--gold);
+    opacity: 0.4;
+    pointer-events: none;
+  }
+  .sobre-img-placeholder {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: linear-gradient(135deg, #e8e2d8 0%, #d4cfc5 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+  }
+  .sobre-tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 1.2rem;
+  }
+  .sobre-text h2 {
+    font-family: var(--serif);
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
+  }
+  .sobre-text p {
+    color: var(--text-mid);
+    font-size: 0.875rem;
+    font-weight: 300;
+    line-height: 1.9;
+    margin-bottom: 1.2rem;
+  }
+  .sobre-stats {
+    display: flex; gap: 2rem; margin-top: 2rem; padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 2rem;
+    color: var(--gold);
+    display: block;
+  }
+  .stat-lbl {
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-light);
+  }
+
+  /* ── SERVICE CARDS ── */
+  .services-bg { background: var(--off-white); }
+  .category-title {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    margin: 3rem 0 1.5rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .category-title::before { content: ''; flex: 1; max-width: 30px; height: 1px; background: var(--gold); opacity: 0.4; }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5px;
+    background: var(--border);
+    border: 1.5px solid var(--border);
+    margin-bottom: 2rem;
+  }
+  .service-card {
+    background: var(--off-white);
+    padding: 0;
+    overflow: hidden;
+    cursor: pointer;
+    transition: background 0.25s;
+    display: flex; flex-direction: column;
+  }
+  .service-card:hover { background: var(--cream); }
+  .service-img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.45s ease;
+    background: #e8e2d8;
+  }
+  .service-card:hover .service-img { transform: scale(1.03); }
+  .service-img-wrap { overflow: hidden; }
+  .service-img-placeholder {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: linear-gradient(135deg, #ede8e0 0%, #ddd8ce 100%);
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 0.5rem;
+    transition: transform 0.45s ease;
+  }
+  .service-card:hover .service-img-placeholder { transform: scale(1.03); }
+  .placeholder-icon {
+    width: 32px; height: 32px;
+    border: 1px solid var(--gold);
+    transform: rotate(45deg);
+    opacity: 0.5;
+  }
+  .placeholder-text {
+    font-family: var(--serif);
+    font-size: 0.8rem;
+    font-style: italic;
+    color: var(--gold);
+    opacity: 0.7;
+  }
+  .service-body { padding: 1.4rem 1.4rem 1.6rem; flex: 1; }
+  .service-body h3 {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: var(--text-dark);
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.02em;
+  }
+  .service-body p {
+    font-size: 0.78rem;
+    color: var(--text-light);
+    font-weight: 300;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+  .service-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: auto;
+  }
+  .service-price {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    color: var(--gold);
+    letter-spacing: 0.03em;
+  }
+  .service-time {
+    font-size: 0.7rem;
+    color: var(--text-light);
+    letter-spacing: 0.08em;
+  }
+
+  /* ── COMBOS ── */
+  .combos-bg { background: var(--black); }
+  .combos-bg .section-title { color: #fff; }
+  .combos-bg .section-eyebrow { color: var(--gold-light); }
+  .combos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1px;
+    background: rgba(201,169,110,0.15);
+    border: 1px solid rgba(201,169,110,0.15);
+  }
+  .combo-card {
+    background: #141414;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+  }
+  .combo-img-wrap { overflow: hidden; position: relative; }
+  .combo-img {
+    width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;
+    transition: transform 0.5s ease;
+    filter: brightness(0.75);
+  }
+  .combo-card:hover .combo-img { transform: scale(1.05); filter: brightness(0.65); }
+  .combo-img-placeholder {
+    width: 100%; aspect-ratio: 4/3;
+    background: linear-gradient(135deg, #1e1e1e 0%, #2a2520 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif); font-size: 0.9rem; font-style: italic;
+    color: var(--gold); opacity: 0.6;
+    transition: transform 0.5s ease; filter: brightness(0.75);
+  }
+  .combo-card:hover .combo-img-placeholder { transform: scale(1.05); }
+  .combo-badge {
+    position: absolute; top: 1rem; right: 1rem;
+    background: var(--gold); color: #fff;
+    font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase;
+    padding: 0.3rem 0.7rem; font-weight: 600;
+  }
+  .combo-body { padding: 1.6rem; }
+  .combo-body h3 {
+    font-family: var(--serif);
+    font-size: 1.2rem; font-weight: 400;
+    color: #fff; margin-bottom: 0.6rem;
+  }
+  .combo-includes {
+    font-size: 0.75rem; color: rgba(255,255,255,0.45);
+    font-weight: 300; line-height: 1.8;
+    margin-bottom: 1.2rem;
+  }
+  .combo-includes span { color: var(--gold-light); }
+  .combo-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(201,169,110,0.15);
+  }
+  .combo-price {
+    font-family: var(--serif); font-size: 1.4rem; color: var(--gold);
+  }
+  .combo-time { font-size: 0.7rem; color: rgba(255,255,255,0.3); letter-spacing: 0.08em; }
+
+  /* ── CURSOS ── */
+  .cursos-bg { background: var(--cream); }
+  .cursos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+    gap: 2rem;
+  }
+  .curso-card {
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    transition: box-shadow 0.3s, transform 0.3s;
+  }
+  .curso-card:hover { transform: translateY(-3px); box-shadow: 0 20px 40px rgba(0,0,0,0.07); }
+  .curso-img-col {
+    width: 200px; flex-shrink: 0;
+    overflow: hidden;
+  }
+  .curso-img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    transition: transform 0.4s ease;
+  }
+  .curso-card:hover .curso-img { transform: scale(1.04); }
+  .curso-img-placeholder {
+    width: 100%; height: 100%; min-height: 220px;
+    background: linear-gradient(135deg, #ede8e0 0%, #ddd8ce 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif); font-style: italic; font-size: 0.85rem;
+    color: var(--gold); letter-spacing: 0.08em;
+    flex-direction: column; gap: 0.5rem;
+    transition: transform 0.4s ease;
+  }
+  .curso-card:hover .curso-img-placeholder { transform: scale(1.04); }
+  .curso-body { padding: 2rem; flex: 1; display: flex; flex-direction: column; }
+  .curso-level {
+    font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); font-weight: 600;
+    border: 1px solid var(--gold); display: inline-block;
+    padding: 0.25rem 0.6rem; margin-bottom: 1rem;
+  }
+  .curso-body h3 {
+    font-family: var(--serif);
+    font-size: 1.3rem; font-weight: 400;
+    color: var(--text-dark); margin-bottom: 0.8rem;
+    line-height: 1.25;
+  }
+  .curso-body p {
+    font-size: 0.8rem; color: var(--text-mid);
+    font-weight: 300; line-height: 1.8; margin-bottom: 1.5rem; flex: 1;
+  }
+  .btn-saiba {
+    display: inline-block;
+    padding: 0.65rem 1.5rem;
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-family: var(--sans);
+    font-size: 0.68rem; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    align-self: flex-start;
+  }
+  .btn-saiba:hover { background: var(--gold); color: #fff; }
+
+  /* ── PRECO TABLE ── */
+  .precos-bg { background: var(--off-white); }
+  .precos-table {
+    width: 100%; border-collapse: collapse;
+    margin-top: 2rem;
+  }
+  .precos-table th {
+    font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); font-weight: 500;
+    padding: 0.8rem 1.2rem; text-align: left;
+    border-bottom: 1px solid var(--gold);
+  }
+  .precos-table td {
+    padding: 1rem 1.2rem;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.85rem; color: var(--text-mid);
+    font-weight: 300;
+  }
+  .precos-table td:first-child {
+    font-family: var(--serif); font-weight: 400; font-size: 0.95rem;
+    color: var(--text-dark);
+  }
+  .precos-table td:last-child {
+    font-family: var(--serif); font-size: 1.1rem; color: var(--gold);
+    text-align: right; white-space: nowrap;
+  }
+  .precos-table tr:hover td { background: var(--cream); }
+  .precos-table .cat-row td {
+    background: var(--cream);
+    font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--text-light); font-family: var(--sans); font-weight: 500;
+    padding: 0.6rem 1.2rem;
+  }
+
+  /* ── CONTATO ── */
+  .contato-bg { background: var(--black); }
+  .contato-inner {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+  }
+  .contato-left .section-title { color: #fff; text-align: left; }
+  .contato-left .section-eyebrow { color: var(--gold-light); }
+  .contato-left p {
+    color: rgba(255,255,255,0.45); font-size: 0.85rem; font-weight: 300;
+    line-height: 1.9; margin-top: 1.5rem;
+  }
+  .contact-items { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1.2rem; }
+  .contact-item { display: flex; align-items: center; gap: 1rem; }
+  .contact-icon {
+    width: 38px; height: 38px; border: 1px solid rgba(201,169,110,0.3);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .contact-icon svg { width: 16px; height: 16px; stroke: var(--gold); fill: none; }
+  .contact-label {
+    font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--gold); display: block; margin-bottom: 0.1rem;
+  }
+  .contact-value { font-size: 0.85rem; color: rgba(255,255,255,0.6); font-weight: 300; }
+  .payment-tags { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 2.5rem; }
+  .payment-tag {
+    padding: 0.4rem 0.9rem; border: 1px solid rgba(201,169,110,0.25);
+    font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+  }
+  .contato-cta {
+    display: flex; flex-direction: column; align-items: flex-start; gap: 1rem;
+  }
+  .contato-cta h3 {
+    font-family: var(--serif); font-size: 1.8rem; font-weight: 400; color: #fff;
+    line-height: 1.2; margin-bottom: 0.5rem;
+  }
+  .contato-cta h3 em { color: var(--gold); font-style: italic; }
+  .contato-cta p {
+    font-size: 0.8rem; color: rgba(255,255,255,0.4); font-weight: 300;
+    line-height: 1.8; margin-bottom: 1.5rem;
+  }
+  .whatsapp-btn {
+    display: inline-flex; align-items: center; gap: 0.7rem;
+    padding: 1rem 2rem;
+    background: var(--gold);
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .whatsapp-btn:hover { background: var(--gold-dark); transform: translateY(-2px); }
+  .whatsapp-btn svg { width: 18px; height: 18px; fill: #fff; flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #090909;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    border-top: 1px solid rgba(201,169,110,0.1);
+  }
+  footer .footer-logo {
+    font-family: var(--serif); font-size: 1rem; letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.4); margin-bottom: 0.5rem;
+  }
+  footer .footer-logo em { color: var(--gold); font-style: italic; }
+  footer p { font-size: 0.7rem; color: rgba(255,255,255,0.2); letter-spacing: 0.08em; }
+
+  /* ── MOBILE NAV ── */
+  .mobile-menu {
+    display: none; position: fixed; inset: 72px 0 0;
+    background: var(--off-white); z-index: 99;
+    flex-direction: column; align-items: center; justify-content: center;
+    gap: 2rem;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase;
+    font-weight: 500; color: var(--text-mid); text-decoration: none;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .sobre-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .sobre-img-wrap { max-width: 400px; }
+    .contato-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .cursos-grid { grid-template-columns: 1fr; }
+    .curso-card { flex-direction: column; }
+    .curso-img-col { width: 100%; height: 200px; }
+    .nav-links, .nav-cta { display: none; }
+    .nav-burger { display: flex; }
+  }
+  @media (max-width: 600px) {
+    section { padding: 4rem 1.2rem; }
+    .services-grid { grid-template-columns: 1fr 1fr; gap: 1px; }
+    .precos-table td, .precos-table th { padding: 0.8rem 0.6rem; }
+  }
+  @media (max-width: 400px) {
+    .services-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
 
-<div id="cd"></div><div id="cr"></div>
-
+<!-- NAV -->
 <nav id="nav">
-  <div class="nlogo"><span class="nlogo-main">Thamara Teixeira</span><span class="nlogo-sub">Designer de Sobrancelhas</span></div>
-  <a href="https://wa.me/5531972574829" target="_blank" style="background:var(--rg); color:var(--black); padding:.6rem 1.2rem; text-decoration:none; font-weight:600; font-size:.7rem">AGENDAR</a>
+  <a href="#" class="nav-logo">Thamara <span>Teixeira</span></a>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#combos">Combos</a></li>
+    <li><a href="#cursos">Cursos</a></li>
+    <li><a href="#precos">Preços</a></li>
+  </ul>
+  <a href="https://wa.me/5531972574829" class="nav-cta">Agendar</a>
+  <button class="nav-burger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#sobre" onclick="closeMenu()">Sobre</a>
+  <a href="#servicos" onclick="closeMenu()">Serviços</a>
+  <a href="#combos" onclick="closeMenu()">Combos</a>
+  <a href="#cursos" onclick="closeMenu()">Cursos</a>
+  <a href="#precos" onclick="closeMenu()">Preços</a>
+  <a href="https://wa.me/5531972574829" class="btn-primary" style="margin-top:1rem;">Agendar</a>
+</div>
+
+<!-- HERO -->
 <section class="hero">
-  <div><h1 class="hero-h1 rv">A beleza que<br><em>você merece</em></h1><p class="rv" style="color:var(--ash)">Clique nos serviços abaixo para ver fotos e detalhes.</p></div>
+  <p class="hero-eyebrow">Designer de Sobrancelhas · Desde 2019</p>
+  <h1>Arte que <em>desperta</em><br>o seu melhor olhar</h1>
+  <p class="hero-sub">Beleza com intenção, técnica e sofisticação</p>
+  <p class="hero-desc">Especialista em design personalizado, brow lamination, lash lifting e procedimentos estéticos que realçam a sua beleza natural com precisão e cuidado.</p>
+  <div class="hero-actions">
+    <a href="https://wa.me/5531972574829" class="btn-primary">Agendar Horário</a>
+    <a href="#servicos" class="btn-ghost">Ver Procedimentos</a>
+  </div>
+  <div class="hero-ornament"><span>Thamara Teixeira</span></div>
 </section>
 
-<section id="servicos" style="padding:6rem 6%">
-  <div class="mtable">
-    <div class="mitem rv" onclick="openM('m-curso1')"><div><span class="sbadge">CURSO</span><div class="mname">Curso Iniciante</div><div class="mdesc">Comece sua carreira na área da beleza.</div></div><div class="mprice">R$ 1.000</div></div>
-    <div class="mitem rv" onclick="openM('m-curso2')"><div><span class="sbadge">CURSO</span><div class="mname">Curso Aperfeiçoamento</div><div class="mdesc">Evolua suas técnicas profissionais.</div></div><div class="mprice">R$ 700</div></div>
-    <div class="mitem rv" onclick="openM('m-micro')"><div><div class="mname">Micropigmentação</div><div class="mdesc">Sobrancelhas perfeitas por muito mais tempo.</div></div><div class="mprice">R$ 500</div></div>
-    <div class="mitem rv" onclick="openM('m-premium')"><div><span class="sbadge">VIP</span><div class="mname">Combo Perfect Premium</div><div class="mdesc">O cuidado mais completo da casa.</div></div><div class="mprice">R$ 170</div></div>
-    <div class="mitem rv" onclick="openM('m-brow')"><div><div class="mname">Brow Lamination</div><div class="mdesc">Efeito selvagem e alinhado para os fios.</div></div><div class="mprice">R$ 120</div></div>
-    <div class="mitem rv" onclick="openM('m-lash')"><div><div class="mname">Lash Lifting</div><div class="mdesc">Curvatura natural dos cílios.</div></div><div class="mprice">R$ 120</div></div>
-    <div class="mitem rv" onclick="openM('m-alongamento')"><div><div class="mname">Alongamento de Cílios</div><div class="mdesc">Olhar marcante com extensões.</div></div><div class="mprice">R$ 120</div></div>
-    <div class="mitem rv" onclick="openM('m-hidra')"><div><div class="mname">Hidralips e Hidraglos</div><div class="mdesc">Lábios hidratados e volumosos.</div></div><div class="mprice">R$ 90</div></div>
-    <div class="mitem rv" onclick="openM('m-reconst')"><div><div class="mname">Reconstrução</div><div class="mdesc">Tratamento para fios falhados.</div></div><div class="mprice">R$ 80</div></div>
-    <div class="mitem rv" onclick="openM('m-combo')"><div><div class="mname">Combo Perfect</div><div class="mdesc">Henna + Buço + Spa Labial.</div></div><div class="mprice">R$ 60</div></div>
-    <div class="mitem rv" onclick="openM('m-henna')"><div><div class="mname">Design com Henna</div><div class="mdesc">Design clássico com preenchimento.</div></div><div class="mprice">R$ 50</div></div>
-    <div class="mitem rv" onclick="openM('m-perso-combo')"><div><div class="mname">Combo Perfect Personalizado</div><div class="mdesc">Design + Spa labial.</div></div><div class="mprice">R$ 50</div></div>
-    <div class="mitem rv" onclick="openM('m-personalizado')"><div><div class="mname">Design Personalizado</div><div class="mdesc">Mapeamento e limpeza.</div></div><div class="mprice">R$ 40</div></div>
-    <div class="mitem rv" onclick="openM('m-spa')"><div><div class="mname">Spa Labial</div><div class="mdesc">Esfoliação e nutrição labial.</div></div><div class="mprice">R$ 20</div></div>
-    <div class="mitem rv" onclick="openM('m-buco')"><div><div class="mname">Buço</div><div class="mdesc">Retirada técnica de pelos.</div></div><div class="mprice">R$ 20</div></div>
-    <div class="mitem rv" onclick="openM('m-rosto')"><div><div class="mname">Epilação do Rosto</div><div class="mdesc">Pele lisa e sem penugens.</div></div><div class="mprice">R$ 20</div></div>
+<!-- SOBRE -->
+<section class="sobre" id="sobre">
+  <div class="container sobre-inner">
+    <div class="sobre-img-wrap">
+      <img src="thamara_profile.jpg" alt="Thamara Teixeira" class="service-img"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="sobre-img-placeholder" style="display:none;">
+        <div class="placeholder-icon"></div>
+        <span class="placeholder-text">Thamara Teixeira</span>
+      </div>
+    </div>
+    <div class="sobre-text">
+      <span class="sobre-tag">Sobre mim</span>
+      <h2>Mais de 5 anos transformando <em>olhares</em></h2>
+      <p>Olá, me chamo Thamara Teixeira e sou designer de sobrancelhas desde 2019. Preparei este portfólio com muito carinho para melhor atendê-la.</p>
+      <p>Aqui você vai encontrar todos os procedimentos e valores oferecidos por mim. Minha missão é despertar o mulherão que há em você através do meu trabalho.</p>
+      <p>Cada atendimento é único — mapeamento facial personalizado, técnicas modernas e produtos de alta qualidade para resultados que realçam a sua beleza natural.</p>
+      <div class="sobre-stats">
+        <div>
+          <span class="stat-num">5+</span>
+          <span class="stat-lbl">Anos de experiência</span>
+        </div>
+        <div>
+          <span class="stat-num">7</span>
+          <span class="stat-lbl">Procedimentos</span>
+        </div>
+        <div>
+          <span class="stat-num">∞</span>
+          <span class="stat-lbl">Sorrisos gerados</span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<div class="modal" id="m-curso1"><div class="mtop"><span>Curso Iniciante</span><button onclick="closeM('m-curso1')" class="mclose">X</button></div><div class="mbody"><img src="curso1.jpg" class="mimg"><div><h2 class="hero-h1">R$ 1.000</h2><p>Formação completa para quem quer começar do zero.</p></div></div></div>
-<div class="modal" id="m-curso2"><div class="mtop"><span>Curso Aperfeiçoamento</span><button onclick="closeM('m-curso2')" class="mclose">X</button></div><div class="mbody"><img src="curso2.jpg" class="mimg"><div><h2 class="hero-h1">R$ 700</h2><p>Especialização técnica para profissionais.</p></div></div></div>
-<div class="modal" id="m-micro"><div class="mtop"><span>Micropigmentação</span><button onclick="closeM('m-micro')" class="mclose">X</button></div><div class="mbody"><img src="micro.jpg" class="mimg"><div><h2 class="hero-h1">R$ 500</h2><p>Naturalidade e definição duradoura.</p></div></div></div>
-<div class="modal" id="m-premium"><div class="mtop"><span>Combo Premium</span><button onclick="closeM('m-premium')" class="mclose">X</button></div><div class="mbody"><img src="combo_premium.jpg" class="mimg"><div><h2 class="hero-h1">R$ 170</h2><p>O melhor tratamento da nossa estética.</p></div></div></div>
-<div class="modal" id="m-brow"><div class="mtop"><span>Brow Lamination</span><button onclick="closeM('m-brow')" class="mclose">X</button></div><div class="mbody"><img src="brow.jpg" class="mimg"><div><h2 class="hero-h1">R$ 120</h2><p>Sobrancelhas volumosas e alinhadas.</p></div></div></div>
-<div class="modal" id="m-lash"><div class="mtop"><span>Lash Lifting</span><button onclick="closeM('m-lash')" class="mclose">X</button></div><div class="mbody"><img src="lash.jpg" class="mimg"><div><h2 class="hero-h1">R$ 120</h2><p>Curvatura perfeita para seus cílios naturais.</p></div></div></div>
-<div class="modal" id="m-alongamento"><div class="mtop"><span>Alongamento</span><button onclick="closeM('m-alongamento')" class="mclose">X</button></div><div class="mbody"><img src="alongamento.jpg" class="mimg"><div><h2 class="hero-h1">R$ 120</h2><p>Extensão de cílios fio a fio.</p></div></div></div>
-<div class="modal" id="m-hidra"><div class="mtop"><span>Hidra Lips</span><button onclick="closeM('m-hidra')" class="mclose">X</button></div><div class="mbody"><img src="hidra.jpg" class="mimg"><div><h2 class="hero-h1">R$ 90</h2><p>Revitalização profunda para os lábios.</p></div></div></div>
-<div class="modal" id="m-reconst"><div class="mtop"><span>Reconstrução</span><button onclick="closeM('m-reconst')" class="mclose">X</button></div><div class="mbody"><img src="reconst.jpg" class="mimg"><div><h2 class="hero-h1">R$ 80</h2><p>Tratamento para crescimento de fios.</p></div></div></div>
-<div class="modal" id="m-combo"><div class="mtop"><span>Combo Perfect</span><button onclick="closeM('m-combo')" class="mclose">X</button></div><div class="mbody"><img src="combo.jpg" class="mimg"><div><h2 class="hero-h1">R$ 60</h2><p>O clássico que todo mundo ama.</p></div></div></div>
-<div class="modal" id="m-henna"><div class="mtop"><span>Design Henna</span><button onclick="closeM('m-henna')" class="mclose">X</button></div><div class="mbody"><img src="henna.jpg" class="mimg"><div><h2 class="hero-h1">R$ 50</h2><p>Definição perfeita com pigmento.</p></div></div></div>
-<div class="modal" id="m-perso-combo"><div class="mtop"><span>Combo Personalizado</span><button onclick="closeM('m-perso-combo')" class="mclose">X</button></div><div class="mbody"><img src="combo_perso.jpg" class="mimg"><div><h2 class="hero-h1">R$ 50</h2><p>Design feito sob medida para você.</p></div></div></div>
-<div class="modal" id="m-personalizado"><div class="mtop"><span>Design Personalizado</span><button onclick="closeM('m-personalizado')" class="mclose">X</button></div><div class="mbody"><img src="personalizado.jpg" class="mimg"><div><h2 class="hero-h1">R$ 40</h2><p>Mapeamento facial técnico.</p></div></div></div>
-<div class="modal" id="m-spa"><div class="mtop"><span>Spa Labial</span><button onclick="closeM('m-spa')" class="mclose">X</button></div><div class="mbody"><img src="spa.jpg" class="mimg"><div><h2 class="hero-h1">R$ 20</h2><p>Cuidado e maciez labial.</p></div></div></div>
-<div class="modal" id="m-buco"><div class="mtop"><span>Buço</span><button onclick="closeM('m-buco')" class="mclose">X</button></div><div class="mbody"><img src="buco.jpg" class="mimg"><div><h2 class="hero-h1">R$ 20</h2><p>Remoção de pelos com técnica suave.</p></div></div></div>
-<div class="modal" id="m-rosto"><div class="mtop"><span>Epilação Rosto</span><button onclick="closeM('m-rosto')" class="mclose">X</button></div><div class="mbody"><img src="rosto.jpg" class="mimg"><div><h2 class="hero-h1">R$ 20</h2><p>Rosto limpo e radiante.</p></div></div></div>
+<!-- SERVIÇOS -->
+<section class="services-bg" id="servicos">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Procedimentos</span>
+      <h2 class="section-title">Menu de <em>Serviços</em></h2>
+      <div class="section-divider"><span></span></div>
+    </div>
 
-<footer id="contato">
-  <p>Thamarat.s.l@gmail.com | CNPJ: 55.661.343/0001-99</p>
-  <p style="opacity:.5; font-size:.7rem; margin-top:1rem">© 2026 Thamara Teixeira - Betim MG</p>
+    <p class="category-title">Sobrancelhas</p>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-img-wrap">
+          <img src="personalizado.jpg" alt="Designer Personalizado" class="service-img"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="service-img-placeholder" style="display:none;">
+            <div class="placeholder-icon"></div>
+            <span class="placeholder-text">personalizado.jpg</span>
+          </div>
+        </div>
+        <div class="service-body">
+          <h3>Designer Personalizado</h3>
+          <p>Higienização, esfoliação, mapeamento facial, corte e pinçamento com acabamento em navalha, cera ou linha. Finalização com linha pigmentada. Sem henna.</p>
+          <div class="service-footer">
+            <span class="service-price">R$ 40</span>
+            <span class="service-time">20–30 min</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-img-wrap">
+          <img src="henna.jpg" alt="Designer com Henna" class="service-img"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="service-img-placeholder" style="display:none;">
+            <div class="placeholder-icon"></div>
+            <span class="placeholder-text">henna.jpg</span>
+          </div>
+        </div>
+        <div class="service-body">
+          <h3>Designer com Henna</h3>
+          <p>Todo o processo do designer personalizado acrescido de aplicação e remoção de henna, gel calmante e finalização com linha pigmentada.</p>
+          <div class="service-footer">
+            <span class="service-price">R$ 50</span>
+            <span class="service-time">50–60 min</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-img-wrap">
+          <img src="brow.jpg" alt="Brow Lamination" class="service-img"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="service-img-placeholder" style="display:none;">
+            <div class="placeholder-icon"></div>
+            <span class="placeholder-text">brow.jpg</span>
+          </div>
+        </div>
+        <div class="service-body">
+          <h3>Brow Lamination</h3>
+          <p>Técnica que alinha e volumiza os fios, preenche falhas e devolve um visual natural. Inclui hidratação, design e henna opcional. Duração de 4 a 8 semanas.</p>
+          <div class="service-footer">
+            <span class="service-price">R$ 120</span>
+            <span class="service-time">1h 30min</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-img-wrap">
+          <img src="micro.jpg" alt="Microblading / Design Especial" class="service-img"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="service-img-placeholder" style="display:none;">
+            <div class="placeholder-icon"></div>
+            <span class="placeholder-text">micro.jpg</span>
+          </div>
+        </div>
+        <div class="service-body">
+          <h3>Design Especial</h3>
+          <p>Procedimento de design diferenciado para sobrancelhas que exigem mais atenção ao mapeamento e simetria. Personalizado para o formato do rosto.</p>
+          <div class="service-footer">
+            <span class="service-price">Consulte</span>
+            <span class="service-time">Sob consulta</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-img-wrap">
+          <img src="reconst.jpg" alt="Reconstrução" class="service-img"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="service-img-placeholder" style="display:none;">
+            <div class="placeholder-icon"></div>
+            <span class="placeholder-text">reconst.jpg</span>
+          </div>
+        </div>
+        <div class="service-body">
+          <h3>Reconstrução</h3>
+          <p>Protocolo natural para recuperar e estimular o crescimento dos pelos. Anamnese completa para identificar a causa da queda e tratá-la com produtos naturais.</p>
+          <div class="service-footer">
+            <span class="service-price">R$ 80</span>
+            <span class="service-time">1 hora</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="category-title">Cílios</p>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-img-wrap">
+          <img src="lash.jpg" alt="Lash Lifting" class="service-img"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="service-img-placeholder" style="display:none;">
+            <div class="placeholder-icon"></div>
+            <span class="placeholder-text">lash.jpg</span>
+          </div>
+        </div>
+        <div class="service-body">
+          <h3>Lash Lifting</h3>
+          <p>Levanta os fios naturais dos cílios com curvatura acentuada. Pinta, hidrata e reconstrói. Indicado para quem busca naturalidade. Duração de até 8 semanas.</p>
+          <div class="service-footer">
+            <span class="service-price">R$ 120</span>
+            <span class="service-time">1h 30min</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-img-wrap">
+          <img src="alongamento.jpg" alt="Alongamento de Cílios" class="service-img"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="service-img-placeholder" style="display:none;">
+            <div class="placeholder-icon"></div>
+            <span class="placeholder-text">alongamento.jpg</span>
+          </div>
+        </div>
+        <div class="service-body">
+          <h3>Alongamento de Cílios</h3>
+          <p>Volume Perfect (natural mais cheio) ou Volume Natural Brasileiro (modelo padrão). Tamanho e preenchimento escolhidos pela cliente.</p>
+          <div class="service-footer">
+            <span class="service-price">R$ 120</span>
+            <span class="service-time">1h 30 – 2h</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="category-title">Lábios & Rosto</p>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-img-wrap">
+          <img src="buco.jpg" alt="Buço" class="service-img"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="service-img-placeholder" style="display:none;">
+            <div class="placeholder-icon"></div>
+            <span class="placeholder-text">buco.jpg</span>
+          </div>
+        </div>
+        <div class="service-body">
+          <h3>Buço</h3>
+          <p>Higienização e epilação com linha egípcia ou cera, gel calmante e brinde de spa labial incluído.</p>
+          <div class="service-footer">
+            <span class="service-price">R$ 20</span>
+            <span class="service-time">10 min</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-img-wrap">
+          <img src="spa_labial.jpg" alt="Spá Labial" class="service-img"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="service-img-placeholder" style="display:none;">
+            <div class="placeholder-icon"></div>
+            <span class="placeholder-text">spa_labial.jpg</span>
+          </div>
+        </div>
+        <div class="service-body">
+          <h3>Spá Labial</h3>
+          <p>Higienização, esfoliação, hidratação profunda e gloss hidratante. O tratamento completo para lábios macios e luminosos.</p>
+          <div class="service-footer">
+            <span class="service-price">Consulte</span>
+            <span class="service-time">~15 min</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-img-wrap">
+          <img src="hidra.jpg" alt="Hidratação Labial" class="service-img"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="service-img-placeholder" style="display:none;">
+            <div class="placeholder-icon"></div>
+            <span class="placeholder-text">hidra.jpg</span>
+          </div>
+        </div>
+        <div class="service-body">
+          <h3>Hidratação Labial</h3>
+          <p>Protocolo intensivo de hidratação para lábios secos ou ressecados. Finalização com gloss de alta hidratação.</p>
+          <div class="service-footer">
+            <span class="service-price">Consulte</span>
+            <span class="service-time">~20 min</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-img-wrap">
+          <img src="rosto.jpg" alt="Tratamento de Rosto" class="service-img"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="service-img-placeholder" style="display:none;">
+            <div class="placeholder-icon"></div>
+            <span class="placeholder-text">rosto.jpg</span>
+          </div>
+        </div>
+        <div class="service-body">
+          <h3>Tratamento Facial</h3>
+          <p>Cuidados específicos para o rosto com protocolos personalizados de higienização, esfoliação e hidratação.</p>
+          <div class="service-footer">
+            <span class="service-price">Consulte</span>
+            <span class="service-time">Sob consulta</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- COMBOS -->
+<section class="combos-bg" id="combos">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Experiências Completas</span>
+      <h2 class="section-title">Combos <em>Exclusivos</em></h2>
+      <div class="section-divider"><span></span></div>
+    </div>
+
+    <div class="combos-grid">
+
+      <div class="combo-card">
+        <div class="combo-img-wrap">
+          <img src="combo.jpg" alt="Combo Perfect" class="combo-img"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="combo-img-placeholder" style="display:none;">combo.jpg</div>
+          <span class="combo-badge">Mais Pedido</span>
+        </div>
+        <div class="combo-body">
+          <h3>Combo Perfect</h3>
+          <div class="combo-includes">
+            <span>Henna</span> · <span>Buço</span> · <span>Spá Labial</span><br>
+            Higienização · Esfoliação · Hidratação · Gloss
+          </div>
+          <div class="combo-footer">
+            <span class="combo-price">R$ 60</span>
+            <span class="combo-time">1 hora</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="combo-card">
+        <div class="combo-img-wrap">
+          <img src="combo_premium.jpg" alt="Combo Premium" class="combo-img"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="combo-img-placeholder" style="display:none;">combo_premium.jpg</div>
+          <span class="combo-badge">Premium</span>
+        </div>
+        <div class="combo-body">
+          <h3>Combo Premium</h3>
+          <div class="combo-includes">
+            <span>Brow Lamination</span> · <span>Lash Lifting</span><br>
+            Design completo · Henna opcional · Hidratação
+          </div>
+          <div class="combo-footer">
+            <span class="combo-price">Consulte</span>
+            <span class="combo-time">3h+</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="combo-card">
+        <div class="combo-img-wrap">
+          <img src="combo_perso.jpg" alt="Combo Personalizado" class="combo-img"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="combo-img-placeholder" style="display:none;">combo_perso.jpg</div>
+        </div>
+        <div class="combo-body">
+          <h3>Combo Personalizado</h3>
+          <div class="combo-includes">
+            Monte o seu combo ideal combinando os procedimentos que você precisa. Condições especiais para pacotes completos.
+          </div>
+          <div class="combo-footer">
+            <span class="combo-price">Sob consulta</span>
+            <span class="combo-time">Flexível</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CURSOS -->
+<section class="cursos-bg" id="cursos">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Formação Profissional</span>
+      <h2 class="section-title">Cursos & <em>Capacitação</em></h2>
+      <div class="section-divider"><span></span></div>
+    </div>
+
+    <div class="cursos-grid">
+
+      <div class="curso-card">
+        <div class="curso-img-col">
+          <img src="curso_iniciante.jpg" alt="Curso Iniciante" class="curso-img"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="curso-img-placeholder" style="display:none;">
+            <div class="placeholder-icon"></div>
+            <span class="placeholder-text">Iniciante</span>
+          </div>
+        </div>
+        <div class="curso-body">
+          <span class="curso-level">Nível Iniciante</span>
+          <h3>Formação em Design de Sobrancelhas</h3>
+          <p>Para quem quer iniciar na área de estética com base sólida. Aprenda mapeamento facial, técnicas de depilação, aplicação de henna e designer completo do zero.</p>
+          <a href="https://wa.me/5531972574829?text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+o+Curso+Iniciante" class="btn-saiba" target="_blank">Saiba Mais</a>
+        </div>
+      </div>
+
+      <div class="curso-card">
+        <div class="curso-img-col">
+          <img src="curso_aperfeicoamento.jpg" alt="Curso de Aperfeiçoamento" class="curso-img"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="curso-img-placeholder" style="display:none;">
+            <div class="placeholder-icon"></div>
+            <span class="placeholder-text">Aperfeiçoamento</span>
+          </div>
+        </div>
+        <div class="curso-body">
+          <span class="curso-level">Aperfeiçoamento</span>
+          <h3>Aperfeiçoamento em Brow & Lash</h3>
+          <p>Para profissionais que já atuam na área e desejam elevar seu nível. Aprofunde-se em brow lamination, lash lifting, reconstrução e técnicas avançadas de design.</p>
+          <a href="https://wa.me/5531972574829?text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+o+Curso+de+Aperfei%C3%A7oamento" class="btn-saiba" target="_blank">Saiba Mais</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TABELA DE PREÇOS -->
+<section class="precos-bg" id="precos">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Investimento</span>
+      <h2 class="section-title">Tabela de <em>Preços</em></h2>
+      <div class="section-divider"><span></span></div>
+    </div>
+    <table class="precos-table">
+      <thead>
+        <tr>
+          <th>Procedimento</th>
+          <th>Duração</th>
+          <th style="text-align:right;">Valor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="cat-row"><td colspan="3">Sobrancelhas</td></tr>
+        <tr><td>Designer Personalizado</td><td>20–30 min</td><td>R$ 40,00</td></tr>
+        <tr><td>Designer com Henna</td><td>50–60 min</td><td>R$ 50,00</td></tr>
+        <tr><td>Brow Lamination</td><td>1h 30min</td><td>R$ 120,00</td></tr>
+        <tr><td>Reconstrução</td><td>1 hora</td><td>R$ 80,00</td></tr>
+        <tr class="cat-row"><td colspan="3">Cílios</td></tr>
+        <tr><td>Lash Lifting</td><td>1h 30min</td><td>R$ 120,00</td></tr>
+        <tr><td>Alongamento de Cílios</td><td>1h 30 – 2h</td><td>R$ 120,00</td></tr>
+        <tr class="cat-row"><td colspan="3">Lábios & Rosto</td></tr>
+        <tr><td>Buço</td><td>10 min</td><td>R$ 20,00</td></tr>
+        <tr><td>Spá Labial</td><td>~15 min</td><td>Consulte</td></tr>
+        <tr class="cat-row"><td colspan="3">Combos</td></tr>
+        <tr><td>Combo Perfect (Henna + Buço + Spá Labial)</td><td>1 hora</td><td>R$ 60,00</td></tr>
+        <tr><td>Combos Personalizados</td><td>Flexível</td><td>Consulte</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section class="contato-bg" id="contato">
+  <div class="container contato-inner">
+    <div class="contato-left">
+      <span class="section-eyebrow">Contato</span>
+      <h2 class="section-title">Agende seu<br><em>horário</em></h2>
+      <p>Entre em contato pelo WhatsApp ou Instagram e agende o seu atendimento. Estarei feliz em te receber e despertar o mulherão que habita em você.</p>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.9 12a19.79 19.79 0 01-3.07-8.67A2 2 0 012.81 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.72a16 16 0 006.29 6.29l1.1-1.1a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div>
+            <span class="contact-label">WhatsApp</span>
+            <span class="contact-value">(31) 9 7257-4829</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </div>
+          <div>
+            <span class="contact-label">Instagram</span>
+            <span class="contact-value">@thamarasobrancelhas</span>
+          </div>
+        </div>
+      </div>
+      <div class="payment-tags">
+        <span class="payment-tag">Dinheiro</span>
+        <span class="payment-tag">Cartão</span>
+        <span class="payment-tag">Pix</span>
+      </div>
+    </div>
+    <div class="contato-cta">
+      <h3>Venha despertar o <em>mulherão</em> que habita em você.</h3>
+      <p>Atendimento exclusivo e personalizado. Cada cliente merece o melhor — e é exatamente isso que você vai encontrar aqui.</p>
+      <a href="https://wa.me/5531972574829?text=Ol%C3%A1+Thamara%2C+gostaria+de+agendar+um+hor%C3%A1rio!" class="whatsapp-btn" target="_blank">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Agendar pelo WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-logo">Thamara <em>Teixeira</em></p>
+  <p>Designer de Sobrancelhas · @thamarasobrancelhas · (31) 9 7257-4829</p>
 </footer>
 
 <script>
-const cd=document.getElementById('cd'),cr=document.getElementById('cr');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cd.style.left=mx+'px';cd.style.top=my+'px'});
-(function l(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;cr.style.left=rx+'px';cr.style.top=ry+'px';requestAnimationFrame(l)})();
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('on'); });
-}, { threshold: 0.1 });
-document.querySelectorAll('.rv').forEach(el => observer.observe(el));
-
-function openM(id){ document.getElementById(id).classList.add('open'); document.body.style.overflow='hidden'; }
-function closeM(id){ document.getElementById(id).classList.remove('open'); document.body.style.overflow='auto'; }
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+function closeMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+// Scroll opacity for nav
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('nav');
+  nav.style.boxShadow = window.scrollY > 20
+    ? '0 1px 20px rgba(0,0,0,0.06)'
+    : 'none';
+});
 </script>
-
 </body>
 </html>
