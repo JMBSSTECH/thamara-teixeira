@@ -4,1398 +4,834 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Studio Thamara Teixeira — Especialista em Sobrancelhas, Cílios, Lábios e Cursos de Beleza em Betim, MG.">
-    <title>Thamara Teixeira — Studio de Beleza & Cursos</title>
+    <title>Thamara Teixeira — Studio de Beleza &amp; Cursos</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
-    <style>
-        /* ===========================
-           CSS VARIABLES & RESET
-        =========================== */
-        :root {
-            --gold: #C9A96E;
-            --gold-dark: #9A7A4A;
-            --gold-light: #e8d5b0;
-            --black: #0E0E0E;
-            --white: #FFFFFF;
-            --off-white: #FAF8F5;
-            --grey-dark: #161616;
-            --grey-mid: #1e1e1e;
-            --border: rgba(201,169,110,0.25);
-            --border-strong: rgba(201,169,110,0.5);
-            --text-muted: #888;
-            --text-light: #bbb;
-            --shadow-gold: 0 20px 60px rgba(201,169,110,0.12);
-            --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
 
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; font-size: 16px; }
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--black);
-            color: var(--white);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        img { display: block; max-width: 100%; }
-        a { text-decoration: none; }
-        button { font-family: 'Montserrat', sans-serif; cursor: pointer; }
+<style>
+/* ============================================================
+   VARIABLES & RESET
+============================================================ */
+:root{
+    --gold:#C9A96E;--gold-dark:#9A7A4A;--gold-light:#e8d5b0;
+    --black:#0E0E0E;--white:#FFFFFF;--off-white:#FAF8F5;
+    --grey-dark:#161616;--grey-mid:#1e1e1e;
+    --border:rgba(201,169,110,.22);--border-strong:rgba(201,169,110,.5);
+    --text-muted:#888;--text-light:#bbb;
+    --shadow-gold:0 24px 64px rgba(201,169,110,.13);
+    --ease:cubic-bezier(.25,.46,.45,.94);--t:.4s var(--ease);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Montserrat',sans-serif;background:var(--black);color:var(--white);line-height:1.6;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{text-decoration:none}
+button{font-family:'Montserrat',sans-serif;cursor:pointer;border:none;background:none}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--black)}
+::-webkit-scrollbar-thumb{background:var(--gold-dark);border-radius:3px}
 
-        /* ===========================
-           SCROLLBAR
-        =========================== */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: var(--black); }
-        ::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 3px; }
+/* ============================================================
+   NAV
+============================================================ */
+nav{
+    position:fixed;width:100%;top:0;z-index:1000;
+    background:rgba(14,14,14,.97);border-bottom:1px solid var(--border);
+    padding:18px 60px;display:flex;justify-content:space-between;align-items:center;
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    transition:padding var(--t);
+}
+nav.scrolled{padding:11px 60px}
+.nav-logo{font-family:'Playfair Display',serif;color:var(--white);font-size:1.15rem;letter-spacing:3px;text-transform:uppercase}
+.nav-logo span{color:var(--gold);font-style:italic}
+.nav-links{display:flex;align-items:center;gap:34px}
+.nav-links a{color:var(--text-muted);font-size:.63rem;text-transform:uppercase;letter-spacing:2.5px;transition:color var(--t);position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:width var(--t)}
+.nav-links a:hover{color:var(--gold)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{padding:10px 24px!important;border:1px solid var(--gold)!important;color:var(--gold)!important}
+.nav-cta::after{display:none!important}
+.nav-cta:hover{background:var(--gold)!important;color:var(--black)!important}
 
-        /* ===========================
-           NAV
-        =========================== */
-        nav {
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            background: rgba(14, 14, 14, 0.97);
-            border-bottom: 1px solid var(--border);
-            padding: 18px 60px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            transition: padding var(--transition);
-        }
-        nav.scrolled { padding: 12px 60px; }
-        .nav-logo {
-            font-family: 'Playfair Display', serif;
-            color: var(--white);
-            font-size: 1.2rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-        }
-        .nav-logo span { color: var(--gold); font-style: italic; }
-        .nav-links { display: flex; align-items: center; gap: 35px; }
-        .nav-links a {
-            color: var(--text-muted);
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 2.5px;
-            transition: color var(--transition);
-            position: relative;
-        }
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: var(--gold);
-            transition: width var(--transition);
-        }
-        .nav-links a:hover { color: var(--gold); }
-        .nav-links a:hover::after { width: 100%; }
-        .nav-cta {
-            padding: 10px 24px;
-            border: 1px solid var(--gold);
-            color: var(--gold) !important;
-            font-size: 0.62rem !important;
-            letter-spacing: 2px !important;
-            transition: all var(--transition) !important;
-        }
-        .nav-cta:hover { background: var(--gold); color: var(--black) !important; }
-        .nav-cta::after { display: none !important; }
+.hamburger{display:none;flex-direction:column;gap:5px;padding:5px}
+.hamburger span{display:block;width:24px;height:1.5px;background:var(--white);transition:var(--t)}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
 
-        /* Hamburger */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            background: none;
-            border: none;
-            padding: 5px;
-        }
-        .hamburger span {
-            display: block;
-            width: 24px;
-            height: 1.5px;
-            background: var(--white);
-            transition: var(--transition);
-        }
-        .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-        .hamburger.open span:nth-child(2) { opacity: 0; }
-        .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+.mobile-menu{
+    display:none;position:fixed;top:60px;left:0;width:100%;
+    background:rgba(10,10,10,.98);border-bottom:1px solid var(--border);
+    padding:18px 28px;z-index:999;flex-direction:column;
+    backdrop-filter:blur(12px);
+}
+.mobile-menu.open{display:flex}
+.mobile-menu a{color:var(--text-light);font-size:.68rem;text-transform:uppercase;letter-spacing:2px;padding:13px 0;border-bottom:1px solid #181818;transition:color var(--t)}
+.mobile-menu a:last-child{border-bottom:none}
+.mobile-menu a:hover{color:var(--gold)}
 
-        .mobile-menu {
-            display: none;
-            position: fixed;
-            top: 62px;
-            left: 0;
-            width: 100%;
-            background: rgba(10, 10, 10, 0.98);
-            border-bottom: 1px solid var(--border);
-            padding: 20px 30px;
-            z-index: 999;
-            flex-direction: column;
-            gap: 20px;
-            backdrop-filter: blur(12px);
-        }
-        .mobile-menu.open { display: flex; }
-        .mobile-menu a {
-            color: var(--text-light);
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            padding: 10px 0;
-            border-bottom: 1px solid #1a1a1a;
-            transition: color var(--transition);
-        }
-        .mobile-menu a:hover { color: var(--gold); }
+/* ============================================================
+   HERO
+============================================================ */
+.hero{
+    height:100vh;min-height:600px;
+    display:flex;flex-direction:column;justify-content:center;align-items:center;
+    text-align:center;padding:0 20px;position:relative;overflow:hidden;
+    background:radial-gradient(ellipse at 50% 65%,#1d1409 0%,#0e0e0e 68%);
+}
+.hero::before{
+    content:'';position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(circle at 18% 52%,rgba(201,169,110,.05) 0%,transparent 55%),
+               radial-gradient(circle at 82% 18%,rgba(201,169,110,.04) 0%,transparent 50%);
+}
+.hero-eyebrow{font-size:.63rem;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;animation:fadeUp .8s ease both}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,7vw,5rem);font-weight:400;line-height:1.11;margin-bottom:28px;animation:fadeUp .8s .15s ease both}
+.hero h1 em{color:var(--gold);font-style:italic}
+.hero-sub{color:var(--text-muted);font-size:.78rem;letter-spacing:1.5px;margin-bottom:44px;font-weight:300;animation:fadeUp .8s .28s ease both}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;animation:fadeUp .8s .4s ease both}
+.btn-gold{display:inline-block;padding:17px 44px;border:1px solid var(--gold);color:var(--gold);text-transform:uppercase;font-size:.68rem;letter-spacing:2.5px;transition:all var(--t)}
+.btn-gold:hover{background:var(--gold);color:var(--black)}
+.btn-ghost{display:inline-block;padding:17px 44px;border:1px solid #2e2e2e;color:var(--text-muted);text-transform:uppercase;font-size:.68rem;letter-spacing:2.5px;transition:all var(--t)}
+.btn-ghost:hover{border-color:#555;color:var(--text-light)}
+.hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;animation:fadeUp .8s .6s ease both}
+.hero-scroll span{font-size:.52rem;letter-spacing:3px;text-transform:uppercase;color:#3a3a3a}
+.scroll-line{width:1px;height:38px;background:linear-gradient(to bottom,var(--gold),transparent);animation:pulse 2s infinite}
 
-        /* ===========================
-           HERO
-        =========================== */
-        .hero {
-            height: 100vh;
-            min-height: 600px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
-            position: relative;
-            background: radial-gradient(ellipse at 50% 60%, #1c1510 0%, #0e0e0e 70%);
-            overflow: hidden;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(circle at 20% 50%, rgba(201,169,110,0.04) 0%, transparent 60%),
-                radial-gradient(circle at 80% 20%, rgba(201,169,110,0.03) 0%, transparent 50%);
-        }
-        .hero-eyebrow {
-            font-size: 0.65rem;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 20px;
-            animation: fadeInUp 0.8s ease both;
-        }
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 7vw, 5rem);
-            font-weight: 400;
-            line-height: 1.12;
-            margin-bottom: 30px;
-            animation: fadeInUp 0.8s 0.15s ease both;
-        }
-        .hero h1 em { color: var(--gold); font-style: italic; }
-        .hero-sub {
-            color: var(--text-muted);
-            font-size: 0.8rem;
-            letter-spacing: 1.5px;
-            margin-bottom: 45px;
-            font-weight: 300;
-            animation: fadeInUp 0.8s 0.28s ease both;
-        }
-        .hero-actions {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-            justify-content: center;
-            animation: fadeInUp 0.8s 0.4s ease both;
-        }
-        .btn-main {
-            padding: 18px 45px;
-            border: 1px solid var(--gold);
-            color: var(--gold);
-            text-transform: uppercase;
-            font-size: 0.7rem;
-            letter-spacing: 2.5px;
-            transition: all var(--transition);
-            display: inline-block;
-            font-family: 'Montserrat', sans-serif;
-        }
-        .btn-main:hover { background: var(--gold); color: var(--black); }
-        .btn-ghost {
-            padding: 18px 45px;
-            border: 1px solid #333;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            font-size: 0.7rem;
-            letter-spacing: 2.5px;
-            transition: all var(--transition);
-            display: inline-block;
-        }
-        .btn-ghost:hover { border-color: #555; color: var(--text-light); }
-        .hero-scroll {
-            position: absolute;
-            bottom: 35px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-            animation: fadeInUp 0.8s 0.6s ease both;
-        }
-        .hero-scroll span {
-            font-size: 0.55rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: #444;
-        }
-        .scroll-line {
-            width: 1px;
-            height: 40px;
-            background: linear-gradient(to bottom, var(--gold), transparent);
-            animation: scrollPulse 2s infinite;
-        }
+/* ============================================================
+   SHARED
+============================================================ */
+section{padding:110px 20px}
+.container{max-width:1200px;margin:0 auto}
+.section-header{text-align:center;margin-bottom:68px}
+.eyebrow{display:inline-block;font-size:.58rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.section-header h2{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4.5vw,2.7rem);font-weight:400}
+.section-header h2 em{color:var(--gold);font-style:italic}
+.divider{width:44px;height:1px;background:var(--gold);margin:20px auto 0}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
 
-        /* ===========================
-           SHARED LAYOUT
-        =========================== */
-        section { padding: 110px 20px; }
-        .container { max-width: 1200px; margin: 0 auto; }
-        .section-header { text-align: center; margin-bottom: 70px; }
-        .section-header .eyebrow {
-            display: inline-block;
-            font-size: 0.6rem;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 16px;
-        }
-        .section-header h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2rem, 5vw, 2.8rem);
-            font-weight: 400;
-            margin-bottom: 0;
-        }
-        .section-header h2 em { color: var(--gold); font-style: italic; }
-        .divider { width: 45px; height: 1px; background: var(--gold); margin: 22px auto 0; }
+/* ============================================================
+   SOBRE
+============================================================ */
+#sobre{background:#090909}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-img-box{position:relative;border:1px solid var(--border);padding:14px}
+.about-img-box::before{content:'';position:absolute;inset:-10px;border:1px solid var(--border);opacity:.35;pointer-events:none}
+.about-img-box img{width:100%;aspect-ratio:3/4;object-fit:cover;filter:sepia(15%) contrast(1.05)}
+.about-text .eyebrow{margin-bottom:16px}
+.about-text h3{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,3.5vw,2.2rem);font-weight:400;margin-bottom:22px;line-height:1.2}
+.about-text p{color:var(--text-muted);margin-bottom:18px;font-weight:300;font-size:.88rem;line-height:1.85}
+.about-hr{width:44px;height:1px;background:var(--border-strong);margin:28px 0}
+.about-quote{font-style:italic;color:var(--gold);font-family:'Playfair Display',serif;font-size:1rem}
 
-        /* ===========================
-           SOBRE
-        =========================== */
-        #sobre { background: #090909; }
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
-        }
-        .about-img-box {
-            position: relative;
-            border: 1px solid var(--border);
-            padding: 16px;
-        }
-        .about-img-box::before {
-            content: '';
-            position: absolute;
-            inset: -10px;
-            border: 1px solid var(--border);
-            opacity: 0.4;
-            pointer-events: none;
-        }
-        .about-img-box img {
-            width: 100%;
-            aspect-ratio: 3/4;
-            object-fit: cover;
-            filter: sepia(15%) contrast(1.05);
-        }
-        .about-text .eyebrow {
-            display: inline-block;
-            font-size: 0.6rem;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 18px;
-        }
-        .about-text h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(1.7rem, 4vw, 2.3rem);
-            font-weight: 400;
-            margin-bottom: 25px;
-            line-height: 1.2;
-        }
-        .about-text p {
-            color: var(--text-muted);
-            margin-bottom: 20px;
-            font-weight: 300;
-            font-size: 0.88rem;
-            line-height: 1.8;
-        }
-        .about-divider { width: 45px; height: 1px; background: var(--border-strong); margin: 30px 0; }
-        .about-quote {
-            font-style: italic;
-            color: var(--gold);
-            font-family: 'Playfair Display', serif;
-            font-size: 1rem;
-        }
+/* ============================================================
+   SERVICOS
+============================================================ */
+#experiencia{background:var(--black)}
+.tabs-nav{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:52px}
+.tab-btn{background:transparent;border:1px solid #252525;color:#555;padding:12px 30px;text-transform:uppercase;font-size:.6rem;letter-spacing:2.5px;transition:all var(--t)}
+.tab-btn:hover{border-color:#444;color:#777}
+.tab-btn.active{border-color:var(--gold);color:var(--gold);background:rgba(201,169,110,.06)}
+.tab-pane{display:none;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:26px;animation:fadeUp .45s ease both}
+.tab-pane.active{display:grid}
 
-        /* ===========================
-           SERVIÇOS (TABS)
-        =========================== */
-        #experiencia { background: var(--black); }
-        .tabs-nav {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin-bottom: 55px;
-        }
-        .tab-btn {
-            background: transparent;
-            border: 1px solid #2a2a2a;
-            color: #555;
-            padding: 13px 32px;
-            cursor: pointer;
-            text-transform: uppercase;
-            font-size: 0.62rem;
-            letter-spacing: 2.5px;
-            transition: all var(--transition);
-        }
-        .tab-btn:hover { border-color: #444; color: #777; }
-        .tab-btn.active {
-            border-color: var(--gold);
-            color: var(--gold);
-            background: rgba(201, 169, 110, 0.06);
-        }
-        .tab-pane {
-            display: none;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 28px;
-            animation: fadeInUp 0.45s ease both;
-        }
-        .tab-pane.active { display: grid; }
+/* ============================================================
+   CARDS
+============================================================ */
+.card{background:var(--grey-dark);border:1px solid #1c1c1c;overflow:hidden;transition:all var(--t);position:relative;cursor:pointer}
+.card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--gold);transition:width .5s ease}
+.card:hover{border-color:var(--border-strong);transform:translateY(-8px);box-shadow:var(--shadow-gold)}
+.card:hover::after{width:100%}
+.card-img-wrap{width:100%;height:310px;overflow:hidden;border-bottom:1px solid var(--border)}
+.card-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
+.card:hover .card-img-wrap img{transform:scale(1.08)}
+.card-body{padding:26px;text-align:center}
+.card-body h4{font-family:'Playfair Display',serif;font-size:1.12rem;margin-bottom:6px;color:var(--gold)}
+.card-body p{font-size:.63rem;text-transform:uppercase;letter-spacing:1.5px;color:#555}
+.price-tag{display:block;margin-top:16px;font-family:'Playfair Display',serif;color:var(--white);font-size:1.05rem}
+.card-cta{display:inline-block;margin-top:14px;font-size:.56rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold-dark);border:1px solid var(--border);padding:7px 18px;transition:all var(--t)}
+.card:hover .card-cta{border-color:var(--gold);color:var(--gold)}
 
-        /* ===========================
-           CARDS
-        =========================== */
-        .card {
-            background: var(--grey-dark);
-            border: 1px solid #1e1e1e;
-            overflow: hidden;
-            transition: all var(--transition);
-            position: relative;
-        }
-        .card::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gold);
-            transition: width 0.5s ease;
-        }
-        .card:hover { border-color: var(--border-strong); transform: translateY(-8px); box-shadow: var(--shadow-gold); }
-        .card:hover::after { width: 100%; }
-        .card-link { display: block; color: inherit; }
-        .card-img-wrap { width: 100%; height: 320px; overflow: hidden; border-bottom: 1px solid var(--border); }
-        .card-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
-        .card:hover .card-img-wrap img { transform: scale(1.08); }
-        .card-body { padding: 28px; text-align: center; }
-        .card-body h4 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.15rem;
-            margin-bottom: 8px;
-            color: var(--gold);
-        }
-        .card-body p {
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: #555;
-            margin-bottom: 0;
-        }
-        .price-tag {
-            display: block;
-            margin-top: 18px;
-            font-family: 'Playfair Display', serif;
-            color: var(--white);
-            font-size: 1.05rem;
-        }
-        .cta-pill {
-            display: inline-block;
-            margin-top: 18px;
-            font-size: 0.58rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--gold-dark);
-            border: 1px solid var(--border);
-            padding: 7px 18px;
-            transition: all var(--transition);
-        }
-        .card:hover .cta-pill { border-color: var(--gold); color: var(--gold); }
+/* ============================================================
+   CURSOS
+============================================================ */
+#cursos{background:#090909}
+.cursos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:28px}
+.curso-card{background:var(--grey-dark);border:1px solid #1c1c1c;overflow:hidden;transition:all var(--t);position:relative;cursor:pointer}
+.curso-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--gold);transition:width .5s ease}
+.curso-card:hover{border-color:var(--border-strong);transform:translateY(-8px);box-shadow:var(--shadow-gold)}
+.curso-card:hover::after{width:100%}
+.curso-card .card-img-wrap{height:290px}
+.curso-badge{position:absolute;top:16px;left:16px;background:var(--gold);color:var(--black);font-size:.52rem;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;font-weight:600;z-index:2}
 
-        /* ===========================
-           CURSOS
-        =========================== */
-        #cursos { background: #090909; }
-        .cursos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 30px;
-        }
-        .curso-card {
-            background: var(--grey-dark);
-            border: 1px solid #1e1e1e;
-            overflow: hidden;
-            transition: all var(--transition);
-            position: relative;
-        }
-        .curso-card::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gold);
-            transition: width 0.5s ease;
-        }
-        .curso-card:hover { border-color: var(--border-strong); transform: translateY(-8px); box-shadow: var(--shadow-gold); }
-        .curso-card:hover::after { width: 100%; }
-        .curso-card-link { display: block; color: inherit; }
-        .curso-card .card-img-wrap { height: 300px; }
-        .curso-badge {
-            position: absolute;
-            top: 18px;
-            left: 18px;
-            background: var(--gold);
-            color: var(--black);
-            font-size: 0.55rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            padding: 6px 14px;
-            font-weight: 600;
-        }
+/* ============================================================
+   MODAL
+============================================================ */
+.modal-overlay{
+    position:fixed;inset:0;z-index:2000;
+    background:rgba(4,4,4,.93);
+    display:flex;align-items:center;justify-content:center;
+    padding:20px;
+    opacity:0;visibility:hidden;
+    transition:opacity .45s ease,visibility .45s ease;
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+}
+.modal-overlay.open{opacity:1;visibility:visible}
+.modal-box{
+    background:var(--grey-dark);border:1px solid var(--border);
+    max-width:860px;width:100%;max-height:92vh;
+    display:grid;grid-template-columns:1fr 1fr;
+    overflow:hidden;position:relative;
+    transform:translateY(30px) scale(.97);
+    transition:transform .45s var(--ease);
+}
+.modal-overlay.open .modal-box{transform:translateY(0) scale(1)}
+.modal-img-col{overflow:hidden}
+.modal-img-col img{width:100%;height:100%;object-fit:cover;min-height:420px}
+.modal-info-col{padding:50px 44px;display:flex;flex-direction:column;justify-content:center;overflow-y:auto}
+.modal-close{
+    position:absolute;top:16px;right:18px;
+    width:38px;height:38px;border-radius:50%;
+    background:rgba(0,0,0,.55);border:1px solid #2a2a2a;
+    color:var(--text-muted);font-size:1rem;
+    display:flex;align-items:center;justify-content:center;
+    transition:all var(--t);z-index:10;cursor:pointer;
+}
+.modal-close:hover{background:var(--gold);color:var(--black);border-color:var(--gold)}
+.modal-eyebrow{font-size:.56rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.modal-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.1rem);font-weight:400;line-height:1.15;margin-bottom:8px}
+.modal-subtitle{font-size:.64rem;text-transform:uppercase;letter-spacing:1.5px;color:#555;margin-bottom:20px}
+.modal-divider{width:38px;height:1px;background:var(--border-strong);margin-bottom:20px}
+.modal-price{font-family:'Playfair Display',serif;font-size:1.75rem;color:var(--gold);margin-bottom:22px}
+.modal-desc{font-size:.83rem;font-weight:300;color:var(--text-light);line-height:1.85;margin-bottom:30px}
+.modal-wa-btn{
+    display:inline-flex;align-items:center;gap:12px;
+    padding:16px 30px;background:var(--gold);color:var(--black);
+    font-size:.68rem;letter-spacing:2px;text-transform:uppercase;
+    font-weight:600;font-family:'Montserrat',sans-serif;
+    transition:background var(--t),transform var(--t);align-self:flex-start;
+}
+.modal-wa-btn:hover{background:var(--gold-light);transform:translateY(-2px)}
+.modal-wa-btn svg{width:18px;height:18px;fill:var(--black);flex-shrink:0}
+.modal-back{display:inline-block;margin-top:16px;font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:#3e3e3e;transition:color var(--t);cursor:pointer}
+.modal-back:hover{color:var(--gold)}
 
-        /* ===========================
-           STUDIO CAROUSEL
-        =========================== */
-        #studio { background: var(--black); }
-        .studio-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
-        }
-        .studio-text .eyebrow {
-            display: inline-block;
-            font-size: 0.6rem;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 18px;
-        }
-        .studio-text h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            font-weight: 400;
-            line-height: 1.2;
-            margin-bottom: 25px;
-        }
-        .studio-text h2 em { color: var(--gold); font-style: italic; }
-        .studio-text p {
-            color: var(--text-muted);
-            font-size: 0.88rem;
-            line-height: 1.85;
-            font-weight: 300;
-            margin-bottom: 18px;
-        }
-        .studio-features {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 30px;
-        }
-        .studio-feature {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            font-size: 0.75rem;
-            color: var(--text-light);
-            letter-spacing: 0.5px;
-        }
-        .studio-feature::before {
-            content: '';
-            display: block;
-            width: 20px;
-            height: 1px;
-            background: var(--gold);
-            flex-shrink: 0;
-        }
+/* ============================================================
+   STUDIO CAROUSEL
+============================================================ */
+#studio{background:var(--black)}
+.studio-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.studio-text .eyebrow{margin-bottom:16px}
+.studio-text h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:400;line-height:1.2;margin-bottom:22px}
+.studio-text h2 em{color:var(--gold);font-style:italic}
+.studio-text p{color:var(--text-muted);font-size:.87rem;line-height:1.85;font-weight:300;margin-bottom:16px}
+.studio-features{display:flex;flex-direction:column;gap:11px;margin-top:28px}
+.studio-feat{display:flex;align-items:center;gap:14px;font-size:.73rem;color:var(--text-light)}
+.studio-feat::before{content:'';display:block;width:20px;height:1px;background:var(--gold);flex-shrink:0}
 
-        /* Carousel */
-        .carousel-wrap {
-            position: relative;
-            border: 1px solid var(--border);
-            padding: 12px;
-            overflow: hidden;
-        }
-        .carousel {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 4/5;
-            overflow: hidden;
-        }
-        .carousel-slide {
-            position: absolute;
-            inset: 0;
-            opacity: 0;
-            transition: opacity 0.8s ease;
-        }
-        .carousel-slide.active { opacity: 1; }
-        .carousel-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: sepia(10%) contrast(1.05);
-        }
-        .carousel-controls {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 14px 4px 4px;
-        }
-        .carousel-dots { display: flex; gap: 8px; }
-        .carousel-dot {
-            width: 24px;
-            height: 1px;
-            background: #333;
-            cursor: pointer;
-            transition: background var(--transition);
-            border: none;
-        }
-        .carousel-dot.active { background: var(--gold); }
-        .carousel-arrows { display: flex; gap: 8px; }
-        .carousel-btn {
-            background: none;
-            border: 1px solid #2a2a2a;
-            color: #666;
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all var(--transition);
-            font-size: 0.9rem;
-        }
-        .carousel-btn:hover { border-color: var(--gold); color: var(--gold); }
+.carousel-wrap{position:relative;border:1px solid var(--border);padding:10px}
+.carousel{position:relative;width:100%;aspect-ratio:4/5;overflow:hidden}
+.carousel-slide{position:absolute;inset:0;opacity:0;transition:opacity .8s ease}
+.carousel-slide.active{opacity:1}
+.carousel-slide img{width:100%;height:100%;object-fit:cover;filter:sepia(10%) contrast(1.05)}
+.carousel-controls{display:flex;justify-content:space-between;align-items:center;padding:13px 3px 3px}
+.carousel-dots{display:flex;gap:8px}
+.carousel-dot{width:22px;height:1px;background:#2a2a2a;transition:background var(--t)}
+.carousel-dot.active{background:var(--gold)}
+.carousel-arrows{display:flex;gap:6px}
+.c-btn{width:36px;height:36px;border:1px solid #252525;color:#555;display:flex;align-items:center;justify-content:center;font-size:.88rem;transition:all var(--t)}
+.c-btn:hover{border-color:var(--gold);color:var(--gold)}
 
-        /* ===========================
-           DEPOIMENTOS
-        =========================== */
-        #depoimentos { background: #070707; }
-        .reviews-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-        }
-        .review-card {
-            background: var(--grey-dark);
-            border: 1px solid #1e1e1e;
-            padding: 36px 30px;
-            position: relative;
-            transition: border-color var(--transition), box-shadow var(--transition);
-        }
-        .review-card:hover { border-color: var(--border); box-shadow: var(--shadow-gold); }
-        .review-quote-icon {
-            font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            line-height: 1;
-            color: var(--border);
-            position: absolute;
-            top: 16px;
-            right: 24px;
-            user-select: none;
-        }
-        .review-stars { color: var(--gold); font-size: 0.85rem; margin-bottom: 18px; letter-spacing: 3px; }
-        .review-text {
-            font-size: 0.84rem;
-            line-height: 1.85;
-            color: var(--text-light);
-            font-weight: 300;
-            font-style: italic;
-            margin-bottom: 24px;
-        }
-        .review-author { display: flex; align-items: center; gap: 14px; }
-        .review-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--gold-dark), var(--gold));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Playfair Display', serif;
-            font-size: 1rem;
-            color: var(--black);
-            font-weight: 700;
-            flex-shrink: 0;
-        }
-        .review-author-info strong {
-            display: block;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            margin-bottom: 2px;
-        }
-        .review-author-info span {
-            font-size: 0.6rem;
-            color: #555;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
+/* ============================================================
+   DEPOIMENTOS
+============================================================ */
+#depoimentos{background:#070707}
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;margin-bottom:48px}
+.review-card{background:var(--grey-dark);border:1px solid #1c1c1c;padding:34px 28px;position:relative;transition:border-color var(--t),box-shadow var(--t)}
+.review-card:hover{border-color:var(--border);box-shadow:var(--shadow-gold)}
+.review-qs{font-family:'Playfair Display',serif;font-size:4rem;line-height:1;color:var(--border);position:absolute;top:14px;right:22px;user-select:none}
+.review-stars{color:var(--gold);font-size:.8rem;margin-bottom:16px;letter-spacing:3px}
+.review-text{font-size:.82rem;line-height:1.85;color:var(--text-light);font-weight:300;font-style:italic;margin-bottom:22px}
+.review-author{display:flex;align-items:center;gap:13px}
+.review-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dark),var(--gold));display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:.95rem;color:var(--black);font-weight:700;flex-shrink:0}
+.review-name{font-size:.73rem;font-weight:600;letter-spacing:.4px;margin-bottom:2px}
+.review-service{font-size:.58rem;color:#4a4a4a;text-transform:uppercase;letter-spacing:1.5px}
+.reviews-cta{text-align:center}
+.btn-google{
+    display:inline-flex;align-items:center;gap:12px;
+    padding:16px 38px;border:1px solid var(--border-strong);color:var(--gold);
+    font-size:.64rem;letter-spacing:2px;text-transform:uppercase;transition:all var(--t);
+}
+.btn-google:hover{background:rgba(201,169,110,.07);transform:translateY(-2px)}
+.btn-google svg{width:18px;height:18px;flex-shrink:0}
 
-        /* ===========================
-           LOCALIZAÇÃO
-        =========================== */
-        #localizacao { background: #090909; }
-        .location-box {
-            background: var(--off-white);
-            color: var(--black);
-            overflow: hidden;
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-        }
-        .location-info {
-            padding: 65px 55px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        .location-info .eyebrow {
-            font-size: 0.6rem;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: var(--gold-dark);
-            margin-bottom: 18px;
-            display: block;
-        }
-        .location-info h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            font-weight: 400;
-            margin-bottom: 28px;
-            line-height: 1.2;
-        }
-        .location-detail {
-            margin-bottom: 18px;
-            font-size: 0.83rem;
-            line-height: 1.75;
-        }
-        .location-detail strong {
-            display: block;
-            font-size: 0.6rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--gold-dark);
-            margin-bottom: 4px;
-        }
-        .location-detail a { color: var(--black); }
-        .location-detail a:hover { color: var(--gold-dark); }
-        .location-divider { width: 40px; height: 1px; background: var(--gold-dark); opacity: 0.5; margin: 25px 0; }
-        .btn-dark {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 16px 36px;
-            border: 1px solid var(--black);
-            color: var(--black);
-            text-transform: uppercase;
-            font-size: 0.65rem;
-            letter-spacing: 2px;
-            transition: all var(--transition);
-            font-family: 'Montserrat', sans-serif;
-        }
-        .btn-dark:hover { background: var(--black); color: var(--white); }
-        .map-iframe { width: 100%; height: 100%; min-height: 450px; border: 0; filter: grayscale(1) contrast(1.1); }
+/* ============================================================
+   LOCALIZACAO
+============================================================ */
+#localizacao{background:#090909}
+.location-box{background:var(--off-white);color:var(--black);overflow:hidden;display:grid;grid-template-columns:1fr 1.3fr}
+.location-info{padding:60px 52px;display:flex;flex-direction:column;justify-content:center}
+.location-info .eyebrow{color:var(--gold-dark);margin-bottom:16px}
+.location-info h3{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:400;margin-bottom:26px;line-height:1.2}
+.loc-detail{margin-bottom:16px;font-size:.82rem;line-height:1.75}
+.loc-detail strong{display:block;font-size:.57rem;text-transform:uppercase;letter-spacing:2px;color:var(--gold-dark);margin-bottom:3px}
+.loc-detail a{color:var(--black)}
+.loc-detail a:hover{color:var(--gold-dark)}
+.loc-hr{width:38px;height:1px;background:var(--gold-dark);opacity:.45;margin:22px 0}
+.loc-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-dark{display:inline-flex;align-items:center;gap:9px;padding:15px 28px;border:1px solid var(--black);color:var(--black);font-size:.62rem;letter-spacing:2px;text-transform:uppercase;font-family:'Montserrat',sans-serif;transition:all var(--t)}
+.btn-dark:hover{background:var(--black);color:var(--white)}
+.btn-map{display:inline-flex;align-items:center;gap:9px;padding:15px 28px;background:var(--black);color:var(--white);font-size:.62rem;letter-spacing:2px;text-transform:uppercase;font-family:'Montserrat',sans-serif;transition:background var(--t)}
+.btn-map:hover{background:#1c1c1c}
+.btn-dark svg,.btn-map svg{width:14px;height:14px;flex-shrink:0;transition:fill var(--t)}
+.btn-dark svg{fill:var(--black)}
+.btn-dark:hover svg{fill:var(--white)}
+.btn-map svg{fill:var(--white)}
+.map-iframe{width:100%;height:100%;min-height:460px;border:0;filter:grayscale(1) contrast(1.08)}
 
-        /* ===========================
-           WHATSAPP FLOATING
-        =========================== */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 999;
-            width: 56px;
-            height: 56px;
-            background: #25D366;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-            transition: transform var(--transition), box-shadow var(--transition);
-        }
-        .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37, 211, 102, 0.5); }
-        .whatsapp-float svg { width: 28px; height: 28px; fill: white; }
+/* ============================================================
+   FOOTER
+============================================================ */
+footer{padding:78px 20px 48px;text-align:center;background:#060606;border-top:1px solid #101010}
+.footer-logo{font-family:'Playfair Display',serif;font-size:1.85rem;font-weight:400;margin-bottom:7px;letter-spacing:3px}
+.footer-logo span{color:var(--gold);font-style:italic}
+.footer-tagline{font-size:.58rem;letter-spacing:4px;text-transform:uppercase;color:#2e2e2e;margin-bottom:34px}
+.footer-socials{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:48px}
+.footer-socials a{color:var(--text-muted);font-size:.6rem;text-transform:uppercase;letter-spacing:2.5px;padding:10px 22px;border:1px solid #181818;transition:all var(--t)}
+.footer-socials a:hover{border-color:var(--border);color:var(--gold)}
+.footer-copy{color:#272727;font-size:.56rem;letter-spacing:1.5px;text-transform:uppercase}
 
-        /* ===========================
-           FOOTER
-        =========================== */
-        footer {
-            padding: 80px 20px 50px;
-            text-align: center;
-            background: #060606;
-            border-top: 1px solid #141414;
-        }
-        .footer-logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.9rem;
-            font-weight: 400;
-            margin-bottom: 8px;
-            letter-spacing: 3px;
-        }
-        .footer-logo span { color: var(--gold); font-style: italic; }
-        .footer-tagline {
-            font-size: 0.6rem;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: #333;
-            margin-bottom: 35px;
-        }
-        .footer-socials {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin-bottom: 50px;
-        }
-        .footer-socials a {
-            color: var(--text-muted);
-            font-size: 0.62rem;
-            text-transform: uppercase;
-            letter-spacing: 2.5px;
-            padding: 10px 22px;
-            border: 1px solid #1a1a1a;
-            transition: all var(--transition);
-        }
-        .footer-socials a:hover { border-color: var(--border); color: var(--gold); }
-        .footer-copy { color: #2a2a2a; font-size: 0.58rem; letter-spacing: 1.5px; text-transform: uppercase; }
+/* WA FLOAT */
+.wa-float{position:fixed;bottom:28px;right:28px;z-index:1500;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 22px rgba(37,211,102,.38);transition:transform var(--t),box-shadow var(--t)}
+.wa-float:hover{transform:scale(1.1);box-shadow:0 6px 30px rgba(37,211,102,.5)}
+.wa-float svg{width:28px;height:28px;fill:white}
 
-        /* ===========================
-           ANIMATIONS
-        =========================== */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(24px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes scrollPulse {
-            0%, 100% { opacity: 0.4; }
-            50% { opacity: 1; }
-        }
+/* ============================================================
+   KEYFRAMES
+============================================================ */
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:.35}50%{opacity:1}}
 
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
-        }
-        .reveal.visible { opacity: 1; transform: translateY(0); }
-
-        /* ===========================
-           RESPONSIVE
-        =========================== */
-        @media (max-width: 1024px) {
-            .studio-grid { gap: 50px; }
-        }
-
-        @media (max-width: 860px) {
-            nav { padding: 15px 24px; }
-            nav.scrolled { padding: 12px 24px; }
-            .nav-links { display: none; }
-            .hamburger { display: flex; }
-
-            .about-grid,
-            .studio-grid,
-            .location-box { grid-template-columns: 1fr; }
-
-            .about-img-box { max-width: 420px; margin: 0 auto; }
-            .studio-text { order: 2; }
-            .carousel-wrap { order: 1; }
-
-            .location-info { padding: 45px 30px; }
-
-            .tab-btn { padding: 11px 22px; font-size: 0.58rem; }
-        }
-
-        @media (max-width: 580px) {
-            section { padding: 80px 16px; }
-            .hero-actions { flex-direction: column; align-items: center; }
-            .btn-main, .btn-ghost { width: 260px; text-align: center; }
-            .tab-pane { grid-template-columns: 1fr; }
-            .cursos-grid { grid-template-columns: 1fr; }
-            .reviews-grid { grid-template-columns: 1fr; }
-            .whatsapp-float { bottom: 20px; right: 20px; width: 50px; height: 50px; }
-        }
-    </style>
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media(max-width:1024px){.studio-grid{gap:48px}.modal-box{max-height:95vh}}
+@media(max-width:860px){
+    nav{padding:14px 22px}
+    nav.scrolled{padding:10px 22px}
+    .nav-links{display:none}
+    .hamburger{display:flex}
+    .about-grid,.studio-grid,.location-box{grid-template-columns:1fr}
+    .about-img-box{max-width:420px;margin:0 auto}
+    .studio-text{order:2}
+    .carousel-wrap{order:1}
+    .location-info{padding:44px 28px}
+    .modal-box{grid-template-columns:1fr;max-height:90vh;overflow-y:auto}
+    .modal-img-col img{min-height:240px;max-height:300px;width:100%}
+    .modal-info-col{padding:32px 26px}
+}
+@media(max-width:580px){
+    section{padding:80px 16px}
+    .hero-actions{flex-direction:column;align-items:center}
+    .btn-gold,.btn-ghost{width:260px;text-align:center;padding:15px 20px}
+    .tab-pane{grid-template-columns:1fr}
+    .cursos-grid{grid-template-columns:1fr}
+    .reviews-grid{grid-template-columns:1fr}
+    .wa-float{bottom:18px;right:18px;width:50px;height:50px}
+    .loc-btns{flex-direction:column}
+    .btn-dark,.btn-map{width:100%;justify-content:center}
+    .modal-info-col{padding:26px 20px}
+}
+</style>
 </head>
 <body>
 
-    <!-- NAV -->
-    <nav id="navbar">
-        <a href="#" class="nav-logo">THAMARA <span>TEIXEIRA</span></a>
-        <div class="nav-links">
-            <a href="#sobre">Sobre</a>
-            <a href="#experiencia">Serviços</a>
-            <a href="#studio">Studio</a>
-            <a href="#cursos">Cursos</a>
-            <a href="#depoimentos">Depoimentos</a>
-            <a href="https://wa.me/5531972574829" class="nav-cta" target="_blank" rel="noopener noreferrer">Agendar</a>
-        </div>
-        <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
-            <span></span><span></span><span></span>
-        </button>
-    </nav>
-    <div class="mobile-menu" id="mobileMenu">
-        <a href="#sobre" onclick="closeMobileMenu()">Sobre</a>
-        <a href="#experiencia" onclick="closeMobileMenu()">Serviços</a>
-        <a href="#studio" onclick="closeMobileMenu()">Studio</a>
-        <a href="#cursos" onclick="closeMobileMenu()">Cursos</a>
-        <a href="#depoimentos" onclick="closeMobileMenu()">Depoimentos</a>
-        <a href="https://wa.me/5531972574829" target="_blank" rel="noopener noreferrer" onclick="closeMobileMenu()" style="color:var(--gold)">Agendar via WhatsApp</a>
+<!-- NAV -->
+<nav id="navbar">
+    <a href="#" class="nav-logo">THAMARA <span>TEIXEIRA</span></a>
+    <div class="nav-links">
+        <a href="#sobre">Sobre</a>
+        <a href="#experiencia">Serviços</a>
+        <a href="#studio">Studio</a>
+        <a href="#cursos">Cursos</a>
+        <a href="#depoimentos">Avaliações</a>
+        <a href="https://wa.me/5531972574829" class="nav-cta" target="_blank" rel="noopener noreferrer">Agendar</a>
     </div>
+    <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Menu móvel">
+    <a href="#sobre"       onclick="closeMenu()">Sobre</a>
+    <a href="#experiencia" onclick="closeMenu()">Serviços</a>
+    <a href="#studio"      onclick="closeMenu()">Studio</a>
+    <a href="#cursos"      onclick="closeMenu()">Cursos</a>
+    <a href="#depoimentos" onclick="closeMenu()">Avaliações</a>
+    <a href="https://wa.me/5531972574829" target="_blank" rel="noopener noreferrer" onclick="closeMenu()" style="color:var(--gold)">Agendar via WhatsApp</a>
+</div>
 
-    <!-- HERO -->
-    <section class="hero">
-        <span class="hero-eyebrow">Studio & Academy — Betim, MG</span>
-        <h1>Onde a Arte encontra<br>o seu <em>Olhar</em></h1>
-        <p class="hero-sub">Especialista em Visagismo Facial · Sobrancelhas · Cílios · Lábios</p>
-        <div class="hero-actions">
-            <a href="https://wa.me/5531972574829" class="btn-main" target="_blank" rel="noopener noreferrer">Agendar Agora</a>
-            <a href="#experiencia" class="btn-ghost">Ver Serviços</a>
-        </div>
-        <div class="hero-scroll">
-            <div class="scroll-line"></div>
-            <span>Scroll</span>
-        </div>
-    </section>
+<!-- HERO -->
+<section class="hero">
+    <span class="hero-eyebrow">Studio &amp; Academy — Betim, MG</span>
+    <h1>Onde a Arte encontra<br>o seu <em>Olhar</em></h1>
+    <p class="hero-sub">Especialista em Visagismo Facial · Sobrancelhas · Cílios · Lábios</p>
+    <div class="hero-actions">
+        <a href="https://wa.me/5531972574829" class="btn-gold" target="_blank" rel="noopener noreferrer">Agendar Agora</a>
+        <a href="#experiencia" class="btn-ghost">Ver Serviços</a>
+    </div>
+    <div class="hero-scroll">
+        <div class="scroll-line"></div>
+        <span>Scroll</span>
+    </div>
+</section>
 
-    <!-- SOBRE -->
-    <section id="sobre">
-        <div class="container">
-            <div class="about-grid">
-                <div class="about-img-box reveal">
-                    <img src="img_recepcao.jpeg" alt="Studio Thamara Teixeira — Recepção" loading="lazy">
-                </div>
-                <div class="about-text reveal">
-                    <span class="eyebrow">Minha Trajetória</span>
-                    <h3>Transformando Olhares<br>desde 2019</h3>
-                    <p>Sou Thamara Teixeira, especialista em visagismo facial e reconstrução do olhar. Acredito que a beleza real não é sobre mudar quem você é, mas sim despertar a sua versão mais confiante e luminosa.</p>
-                    <p>Com anos de experiência e formações nacionais e internacionais, trago ao meu studio o que há de mais moderno em Brow Lamination, Lash Lifting e Micropigmentação. Cada cliente é um projeto único — tratado com cuidado, precisão e muito amor.</p>
-                    <div class="about-divider"></div>
-                    <p class="about-quote">"A sua beleza é a minha maior inspiração."</p>
-                </div>
+<!-- SOBRE -->
+<section id="sobre">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-img-box reveal">
+                <img src="img_recepcao.jpeg" alt="Recepção do Studio Thamara Teixeira" loading="lazy">
+            </div>
+            <div class="about-text reveal">
+                <span class="eyebrow">Minha Trajetória</span>
+                <h3>Transformando Olhares<br>desde 2019</h3>
+                <p>Sou Thamara Teixeira, especialista em visagismo facial e reconstrução do olhar. Acredito que a beleza real não é sobre mudar quem você é, mas sim despertar a sua versão mais confiante e luminosa.</p>
+                <p>Com anos de experiência e formações nacionais e internacionais, trago ao meu studio o que há de mais moderno em Brow Lamination, Lash Lifting e Micropigmentação. Cada cliente é um projeto único — tratado com cuidado, precisão e muito amor.</p>
+                <div class="about-hr"></div>
+                <p class="about-quote">"A sua beleza é a minha maior inspiração."</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- SERVIÇOS -->
-    <section id="experiencia">
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="eyebrow">Menu</span>
-                <h2>Nossos <em>Serviços</em></h2>
-                <div class="divider"></div>
-            </div>
-
-            <div class="tabs-nav reveal">
-                <button class="tab-btn active" onclick="openTab(event, 'sobrancelhas')">Sobrancelhas</button>
-                <button class="tab-btn" onclick="openTab(event, 'cilios')">Cílios</button>
-                <button class="tab-btn" onclick="openTab(event, 'rosto')">Rosto &amp; Lábios</button>
-                <button class="tab-btn" onclick="openTab(event, 'combos')">Combos VIP</button>
-            </div>
-
-            <!-- SOBRANCELHAS -->
-            <div id="sobrancelhas" class="tab-pane active">
-                <div class="card">
-                    <a class="card-link" href="#agendar" target="_blank" rel="noopener noreferrer">
-                        <div class="card-img-wrap"><img src="personalizado.jpeg" alt="Design Personalizado" loading="lazy"></div>
-                        <div class="card-body">
-                            <h4>Design Personalizado</h4>
-                            <p>Visagismo &amp; Simetria</p>
-                            <span class="price-tag">R$ 40,00</span>
-                            <span class="cta-pill">Agendar</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="card">
-                    <a class="card-link" href="#agendar" target="_blank" rel="noopener noreferrer">
-                        <div class="card-img-wrap"><img src="henna.jpeg" alt="Design com Henna" loading="lazy"></div>
-                        <div class="card-body">
-                            <h4>Design com Henna</h4>
-                            <p>Definição Premium</p>
-                            <span class="price-tag">R$ 50,00</span>
-                            <span class="cta-pill">Agendar</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="card">
-                    <a class="card-link" href="#agendar" target="_blank" rel="noopener noreferrer">
-                        <div class="card-img-wrap"><img src="brow.jpeg" alt="Brow Lamination" loading="lazy"></div>
-                        <div class="card-body">
-                            <h4>Brow Lamination</h4>
-                            <p>Efeito Editorial</p>
-                            <span class="price-tag">R$ 120,00</span>
-                            <span class="cta-pill">Agendar</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="card">
-                    <a class="card-link" href="#agendar" target="_blank" rel="noopener noreferrer">
-                        <div class="card-img-wrap"><img src="micro.jpeg" alt="Micropigmentação" loading="lazy"></div>
-                        <div class="card-body">
-                            <h4>Micropigmentação</h4>
-                            <p>Naturalidade Fio a Fio</p>
-                            <span class="price-tag">Consultar</span>
-                            <span class="cta-pill">Agendar</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="card">
-                    <a class="card-link" href="#agendar" target="_blank" rel="noopener noreferrer">
-                        <div class="card-img-wrap"><img src="reconst.jpeg" alt="Reconstrução" loading="lazy"></div>
-                        <div class="card-body">
-                            <h4>Reconstrução</h4>
-                            <p>Terapia de Fios</p>
-                            <span class="price-tag">R$ 80,00</span>
-                            <span class="cta-pill">Agendar</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <!-- CÍLIOS -->
-            <div id="cilios" class="tab-pane">
-                <div class="card">
-                    <a class="card-link" href="#agendar" target="_blank" rel="noopener noreferrer">
-                        <div class="card-img-wrap"><img src="lash.jpeg" alt="Lash Lifting" loading="lazy"></div>
-                        <div class="card-body">
-                            <h4>Lash Lifting</h4>
-                            <p>Curvatura Natural</p>
-                            <span class="price-tag">R$ 120,00</span>
-                            <span class="cta-pill">Agendar</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="card">
-                    <a class="card-link" href="#agendar" target="_blank" rel="noopener noreferrer">
-                        <div class="card-img-wrap"><img src="Alongamento.jpeg" alt="Alongamento de Cílios" loading="lazy"></div>
-                        <div class="card-body">
-                            <h4>Alongamento</h4>
-                            <p>Volume &amp; Extensão</p>
-                            <span class="price-tag">R$ 120,00</span>
-                            <span class="cta-pill">Agendar</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <!-- ROSTO & LÁBIOS -->
-            <div id="rosto" class="tab-pane">
-                <div class="card">
-                    <a class="card-link" href="#agendar" target="_blank" rel="noopener noreferrer">
-                        <div class="card-img-wrap"><img src="spa_labial.jpeg" alt="Spa Labial" loading="lazy"></div>
-                        <div class="card-body">
-                            <h4>Spa Labial</h4>
-                            <p>Nutrição Intensa</p>
-                            <span class="price-tag">Consultar</span>
-                            <span class="cta-pill">Agendar</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="card">
-                    <a class="card-link" href="#agendar" target="_blank" rel="noopener noreferrer">
-                        <div class="card-img-wrap"><img src="hidra.jpeg" alt="Hidra Lips" loading="lazy"></div>
-                        <div class="card-body">
-                            <h4>Hidra Lips</h4>
-                            <p>Lábios Renovados</p>
-                            <span class="price-tag">Consultar</span>
-                            <span class="cta-pill">Agendar</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <!-- COMBOS -->
-            <div id="combos" class="tab-pane">
-                <div class="card">
-                    <a class="card-link" href="#agendar" target="_blank" rel="noopener noreferrer">
-                        <div class="card-img-wrap"><img src="combo.jpeg" alt="Combo Essencial" loading="lazy"></div>
-                        <div class="card-body">
-                            <h4>Combo Essencial</h4>
-                            <p>Design + Henna</p>
-                            <span class="price-tag">R$ 60,00</span>
-                            <span class="cta-pill">Agendar</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="card">
-                    <a class="card-link" href="#agendar" target="_blank" rel="noopener noreferrer">
-                        <div class="card-img-wrap"><img src="combo_premium.jpeg" alt="Combo Premium" loading="lazy"></div>
-                        <div class="card-body">
-                            <h4>Combo Premium</h4>
-                            <p>Brow + Lash Lifting</p>
-                            <span class="price-tag">R$ 220,00</span>
-                            <span class="cta-pill">Agendar</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="card">
-                    <a class="card-link" href="#agendar" target="_blank" rel="noopener noreferrer">
-                        <div class="card-img-wrap"><img src="combo_perso.jpeg" alt="Full Face VIP" loading="lazy"></div>
-                        <div class="card-body">
-                            <h4>Full Face VIP</h4>
-                            <p>Protocolo Completo</p>
-                            <span class="price-tag">Consultar</span>
-                            <span class="cta-pill">Agendar</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
+<!-- SERVIÇOS -->
+<section id="experiencia">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="eyebrow">Menu</span>
+            <h2>Nossos <em>Serviços</em></h2>
+            <div class="divider"></div>
         </div>
-    </section>
+        <div class="tabs-nav reveal">
+            <button class="tab-btn active" onclick="openTab(event,'sobrancelhas')">Sobrancelhas</button>
+            <button class="tab-btn" onclick="openTab(event,'cilios')">Cílios</button>
+            <button class="tab-btn" onclick="openTab(event,'rosto')">Rosto &amp; Lábios</button>
+            <button class="tab-btn" onclick="openTab(event,'combos')">Combos VIP</button>
+        </div>
 
-    <!-- STUDIO CAROUSEL -->
-    <section id="studio">
-        <div class="container">
-            <div class="studio-grid">
-                <div class="studio-text reveal">
-                    <span class="eyebrow">Nosso Espaço</span>
-                    <h2>Um ambiente feito para a sua <em>experiência</em></h2>
-                    <p>O Studio Thamara Teixeira foi projetado para que você se sinta acolhida desde o primeiro passo que der pela porta. Cada detalhe do espaço foi pensado para proporcionar conforto, privacidade e uma experiência de beleza verdadeiramente premium.</p>
-                    <p>Trabalhamos com insumos selecionados, equipamentos profissionais de última geração e um ambiente climatizado, higienizado e perfumado — porque beleza é também uma questão de cuidado e sensação.</p>
-                    <div class="studio-features">
-                        <div class="studio-feature">Ambiente climatizado e confortável</div>
-                        <div class="studio-feature">Insumos de alta qualidade e procedência</div>
-                        <div class="studio-feature">Atendimento individualizado e exclusivo</div>
-                        <div class="studio-feature">Higiene e biossegurança em cada detalhe</div>
-                    </div>
+        <!-- SOBRANCELHAS -->
+        <div id="sobrancelhas" class="tab-pane active">
+
+            <div class="card" onclick="openModal('personalizado.jpeg','Design Personalizado','Visagismo &amp; Simetria','R$ 40,00','O Design Personalizado é o serviço base do studio, desenvolvido com técnica de visagismo facial para mapear e desenhar o traço de sobrancelha ideal para o seu rosto. Utilizamos réguas de proporção, análise do tipo facial e colorimetria para garantir um resultado natural, simétrico e exclusivo para cada cliente.')">
+                <div class="card-img-wrap"><img src="personalizado.jpeg" alt="Design Personalizado" loading="lazy"></div>
+                <div class="card-body"><h4>Design Personalizado</h4><p>Visagismo &amp; Simetria</p><span class="price-tag">R$ 40,00</span><span class="card-cta">Ver Detalhes</span></div>
+            </div>
+
+            <div class="card" onclick="openModal('henna.jpeg','Design com Henna','Definição Premium','R$ 50,00','O Design com Henna combina o mapeamento preciso de visagismo com a aplicação de henna vegetal de alta qualidade, que preenche os fios, cobre falhas e define o traço por mais tempo. Resultado natural e duradouro, ideal para quem quer acordar com sobrancelhas definidas todos os dias.')">
+                <div class="card-img-wrap"><img src="henna.jpeg" alt="Design com Henna" loading="lazy"></div>
+                <div class="card-body"><h4>Design com Henna</h4><p>Definição Premium</p><span class="price-tag">R$ 50,00</span><span class="card-cta">Ver Detalhes</span></div>
+            </div>
+
+            <div class="card" onclick="openModal('brow.jpeg','Brow Lamination','Efeito Editorial','R$ 120,00','A Brow Lamination é a técnica queridinha das editoras de moda. O processo reestrutura e alinha cada fio da sobrancelha, criando aquele efeito volumoso, penteado e impactante que dura até 8 semanas. Perfeito para quem tem fios resistentes, desalinhados ou que buscam o look das passarelas.')">
+                <div class="card-img-wrap"><img src="brow.jpeg" alt="Brow Lamination" loading="lazy"></div>
+                <div class="card-body"><h4>Brow Lamination</h4><p>Efeito Editorial</p><span class="price-tag">R$ 120,00</span><span class="card-cta">Ver Detalhes</span></div>
+            </div>
+
+            <div class="card" onclick="openModal('micro.jpeg','Micropigmentação','Naturalidade Fio a Fio','Consultar','A Micropigmentação fio a fio é um procedimento de beleza semipermanente que simula os fios naturais da sobrancelha com extrema precisão. Indicada para quem tem falhas, perdeu os fios ou deseja acordar com sobrancelhas perfeitas todos os dias. O resultado é incrivelmente natural e dura de 1 a 2 anos.')">
+                <div class="card-img-wrap"><img src="micro.jpeg" alt="Micropigmentação" loading="lazy"></div>
+                <div class="card-body"><h4>Micropigmentação</h4><p>Naturalidade Fio a Fio</p><span class="price-tag">Consultar</span><span class="card-cta">Ver Detalhes</span></div>
+            </div>
+
+            <div class="card" onclick="openModal('reconst.jpeg','Reconstrução','Terapia de Fios','R$ 80,00','A Reconstrução de Sobrancelhas é um tratamento terapêutico para clientes que tiveram os fios danificados por anos de depilação agressiva ou crescimento irregular. O protocolo nutre, fortalece e estimula os folículos, promovendo um novo ciclo de crescimento saudável e natural.')">
+                <div class="card-img-wrap"><img src="reconst.jpeg" alt="Reconstrução" loading="lazy"></div>
+                <div class="card-body"><h4>Reconstrução</h4><p>Terapia de Fios</p><span class="price-tag">R$ 80,00</span><span class="card-cta">Ver Detalhes</span></div>
+            </div>
+
+        </div>
+
+        <!-- CÍLIOS -->
+        <div id="cilios" class="tab-pane">
+
+            <div class="card" onclick="openModal('lash.jpeg','Lash Lifting','Curvatura Natural','R$ 120,00','O Lash Lifting curva e levanta seus cílios naturais a partir da raiz, criando um efeito de olhos mais abertos e expressivos — sem precisar de máscara ou extensão. A duração é de 6 a 8 semanas. Pode ser combinado com tintura para potencializar ainda mais o resultado.')">
+                <div class="card-img-wrap"><img src="lash.jpeg" alt="Lash Lifting" loading="lazy"></div>
+                <div class="card-body"><h4>Lash Lifting</h4><p>Curvatura Natural</p><span class="price-tag">R$ 120,00</span><span class="card-cta">Ver Detalhes</span></div>
+            </div>
+
+            <div class="card" onclick="openModal('Alongamento.jpeg','Alongamento de Cílios','Volume &amp; Extensão','R$ 120,00','O Alongamento de Cílios adiciona extensões fio a fio sobre seus cílios naturais, criando um olhar dramático, volumoso e irresistível. Utilizamos cílios sintéticos de alta qualidade e cola hipoalergênica. O resultado dura de 3 a 4 semanas com a manutenção correta e transforma completamente o olhar.')">
+                <div class="card-img-wrap"><img src="Alongamento.jpeg" alt="Alongamento de Cílios" loading="lazy"></div>
+                <div class="card-body"><h4>Alongamento</h4><p>Volume &amp; Extensão</p><span class="price-tag">R$ 120,00</span><span class="card-cta">Ver Detalhes</span></div>
+            </div>
+
+        </div>
+
+        <!-- ROSTO & LÁBIOS -->
+        <div id="rosto" class="tab-pane">
+
+            <div class="card" onclick="openModal('spa_labial.jpeg','Spa Labial','Nutrição Intensa','Consultar','O Spa Labial é um protocolo completo de nutrição e hidratação para os lábios. Inclui esfoliação suave para remover células mortas, máscara nutritiva de alta concentração e finalização com sérum labial. Os lábios ficam macios, hidratados e com coloração renovada por semanas.')">
+                <div class="card-img-wrap"><img src="spa_labial.jpeg" alt="Spa Labial" loading="lazy"></div>
+                <div class="card-body"><h4>Spa Labial</h4><p>Nutrição Intensa</p><span class="price-tag">Consultar</span><span class="card-cta">Ver Detalhes</span></div>
+            </div>
+
+            <div class="card" onclick="openModal('hidra.jpeg','Hidra Lips','Lábios Renovados','Consultar','O Hidra Lips é um procedimento de hidratação profunda para lábios que combina ativos de última geração como ácido hialurônico tópico, vitaminas e peptídeos. Ideal para lábios ressecados ou sem viço. O resultado é visível já na primeira sessão: lábios macios, plumpados e muito mais bonitos.')">
+                <div class="card-img-wrap"><img src="hidra.jpeg" alt="Hidra Lips" loading="lazy"></div>
+                <div class="card-body"><h4>Hidra Lips</h4><p>Lábios Renovados</p><span class="price-tag">Consultar</span><span class="card-cta">Ver Detalhes</span></div>
+            </div>
+
+        </div>
+
+        <!-- COMBOS -->
+        <div id="combos" class="tab-pane">
+
+            <div class="card" onclick="openModal('combo.jpeg','Combo Essencial','Design + Henna','R$ 60,00','O Combo Essencial reúne o Design Personalizado com Henna em um único atendimento econômico e completo. Você sai com as sobrancelhas mapeadas, desenhadas, fios alinhados e cor definida por até 3 semanas. Perfeito para quem quer resultado premium com ótimo custo-benefício.')">
+                <div class="card-img-wrap"><img src="combo.jpeg" alt="Combo Essencial" loading="lazy"></div>
+                <div class="card-body"><h4>Combo Essencial</h4><p>Design + Henna</p><span class="price-tag">R$ 60,00</span><span class="card-cta">Ver Detalhes</span></div>
+            </div>
+
+            <div class="card" onclick="openModal('combo_premium.jpeg','Combo Premium','Brow + Lash Lifting','R$ 220,00','O Combo Premium é para quem quer acordar pronta. Combina Brow Lamination (sobrancelhas estruturadas e volumosas) com Lash Lifting (cílios curvados e levantados), tudo em uma única sessão. Resultado editorial que dura até 8 semanas e dispensa maquiagem no dia a dia.')">
+                <div class="card-img-wrap"><img src="combo_premium.jpeg" alt="Combo Premium" loading="lazy"></div>
+                <div class="card-body"><h4>Combo Premium</h4><p>Brow + Lash Lifting</p><span class="price-tag">R$ 220,00</span><span class="card-cta">Ver Detalhes</span></div>
+            </div>
+
+            <div class="card" onclick="openModal('combo_perso.jpeg','Full Face VIP','Protocolo Completo','Consultar','O Full Face VIP é o protocolo mais completo do studio. Desenvolvido individualmente para cada cliente, combina os melhores serviços de sobrancelhas, cílios e lábios em um único dia de experiência sensorial. Uma sessão que transforma completamente o olhar e eleva a autoestima de forma duradoura.')">
+                <div class="card-img-wrap"><img src="combo_perso.jpeg" alt="Full Face VIP" loading="lazy"></div>
+                <div class="card-body"><h4>Full Face VIP</h4><p>Protocolo Completo</p><span class="price-tag">Consultar</span><span class="card-cta">Ver Detalhes</span></div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- STUDIO CAROUSEL -->
+<section id="studio">
+    <div class="container">
+        <div class="studio-grid">
+            <div class="studio-text reveal">
+                <span class="eyebrow">Nosso Espaço</span>
+                <h2>Um ambiente feito para a sua <em>experiência</em></h2>
+                <p>O Studio Thamara Teixeira foi projetado para que você se sinta acolhida desde o momento em que entrar pela porta. Cada detalhe foi pensado para proporcionar conforto, privacidade e uma experiência de beleza verdadeiramente premium.</p>
+                <p>Trabalhamos com insumos selecionados, equipamentos profissionais de última geração e um ambiente climatizado, higienizado e perfumado — porque beleza é também uma questão de cuidado e sensação.</p>
+                <div class="studio-features">
+                    <div class="studio-feat">Ambiente climatizado e aconchegante</div>
+                    <div class="studio-feat">Insumos de alta qualidade e procedência</div>
+                    <div class="studio-feat">Atendimento individualizado e exclusivo</div>
+                    <div class="studio-feat">Biossegurança em cada detalhe do processo</div>
                 </div>
-                <div class="carousel-wrap reveal">
-                    <div class="carousel" id="studioCarousel" aria-label="Fotos do studio">
-                        <div class="carousel-slide active">
-                            <img src="thamara.jpeg" alt="Thamara Teixeira" loading="lazy">
-                        </div>
-                        <div class="carousel-slide">
-                            <img src="studio.jpeg" alt="Studio — Vista 1" loading="lazy">
-                        </div>
-                        <div class="carousel-slide">
-                            <img src="studio2.jpeg" alt="Studio — Vista 2" loading="lazy">
-                        </div>
-                        <div class="carousel-slide">
-                            <img src="studio3.jpeg" alt="Studio — Vista 3" loading="lazy">
-                        </div>
-                        <div class="carousel-slide">
-                            <img src="studio4.jpeg" alt="Studio — Vista 4" loading="lazy">
-                        </div>
-                    </div>
-                    <div class="carousel-controls">
-                        <div class="carousel-dots" id="carouselDots" role="tablist" aria-label="Slides do carousel"></div>
-                        <div class="carousel-arrows">
-                            <button class="carousel-btn" id="prevBtn" aria-label="Slide anterior">&#8592;</button>
-                            <button class="carousel-btn" id="nextBtn" aria-label="Próximo slide">&#8594;</button>
-                        </div>
+            </div>
+            <div class="carousel-wrap reveal">
+                <div class="carousel" id="studioCarousel" aria-label="Fotos do studio">
+                    <div class="carousel-slide active"><img src="thamara.jpeg"  alt="Thamara Teixeira" loading="lazy"></div>
+                    <div class="carousel-slide"><img src="studio.jpeg"   alt="Studio — Vista 1" loading="lazy"></div>
+                    <div class="carousel-slide"><img src="studio2.jpeg"  alt="Studio — Vista 2" loading="lazy"></div>
+                    <div class="carousel-slide"><img src="studio3.jpeg"  alt="Studio — Vista 3" loading="lazy"></div>
+                    <div class="carousel-slide"><img src="studio4.jpeg"  alt="Studio — Vista 4" loading="lazy"></div>
+                </div>
+                <div class="carousel-controls">
+                    <div class="carousel-dots" id="carouselDots" role="tablist"></div>
+                    <div class="carousel-arrows">
+                        <button class="c-btn" id="prevBtn" aria-label="Anterior">&#8592;</button>
+                        <button class="c-btn" id="nextBtn" aria-label="Próximo">&#8594;</button>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- CURSOS -->
-    <section id="cursos">
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="eyebrow">Academia</span>
-                <h2>Nossos <em>Cursos</em></h2>
-                <div class="divider"></div>
-            </div>
-            <div class="cursos-grid">
-                <div class="curso-card reveal">
-                    <a class="curso-card-link" href="#agendar" target="_blank" rel="noopener noreferrer">
-                        <div class="card-img-wrap" style="height:300px;">
-                            <img src="curso_iniciante.jpeg" alt="Curso Iniciante — Formação em Sobrancelhas" loading="lazy">
-                        </div>
-                        <div class="card-body">
-                            <span class="curso-badge">Formação</span>
-                            <h4>Iniciante Formação</h4>
-                            <p>O primeiro passo na sua carreira de beleza</p>
-                            <span class="cta-pill">Saber Mais</span>
-                        </div>
-                    </a>
+<!-- CURSOS -->
+<section id="cursos">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="eyebrow">Academia</span>
+            <h2>Nossos <em>Cursos</em></h2>
+            <div class="divider"></div>
+        </div>
+        <div class="cursos-grid">
+            <div class="curso-card reveal" onclick="openModal('curso_iniciante.jpeg','Iniciante Formação','O primeiro passo na sua carreira','Consultar','O Curso de Iniciante Formação da Thamara Teixeira Academy é a porta de entrada para quem sonha em atuar no mercado de beleza. Você aprenderá técnicas de design de sobrancelhas, visagismo básico, mapeamento, uso de produtos profissionais e postura no atendimento. Ao final, recebe certificado e sai pronta para atender clientes.')">
+                <div class="card-img-wrap" style="height:290px"><img src="curso_iniciante.jpeg" alt="Curso Iniciante — Formação" loading="lazy"></div>
+                <span class="curso-badge">Formação</span>
+                <div class="card-body">
+                    <h4>Iniciante Formação</h4>
+                    <p>O primeiro passo na sua carreira</p>
+                    <span class="card-cta" style="margin-top:16px">Ver Detalhes</span>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- DEPOIMENTOS -->
-    <section id="depoimentos">
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="eyebrow">Clientes</span>
-                <h2>O que nossas <em>clientes</em> dizem</h2>
-                <div class="divider"></div>
-            </div>
-            <div class="reviews-grid">
-                <div class="review-card reveal">
-                    <div class="review-quote-icon">"</div>
-                    <div class="review-stars">★★★★★</div>
-                    <p class="review-text">Faz mais de um ano que faço minhas sobrancelhas com a Thamara e simplesmente não me imagino indo a outro lugar. Ela conhece o meu rosto melhor do que eu mesma. O resultado sempre é natural e perfeito para o meu traço.</p>
-                    <div class="review-author">
-                        <div class="review-avatar">J</div>
-                        <div class="review-author-info">
-                            <strong>Juliana Mendes</strong>
-                            <span>Design Personalizado</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="review-card reveal">
-                    <div class="review-quote-icon">"</div>
-                    <div class="review-stars">★★★★★</div>
-                    <p class="review-text">Fiz o Combo Premium (Brow Lamination + Lash Lifting) e literalmente acordei pronta por mais de um mês. O studio é lindo, cheiroso, e a Thamara é super cuidadosa e caprichosa em tudo que faz. Super recomendo!</p>
-                    <div class="review-author">
-                        <div class="review-avatar">C</div>
-                        <div class="review-author-info">
-                            <strong>Camila Rocha</strong>
-                            <span>Combo Premium</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="review-card reveal">
-                    <div class="review-quote-icon">"</div>
-                    <div class="review-stars">★★★★★</div>
-                    <p class="review-text">Fiz o curso de iniciante com a Thamara e foi transformador. Ela é uma professora incrível, paciente e muito técnica. Saí com segurança para atender minhas primeiras clientes. Vale cada centavo do investimento!</p>
-                    <div class="review-author">
-                        <div class="review-avatar">F</div>
-                        <div class="review-author-info">
-                            <strong>Fernanda Lima</strong>
-                            <span>Curso Iniciante Formação</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="review-card reveal">
-                    <div class="review-quote-icon">"</div>
-                    <div class="review-stars">★★★★★</div>
-                    <p class="review-text">A Micropigmentação que a Thamara fez nas minhas sobrancelhas foi a melhor decisão da minha vida! O traço é completamente natural, fio a fio. Recebi elogios de todo mundo e indiquei pra todas as minhas amigas.</p>
-                    <div class="review-author">
-                        <div class="review-avatar">P</div>
-                        <div class="review-author-info">
-                            <strong>Patrícia Gomes</strong>
-                            <span>Micropigmentação</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="review-card reveal">
-                    <div class="review-quote-icon">"</div>
-                    <div class="review-stars">★★★★★</div>
-                    <p class="review-text">O ambiente do studio é aconchegante demais. Me senti num spa particular. O Spa Labial é maravilhoso, os lábios ficaram hidratados por semanas. Profissionalismo e carinho em cada detalhe do atendimento.</p>
-                    <div class="review-author">
-                        <div class="review-avatar">M</div>
-                        <div class="review-author-info">
-                            <strong>Marcela Souza</strong>
-                            <span>Spa Labial</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="review-card reveal">
-                    <div class="review-quote-icon">"</div>
-                    <div class="review-stars">★★★★★</div>
-                    <p class="review-text">Fiz a Henna e a Reconstrução de sobrancelhas juntas e o resultado foi surpreendente. Minhas sobrancelhas estavam bem danificadas de depilação antiga e hoje estão completamente recuperadas. Gratidão enorme!</p>
-                    <div class="review-author">
-                        <div class="review-avatar">R</div>
-                        <div class="review-author-info">
-                            <strong>Renata Pires</strong>
-                            <span>Reconstrução + Henna</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!-- DEPOIMENTOS -->
+<section id="depoimentos">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="eyebrow">Clientes</span>
+            <h2>O que nossas <em>clientes</em> dizem</h2>
+            <div class="divider"></div>
         </div>
-    </section>
+        <div class="reviews-grid">
 
-    <!-- LOCALIZAÇÃO -->
-    <section id="localizacao">
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="eyebrow">Endereço</span>
-                <h2>Onde nos <em>encontrar</em></h2>
-                <div class="divider"></div>
+            <div class="review-card reveal">
+                <div class="review-qs">"</div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">Faz mais de um ano que faço minhas sobrancelhas com a Thamara e não me imagino indo a outro lugar. Ela conhece o meu rosto melhor do que eu mesma. O resultado é sempre natural e perfeito para o meu traço.</p>
+                <div class="review-author">
+                    <div class="review-avatar">J</div>
+                    <div><div class="review-name">Juliana Mendes</div><div class="review-service">Design Personalizado</div></div>
+                </div>
             </div>
-            <div class="location-box reveal">
-                <div class="location-info">
-                    <span class="eyebrow">Studio Thamara Teixeira</span>
-                    <h3>Venha nos visitar</h3>
-                    <div class="location-detail">
-                        <strong>Endereço</strong>
-                        R. Caio Martins, 187 — Filadélfia<br>Betim — MG, 32670-170
-                    </div>
-                    <div class="location-detail">
-                        <strong>Horário de Atendimento</strong>
-                        Terça a Sábado: 09h às 19h
-                    </div>
-                    <div class="location-detail">
-                        <strong>WhatsApp</strong>
-                        <a href="tel:+5531972574829">(31) 97257-4829</a>
-                    </div>
-                    <div class="location-divider"></div>
+
+            <div class="review-card reveal">
+                <div class="review-qs">"</div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">Fiz o Combo Premium e literalmente acordei pronta por mais de um mês. O studio é lindo, cheiroso, e a Thamara é super cuidadosa em tudo que faz. O atendimento é impecável do começo ao fim. Recomendo demais!</p>
+                <div class="review-author">
+                    <div class="review-avatar">C</div>
+                    <div><div class="review-name">Camila Rocha</div><div class="review-service">Combo Premium</div></div>
+                </div>
+            </div>
+
+            <div class="review-card reveal">
+                <div class="review-qs">"</div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">Fiz o curso de iniciante com a Thamara e foi transformador. Ela é uma professora incrível, paciente e muito técnica. Saí com total segurança para atender minhas primeiras clientes. Vale cada centavo do investimento!</p>
+                <div class="review-author">
+                    <div class="review-avatar">F</div>
+                    <div><div class="review-name">Fernanda Lima</div><div class="review-service">Curso Iniciante Formação</div></div>
+                </div>
+            </div>
+
+        </div>
+        <div class="reviews-cta reveal" style="margin-top:44px">
+            <a href="https://g.page/r/CS-gkPBKmFMmEAI/review" class="btn-google" target="_blank" rel="noopener noreferrer">
+                <!-- Google logo SVG -->
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                </svg>
+                Ver todas as avaliações no Google
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- LOCALIZAÇÃO -->
+<section id="localizacao">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="eyebrow">Endereço</span>
+            <h2>Onde nos <em>encontrar</em></h2>
+            <div class="divider"></div>
+        </div>
+        <div class="location-box reveal">
+            <div class="location-info">
+                <span class="eyebrow">Studio Thamara Teixeira</span>
+                <h3>Venha nos visitar</h3>
+                <div class="loc-detail">
+                    <strong>Endereço</strong>
+                    R. Caio Martins, 187 — Filadélfia<br>Betim — MG, 32670-170
+                </div>
+                <div class="loc-detail">
+                    <strong>Horário de Atendimento</strong>
+                    Terça a Sábado: 09h às 19h
+                </div>
+                <div class="loc-detail">
+                    <strong>WhatsApp</strong>
+                    <a href="tel:+5531972574829">(31) 97257-4829</a>
+                </div>
+                <div class="loc-hr"></div>
+                <div class="loc-btns">
                     <a href="https://wa.me/5531972574829" class="btn-dark" target="_blank" rel="noopener noreferrer">
-                        Falar no WhatsApp
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+                        WhatsApp
+                    </a>
+                    <a href="https://www.google.com/maps/dir/?api=1&destination=R.+Caio+Martins,+187,+Filad%C3%A9lfia,+Betim,+MG,+32670-170,+Brazil" class="btn-map" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/></svg>
+                        Ir Agora
                     </a>
                 </div>
-                <iframe
-                    class="map-iframe"
-                    title="Localização Studio Thamara Teixeira"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3751.2!2d-44.1972!3d-19.9686!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sR.+Caio+Martins%2C+187+-+Filad%C3%A9lfia%2C+Betim+-+MG%2C+32670-170!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr"
-                    allowfullscreen=""
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
             </div>
+            <iframe
+                class="map-iframe"
+                title="Localização Studio Thamara Teixeira"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3751.2!2d-44.1972!3d-19.9686!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sR.+Caio+Martins%2C+187+-+Filad%C3%A9lfia%2C+Betim+-+MG%2C+32670-170!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- FOOTER -->
-    <footer>
-        <div class="footer-logo">THAMARA <span>TEIXEIRA</span></div>
-        <p class="footer-tagline">Studio de Beleza &amp; Academy — Betim, MG</p>
-        <div class="footer-socials">
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
-            <a href="https://wa.me/5531972574829" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+<!-- FOOTER -->
+<footer>
+    <div class="footer-logo">THAMARA <span>TEIXEIRA</span></div>
+    <p class="footer-tagline">Studio de Beleza &amp; Academy — Betim, MG</p>
+    <div class="footer-socials">
+        <a href="https://share.google/mOCu4TKnQ8IbnDgAw"          target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://wa.me/5531972574829"                      target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        <a href="https://g.page/r/CS-gkPBKmFMmEAI/review"         target="_blank" rel="noopener noreferrer">Google</a>
+    </div>
+    <p class="footer-copy">© 2026 Thamara Teixeira. Todos os direitos reservados.</p>
+</footer>
+
+<!-- WA FLOAT -->
+<a class="wa-float" href="https://wa.me/5531972574829" target="_blank" rel="noopener noreferrer" aria-label="Contato pelo WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+    </svg>
+</a>
+
+<!-- ============================================================
+     MODAL
+============================================================ -->
+<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-box" id="modalBox">
+        <div class="modal-img-col">
+            <img id="modalImg" src="" alt="">
         </div>
-        <p class="footer-copy">© 2026 Thamara Teixeira. Todos os direitos reservados.</p>
-    </footer>
+        <div class="modal-info-col">
+            <p class="modal-eyebrow">Detalhes do Serviço</p>
+            <h2 class="modal-title" id="modalTitle"></h2>
+            <p class="modal-subtitle" id="modalSubtitle"></p>
+            <div class="modal-divider"></div>
+            <p class="modal-price" id="modalPrice"></p>
+            <p class="modal-desc"  id="modalDesc"></p>
+            <a class="modal-wa-btn" id="modalWaBtn" href="#" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+                Agendar via WhatsApp
+            </a>
+            <span class="modal-back" onclick="closeModal()" role="button" tabindex="0" onkeydown="if(event.key==='Enter')closeModal()">← Voltar ao menu</span>
+        </div>
+        <button class="modal-close" onclick="closeModal()" aria-label="Fechar modal">&#x2715;</button>
+    </div>
+</div>
 
-    <!-- WHATSAPP FLOAT -->
-    <a class="whatsapp-float" href="https://wa.me/5531972574829" target="_blank" rel="noopener noreferrer" aria-label="Contato pelo WhatsApp">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
-        </svg>
-    </a>
+<script>
+/* ============================================================
+   NAV
+============================================================ */
+const navbar    = document.getElementById('navbar');
+const hamburger = document.getElementById('hamburger');
+const mobileMenu= document.getElementById('mobileMenu');
 
-    <script>
-        /* =====================
-           NAV: scroll & mobile
-        ===================== */
-        const navbar = document.getElementById('navbar');
-        const hamburger = document.getElementById('hamburger');
-        const mobileMenu = document.getElementById('mobileMenu');
+window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 40));
 
-        window.addEventListener('scroll', () => {
-            navbar.classList.toggle('scrolled', window.scrollY > 40);
-        });
+hamburger.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', open);
+});
 
-        hamburger.addEventListener('click', () => {
-            const open = mobileMenu.classList.toggle('open');
-            hamburger.classList.toggle('open', open);
-            hamburger.setAttribute('aria-expanded', open);
-        });
+function closeMenu() {
+    mobileMenu.classList.remove('open');
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded','false');
+}
 
-        function closeMobileMenu() {
-            mobileMenu.classList.remove('open');
-            hamburger.classList.remove('open');
-            hamburger.setAttribute('aria-expanded', 'false');
-        }
+/* ============================================================
+   TABS
+============================================================ */
+function openTab(evt, id) {
+    document.querySelectorAll('.tab-pane').forEach(p => { p.style.display = 'none'; p.classList.remove('active'); });
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    const t = document.getElementById(id);
+    t.style.display = 'grid';
+    void t.offsetWidth; // reflow to replay animation
+    t.classList.add('active');
+    evt.currentTarget.classList.add('active');
+}
 
-        /* =====================
-           TABS
-        ===================== */
-        function openTab(evt, tabName) {
-            document.querySelectorAll('.tab-pane').forEach(p => {
-                p.style.display = 'none';
-                p.classList.remove('active');
-            });
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+/* ============================================================
+   MODAL
+============================================================ */
+const overlay      = document.getElementById('modalOverlay');
+const modalImg     = document.getElementById('modalImg');
+const modalTitle   = document.getElementById('modalTitle');
+const modalSubtitle= document.getElementById('modalSubtitle');
+const modalPrice   = document.getElementById('modalPrice');
+const modalDesc    = document.getElementById('modalDesc');
+const modalWaBtn   = document.getElementById('modalWaBtn');
 
-            const target = document.getElementById(tabName);
-            target.style.display = 'grid';
-            // Trigger reflow for animation replay
-            target.classList.remove('active');
-            void target.offsetWidth;
-            target.classList.add('active');
-            evt.currentTarget.classList.add('active');
-        }
+function openModal(img, title, subtitle, price, desc) {
+    modalImg.src         = img;
+    modalImg.alt         = title;
+    modalTitle.innerHTML = title;
+    modalSubtitle.innerHTML = subtitle;
+    modalPrice.textContent  = price;
+    modalDesc.textContent   = desc;
 
-        /* =====================
-           CAROUSEL
-        ===================== */
-        (function () {
-            const slides = document.querySelectorAll('.carousel-slide');
-            const dotsWrap = document.getElementById('carouselDots');
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            let current = 0;
-            let autoTimer;
+    // Build personalised WhatsApp message
+    const cleanTitle = title.replace(/&amp;/g, '&').replace(/<[^>]+>/g, '');
+    const msg = encodeURIComponent('Olá, Thamara! Gostaria de agendar: ' + cleanTitle);
+    modalWaBtn.href = 'https://wa.me/5531972574829?text=' + msg;
 
-            // Build dots
-            slides.forEach((_, i) => {
-                const dot = document.createElement('button');
-                dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
-                dot.setAttribute('role', 'tab');
-                dot.setAttribute('aria-label', 'Slide ' + (i + 1));
-                dot.addEventListener('click', () => goTo(i));
-                dotsWrap.appendChild(dot);
-            });
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => document.querySelector('.modal-close').focus(), 60);
+}
 
-            function goTo(n) {
-                slides[current].classList.remove('active');
-                dotsWrap.children[current].classList.remove('active');
-                current = (n + slides.length) % slides.length;
-                slides[current].classList.add('active');
-                dotsWrap.children[current].classList.add('active');
-            }
+function closeModal() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+}
 
-            function startAuto() {
-                autoTimer = setInterval(() => goTo(current + 1), 4500);
-            }
-            function resetAuto() {
-                clearInterval(autoTimer);
-                startAuto();
-            }
+overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-            prevBtn.addEventListener('click', () => { goTo(current - 1); resetAuto(); });
-            nextBtn.addEventListener('click', () => { goTo(current + 1); resetAuto(); });
+/* ============================================================
+   CAROUSEL
+============================================================ */
+(function () {
+    const slides   = document.querySelectorAll('.carousel-slide');
+    const dotsWrap = document.getElementById('carouselDots');
+    const prevBtn  = document.getElementById('prevBtn');
+    const nextBtn  = document.getElementById('nextBtn');
+    let current = 0, timer;
 
-            // Touch/swipe support
-            let touchStartX = 0;
-            const carouselEl = document.getElementById('studioCarousel');
-            carouselEl.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].clientX; }, { passive: true });
-            carouselEl.addEventListener('touchend', e => {
-                const diff = touchStartX - e.changedTouches[0].clientX;
-                if (Math.abs(diff) > 40) { goTo(diff > 0 ? current + 1 : current - 1); resetAuto(); }
-            }, { passive: true });
+    slides.forEach((_, i) => {
+        const d = document.createElement('button');
+        d.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+        d.setAttribute('role', 'tab');
+        d.setAttribute('aria-label', 'Slide ' + (i + 1));
+        d.addEventListener('click', () => { goTo(i); resetAuto(); });
+        dotsWrap.appendChild(d);
+    });
 
-            startAuto();
-        })();
+    function goTo(n) {
+        slides[current].classList.remove('active');
+        dotsWrap.children[current].classList.remove('active');
+        current = (n + slides.length) % slides.length;
+        slides[current].classList.add('active');
+        dotsWrap.children[current].classList.add('active');
+    }
+    function startAuto() { timer = setInterval(() => goTo(current + 1), 4500); }
+    function resetAuto()  { clearInterval(timer); startAuto(); }
 
-        /* =====================
-           SCROLL REVEAL
-        ===================== */
-        (function () {
-            const els = document.querySelectorAll('.reveal');
-            if (!('IntersectionObserver' in window)) {
-                els.forEach(el => el.classList.add('visible'));
-                return;
-            }
-            const obs = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        obs.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.12 });
-            els.forEach(el => obs.observe(el));
-        })();
-    </script>
+    prevBtn.addEventListener('click', () => { goTo(current - 1); resetAuto(); });
+    nextBtn.addEventListener('click', () => { goTo(current + 1); resetAuto(); });
+
+    let tx = 0;
+    const el = document.getElementById('studioCarousel');
+    el.addEventListener('touchstart', e => { tx = e.changedTouches[0].clientX; }, { passive: true });
+    el.addEventListener('touchend',   e => {
+        const diff = tx - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 40) { goTo(diff > 0 ? current + 1 : current - 1); resetAuto(); }
+    }, { passive: true });
+
+    startAuto();
+})();
+
+/* ============================================================
+   SCROLL REVEAL
+============================================================ */
+(function () {
+    const els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) { els.forEach(e => e.classList.add('visible')); return; }
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('visible'); obs.unobserve(en.target); } });
+    }, { threshold: 0.1 });
+    els.forEach(e => obs.observe(e));
+})();
+</script>
 </body>
 </html>
