@@ -306,45 +306,101 @@ footer{padding:78px 20px 48px;text-align:center;background:#060606;border-top:1p
 .wa-float svg{width:28px;height:28px;fill:white}
 
 /* ============================================================
-   CURSO GALLERY
+   CURSO — SECONDARY TAB SYSTEM
 ============================================================ */
-.curso-gallery{margin-top:68px}
-.curso-gallery-header{text-align:center;margin-bottom:32px}
-.curso-gallery-header p{font-size:.6rem;letter-spacing:3.5px;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
-.curso-gallery-header h3{font-family:'Playfair Display',serif;font-size:clamp(1.3rem,3vw,1.8rem);font-weight:400;color:var(--white)}
-.curso-gallery-header h3 em{color:var(--gold);font-style:italic}
-.curso-gallery-hr{width:36px;height:1px;background:var(--gold);margin:16px auto 0;opacity:.6}
-.curso-photo-grid{
+.curso-tabs-nav{
+    display:flex;justify-content:center;gap:0;
+    margin-bottom:48px;border:1px solid var(--border);
+    max-width:420px;margin-left:auto;margin-right:auto;
+    margin-bottom:52px;
+}
+.curso-tab-btn{
+    flex:1;padding:14px 28px;
+    background:transparent;color:#555;
+    font-size:.6rem;letter-spacing:2.5px;text-transform:uppercase;
+    border:none;border-right:1px solid var(--border);
+    transition:all var(--t);position:relative;
+}
+.curso-tab-btn:last-child{border-right:none}
+.curso-tab-btn:hover{color:#888}
+.curso-tab-btn.active{
+    background:rgba(201,169,110,.07);
+    color:var(--gold);
+}
+.curso-tab-btn.active::after{
+    content:'';position:absolute;bottom:0;left:0;right:0;
+    height:2px;background:var(--gold);
+}
+.curso-tab-pane{display:none;animation:fadeUp .4s ease both}
+.curso-tab-pane.active{display:block}
+
+/* ============================================================
+   CURSO — PHOTO GALLERY
+============================================================ */
+.curso-gallery{display:flex;flex-direction:column;gap:6px}
+
+.gallery-featured{width:100%}
+.gallery-item--featured{
+    width:100%;aspect-ratio:16/7;overflow:hidden;
+    position:relative;cursor:pointer;
+}
+
+.gallery-grid{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+    grid-template-columns:repeat(3,1fr);
     gap:6px;
 }
-.curso-photo-item{
+.gallery-item{
     position:relative;overflow:hidden;
     aspect-ratio:1/1;cursor:pointer;
 }
-.curso-photo-item:first-child{
-    grid-column:span 2;grid-row:span 2;
-    aspect-ratio:auto;
-}
-.curso-photo-item img{
+
+/* shared image behaviour */
+.gallery-item img{
     width:100%;height:100%;object-fit:cover;display:block;
-    transition:transform .55s var(--ease),filter .55s var(--ease);
-    filter:sepia(8%) contrast(1.04);
+    transition:transform .55s var(--ease), filter .55s var(--ease);
+    filter:sepia(8%) contrast(1.04) brightness(.96);
 }
-.curso-photo-item:hover img{transform:scale(1.07);filter:sepia(0%) contrast(1.08)}
-.curso-photo-item::after{
-    content:'';position:absolute;inset:0;
+.gallery-item:hover img{
+    transform:scale(1.07);
+    filter:sepia(0%) contrast(1.06) brightness(1);
+}
+
+/* gold border on hover */
+.gallery-item::before{
+    content:'';
+    position:absolute;inset:0;z-index:2;
     border:2px solid transparent;
-    transition:border-color .4s var(--ease);pointer-events:none;
+    transition:border-color .4s var(--ease);
+    pointer-events:none;
 }
-.curso-photo-item:hover::after{border-color:var(--gold)}
+.gallery-item:hover::before{border-color:var(--gold)}
+
+/* subtle dark overlay that fades on hover */
+.gallery-item-overlay{
+    position:absolute;inset:0;z-index:1;
+    background:rgba(0,0,0,.28);
+    display:flex;align-items:flex-end;padding:18px;
+    transition:background .45s var(--ease);
+}
+.gallery-item:hover .gallery-item-overlay{background:rgba(0,0,0,.08)}
+.gallery-item-overlay span{
+    font-size:.6rem;letter-spacing:3px;text-transform:uppercase;
+    color:rgba(255,255,255,.75);font-weight:400;
+    opacity:0;transform:translateY(6px);
+    transition:opacity .4s ease,transform .4s ease;
+}
+.gallery-item:hover .gallery-item-overlay span{opacity:1;transform:translateY(0)}
+
 @media(max-width:860px){
-    .curso-photo-grid{grid-template-columns:repeat(3,1fr)}
-    .curso-photo-item:first-child{grid-column:span 1;grid-row:span 1}
+    .gallery-grid{grid-template-columns:repeat(2,1fr)}
+    .gallery-item--featured{aspect-ratio:4/3}
+    .curso-tabs-nav{max-width:100%}
 }
-@media(max-width:520px){
-    .curso-photo-grid{grid-template-columns:repeat(2,1fr);gap:4px}
+@media(max-width:480px){
+    .gallery-grid{grid-template-columns:repeat(2,1fr);gap:4px}
+    .curso-gallery{gap:4px}
+    .gallery-item--featured{aspect-ratio:4/3}
 }
 
 /* ============================================================
@@ -508,7 +564,7 @@ footer{padding:78px 20px 48px;text-align:center;background:#060606;border-top:1p
         <!-- ROSTO & LÁBIOS -->
         <div id="rosto" class="tab-pane">
 
-            <div class="card" onclick="openModal('buco.jpeg','Buço','Epilação de Precisão','R$ 20,00','O serviço de Buço do Studio Thamara Teixeira é realizado com linha egípcia ou cera, garantindo uma remoção suave, eficiente e duradoura dos pelos da região labial superior. O atendimento inclui higienização, epilation e aplicação de gel calmante, além de um brinde de Spa Labial.')">
+            <div class="card" onclick="openModal('buco.jpeg','Buço','Epilação de Precisão','R$ 20,00','O serviço de Buço é realizado com linha egípcia ou cera fria de alta qualidade, garantindo uma remoção suave e eficiente dos pelos da região labial superior. Inclui higienização da área, epilação cuidadosa e aplicação de gel calmante pós-procedimento. Rápido, eficaz e sem irritação.')">
                 <div class="card-img-wrap"><img src="buco.jpeg" alt="Buço" loading="lazy"></div>
                 <div class="card-body"><h4>Buço</h4><p>Epilação de Precisão</p><span class="price-tag">R$ 20,00</span><span class="card-cta">Ver Detalhes</span></div>
             </div>
@@ -589,46 +645,64 @@ footer{padding:78px 20px 48px;text-align:center;background:#060606;border-top:1p
             <h2>Nossos <em>Cursos</em></h2>
             <div class="divider"></div>
         </div>
-        <div class="cursos-grid">
-            <div class="curso-card reveal" onclick="openModal('curso_iniciante.jpeg','Iniciante Formação','O primeiro passo na sua carreira','Consultar','O Curso de Iniciante Formação da Thamara Teixeira Academy é a porta de entrada para quem sonha em atuar no mercado de beleza. Você aprenderá técnicas de design de sobrancelhas, visagismo básico, mapeamento, uso de produtos profissionais e postura no atendimento. Ao final, recebe certificado e sai pronta para atender clientes.')">
-                <div class="card-img-wrap" style="height:290px"><img src="curso_iniciante.jpeg" alt="Curso Iniciante — Formação" loading="lazy"></div>
-                <span class="curso-badge">Formação</span>
-                <div class="card-body">
-                    <h4>Iniciante Formação</h4>
-                    <p>O primeiro passo na sua carreira</p>
-                    <span class="card-cta" style="margin-top:16px">Ver Detalhes</span>
+
+        <!-- Secondary tab nav for cursos -->
+        <div class="curso-tabs-nav reveal">
+            <button class="curso-tab-btn active" onclick="openCursoTab(event,'cursoInfo')">O Curso</button>
+            <button class="curso-tab-btn" onclick="openCursoTab(event,'cursoGaleria')">Aulas Ministradas</button>
+        </div>
+
+        <!-- TAB 1: O Curso -->
+        <div id="cursoInfo" class="curso-tab-pane active">
+            <div class="cursos-grid">
+                <div class="curso-card reveal" onclick="openModal('curso_iniciante.jpeg','Iniciante Formação','O primeiro passo na sua carreira','Consultar','O Curso de Iniciante Formação da Thamara Teixeira Academy é a porta de entrada para quem sonha em atuar no mercado de beleza. Você aprenderá técnicas de design de sobrancelhas, visagismo básico, mapeamento, uso de produtos profissionais e postura no atendimento. Ao final, recebe certificado e sai pronta para atender clientes.')">
+                    <div class="card-img-wrap" style="height:290px"><img src="curso_iniciante.jpeg" alt="Curso Iniciante — Formação" loading="lazy"></div>
+                    <span class="curso-badge">Formação</span>
+                    <div class="card-body">
+                        <h4>Iniciante Formação</h4>
+                        <p>O primeiro passo na sua carreira</p>
+                        <span class="card-cta" style="margin-top:16px">Ver Detalhes</span>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- CURSO PHOTO GALLERY -->
-        <div class="curso-gallery reveal">
-            <div class="curso-gallery-header">
-                <p>Momentos</p>
-                <h3>A experiência em <em>imagens</em></h3>
-                <div class="curso-gallery-hr"></div>
-            </div>
-            <div class="curso-photo-grid">
-                <div class="curso-photo-item">
-                    <img src="curso.jpeg"   alt="Curso — Aula prática" loading="lazy">
+        <!-- TAB 2: Aulas Ministradas Gallery -->
+        <div id="cursoGaleria" class="curso-tab-pane">
+            <div class="curso-gallery reveal">
+                <!-- Featured large image -->
+                <div class="gallery-featured">
+                    <div class="gallery-item gallery-item--featured">
+                        <img src="curso.jpeg" alt="Aula Ministrada — destaque" loading="lazy">
+                        <div class="gallery-item-overlay"><span>Aulas na Prática</span></div>
+                    </div>
                 </div>
-                <div class="curso-photo-item">
-                    <img src="curso.1.jpeg" alt="Curso — Momento 1" loading="lazy">
-                </div>
-                <div class="curso-photo-item">
-                    <img src="curso.3.jpeg" alt="Curso — Momento 3" loading="lazy">
-                </div>
-                <div class="curso-photo-item">
-                    <img src="curso.4.jpeg" alt="Curso — Momento 4" loading="lazy">
-                </div>
-                <div class="curso-photo-item">
-                    <img src="curso.5.jpeg" alt="Curso — Momento 5" loading="lazy">
-                </div>
-                <div class="curso-photo-item">
-                    <img src="curso.6.jpeg" alt="Curso — Momento 6" loading="lazy">
-                </div>
-                <div class="curso-photo-item">
-                    <img src="curso.7.jpeg" alt="Curso — Momento 7" loading="lazy">
+                <!-- Grid of remaining images -->
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="curso.1.jpeg" alt="Aula Ministrada 1" loading="lazy">
+                        <div class="gallery-item-overlay"></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="curso.2.jpeg" alt="Aula Ministrada 2" loading="lazy">
+                        <div class="gallery-item-overlay"></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="curso.3.jpeg" alt="Aula Ministrada 3" loading="lazy">
+                        <div class="gallery-item-overlay"></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="curso.4.jpeg" alt="Aula Ministrada 4" loading="lazy">
+                        <div class="gallery-item-overlay"></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="curso.5.jpeg" alt="Aula Ministrada 5" loading="lazy">
+                        <div class="gallery-item-overlay"></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="curso.6.jpeg" alt="Aula Ministrada 6" loading="lazy">
+                        <div class="gallery-item-overlay"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -807,7 +881,7 @@ function closeMenu() {
 }
 
 /* ============================================================
-   TABS
+   TABS (services)
 ============================================================ */
 function openTab(evt, id) {
     document.querySelectorAll('.tab-pane').forEach(p => { p.style.display = 'none'; p.classList.remove('active'); });
@@ -816,6 +890,17 @@ function openTab(evt, id) {
     t.style.display = 'grid';
     void t.offsetWidth; // reflow to replay animation
     t.classList.add('active');
+    evt.currentTarget.classList.add('active');
+}
+
+/* ============================================================
+   CURSO TABS (secondary — courses section)
+============================================================ */
+function openCursoTab(evt, id) {
+    document.querySelectorAll('.curso-tab-pane').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.curso-tab-btn').forEach(b => b.classList.remove('active'));
+    void document.getElementById(id).offsetWidth;
+    document.getElementById(id).classList.add('active');
     evt.currentTarget.classList.add('active');
 }
 
