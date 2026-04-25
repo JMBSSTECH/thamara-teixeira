@@ -306,6 +306,48 @@ footer{padding:78px 20px 48px;text-align:center;background:#060606;border-top:1p
 .wa-float svg{width:28px;height:28px;fill:white}
 
 /* ============================================================
+   CURSO GALLERY
+============================================================ */
+.curso-gallery{margin-top:68px}
+.curso-gallery-header{text-align:center;margin-bottom:32px}
+.curso-gallery-header p{font-size:.6rem;letter-spacing:3.5px;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.curso-gallery-header h3{font-family:'Playfair Display',serif;font-size:clamp(1.3rem,3vw,1.8rem);font-weight:400;color:var(--white)}
+.curso-gallery-header h3 em{color:var(--gold);font-style:italic}
+.curso-gallery-hr{width:36px;height:1px;background:var(--gold);margin:16px auto 0;opacity:.6}
+.curso-photo-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:6px;
+}
+.curso-photo-item{
+    position:relative;overflow:hidden;
+    aspect-ratio:1/1;cursor:pointer;
+}
+.curso-photo-item:first-child{
+    grid-column:span 2;grid-row:span 2;
+    aspect-ratio:auto;
+}
+.curso-photo-item img{
+    width:100%;height:100%;object-fit:cover;display:block;
+    transition:transform .55s var(--ease),filter .55s var(--ease);
+    filter:sepia(8%) contrast(1.04);
+}
+.curso-photo-item:hover img{transform:scale(1.07);filter:sepia(0%) contrast(1.08)}
+.curso-photo-item::after{
+    content:'';position:absolute;inset:0;
+    border:2px solid transparent;
+    transition:border-color .4s var(--ease);pointer-events:none;
+}
+.curso-photo-item:hover::after{border-color:var(--gold)}
+@media(max-width:860px){
+    .curso-photo-grid{grid-template-columns:repeat(3,1fr)}
+    .curso-photo-item:first-child{grid-column:span 1;grid-row:span 1}
+}
+@media(max-width:520px){
+    .curso-photo-grid{grid-template-columns:repeat(2,1fr);gap:4px}
+}
+
+/* ============================================================
    KEYFRAMES
 ============================================================ */
 @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
@@ -466,6 +508,11 @@ footer{padding:78px 20px 48px;text-align:center;background:#060606;border-top:1p
         <!-- ROSTO & LÁBIOS -->
         <div id="rosto" class="tab-pane">
 
+            <div class="card" onclick="openModal('buco.jpeg','Buço','Epilação de Precisão','R$ 20,00','O serviço de Buço do Studio Thamara Teixeira é realizado com linha egípcia ou cera, garantindo uma remoção suave, eficiente e duradoura dos pelos da região labial superior. O atendimento inclui higienização, epilation e aplicação de gel calmante, além de um brinde de Spa Labial.')">
+                <div class="card-img-wrap"><img src="buco.jpeg" alt="Buço" loading="lazy"></div>
+                <div class="card-body"><h4>Buço</h4><p>Epilação de Precisão</p><span class="price-tag">R$ 20,00</span><span class="card-cta">Ver Detalhes</span></div>
+            </div>
+
             <div class="card" onclick="openModal('spa_labial.jpeg','Spa Labial','Nutrição Intensa','Consultar','O Spa Labial é um protocolo completo de nutrição e hidratação para os lábios. Inclui esfoliação suave para remover células mortas, máscara nutritiva de alta concentração e finalização com sérum labial. Os lábios ficam macios, hidratados e com coloração renovada por semanas.')">
                 <div class="card-img-wrap"><img src="spa_labial.jpeg" alt="Spa Labial" loading="lazy"></div>
                 <div class="card-body"><h4>Spa Labial</h4><p>Nutrição Intensa</p><span class="price-tag">Consultar</span><span class="card-cta">Ver Detalhes</span></div>
@@ -518,11 +565,9 @@ footer{padding:78px 20px 48px;text-align:center;background:#060606;border-top:1p
             </div>
             <div class="carousel-wrap reveal">
                 <div class="carousel" id="studioCarousel" aria-label="Fotos do studio">
-                    <div class="carousel-slide active"><img src="thamara.jpeg"  alt="Thamara Teixeira" loading="lazy"></div>
-                    <div class="carousel-slide"><img src="studio.jpeg"   alt="Studio — Vista 1" loading="lazy"></div>
-                    <div class="carousel-slide"><img src="studio2.jpeg"  alt="Studio — Vista 2" loading="lazy"></div>
-                    <div class="carousel-slide"><img src="studio3.jpeg"  alt="Studio — Vista 3" loading="lazy"></div>
-                    <div class="carousel-slide"><img src="studio4.jpeg"  alt="Studio — Vista 4" loading="lazy"></div>
+                    <div class="carousel-slide active"><img src="studio.ampla.jpeg"   alt="Studio — Visão Ampla"  loading="lazy"></div>
+                    <div class="carousel-slide"><img src="studio.entrada.jpeg" alt="Studio — Entrada"      loading="lazy"></div>
+                    <div class="carousel-slide"><img src="studio.maca.jpeg"    alt="Studio — Maca"          loading="lazy"></div>
                 </div>
                 <div class="carousel-controls">
                     <div class="carousel-dots" id="carouselDots" role="tablist"></div>
@@ -555,6 +600,39 @@ footer{padding:78px 20px 48px;text-align:center;background:#060606;border-top:1p
                 </div>
             </div>
         </div>
+
+        <!-- CURSO PHOTO GALLERY -->
+        <div class="curso-gallery reveal">
+            <div class="curso-gallery-header">
+                <p>Momentos</p>
+                <h3>A experiência em <em>imagens</em></h3>
+                <div class="curso-gallery-hr"></div>
+            </div>
+            <div class="curso-photo-grid">
+                <div class="curso-photo-item">
+                    <img src="curso.jpeg"   alt="Curso — Aula prática" loading="lazy">
+                </div>
+                <div class="curso-photo-item">
+                    <img src="curso.1.jpeg" alt="Curso — Momento 1" loading="lazy">
+                </div>
+                <div class="curso-photo-item">
+                    <img src="curso.3.jpeg" alt="Curso — Momento 3" loading="lazy">
+                </div>
+                <div class="curso-photo-item">
+                    <img src="curso.4.jpeg" alt="Curso — Momento 4" loading="lazy">
+                </div>
+                <div class="curso-photo-item">
+                    <img src="curso.5.jpeg" alt="Curso — Momento 5" loading="lazy">
+                </div>
+                <div class="curso-photo-item">
+                    <img src="curso.6.jpeg" alt="Curso — Momento 6" loading="lazy">
+                </div>
+                <div class="curso-photo-item">
+                    <img src="curso.7.jpeg" alt="Curso — Momento 7" loading="lazy">
+                </div>
+            </div>
+        </div>
+
     </div>
 </section>
 
