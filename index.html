@@ -4,14 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Thamara Teixeira | Especialista em Sobrancelhas</title>
-<!-- TODO: substituir por favicon real (ex: favicon.ico / apple-touch-icon.png de 180x180) -->
 <link rel="icon" type="image/png" href="favicon.png">
 <meta name="description" content="Especialista em Sobrancelhas e serviços faciais em Betim MG. Design personalizado, Micropigmentação Shadow e Brow Lamination. Agende pelo WhatsApp.">
 <link rel="canonical" href="https://thamarateixeira.com.br/">
 <meta name="theme-color" content="#0C0C0C">
 
 <!-- Open Graph / Meta Tags de Compartilhamento (WhatsApp/Instagram) -->
-<!-- IMPORTANTE: og:image precisa ser URL ABSOLUTA. WhatsApp/Instagram não renderizam preview com caminhos relativos. -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://thamarateixeira.com.br/">
 <meta property="og:site_name" content="Thamara Teixeira">
@@ -22,12 +20,7 @@
 <meta property="og:image:height" content="1200">
 <meta property="og:image:alt" content="Studio Thamara Teixeira - Especialista em Sobrancelhas em Betim MG">
 <meta property="og:locale" content="pt_BR">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Thamara Teixeira | Especialista em Sobrancelhas">
-<meta name="twitter:description" content="Design personalizado, Micropigmentação e estética facial em Betim - MG.">
-<meta name="twitter:image" content="https://thamarateixeira.com.br/img_recepcao.jpeg">
 
-<!-- Schema.org LocalBusiness: ajuda no ranqueamento local e no Google Maps -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -74,7 +67,6 @@ body{font-family:'Outfit',sans-serif;background:var(--black);color:var(--frost);
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 
 .rv{opacity:0;transform:translateY(26px);transition:opacity .85s var(--ease),transform .85s var(--ease)}
 .rv.on{opacity:1;transform:none}
@@ -157,27 +149,38 @@ footer{background:#080808;padding:5rem 6% 2rem;border-top:1px solid var(--rg-bor
 .fsub{font-size:.52rem;letter-spacing:.44em;text-transform:uppercase;color:var(--rg);display:block;margin-bottom:1.5rem}
 .fbot{text-align:center;padding-top:2rem;border-top:1px solid rgba(255,255,255,.04);font-size:.6rem;letter-spacing:.25em;color:#3A3A3A;text-transform:uppercase}
 
-/* MODAL */
-.modal{position:fixed;inset:0;z-index:2000;background:var(--black);transform:translateY(100%);transition:transform .65s cubic-bezier(.7,0,.3,1);overflow-y:auto;visibility:hidden}
-.modal.open{transform:none;visibility:visible}
-.mtop{position:sticky;top:0;z-index:10;padding:1.2rem 6%;background:rgba(12,12,12,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--rg-border);display:flex;align-items:center;justify-content:space-between}
-.mgrid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
-.msl{position:relative;width:100%;padding-bottom:110%;overflow:hidden;background:var(--charcoal)}
-.ms{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s var(--ease)}
-.ms.on{opacity:1}
-.mdots{display:flex;gap:.5rem;margin-top:1rem;justify-content:center}
-.mdot{width:7px;height:7px;border-radius:50%;background:var(--silver);cursor:none;transition:background .3s}
-.mdot.on{background:var(--rg)}
-.mtop-n{font-family:'Bodoni Moda',serif;font-size:.95rem;color:var(--white)}
-.mclose{background:none;border:1px solid rgba(255,255,255,.1);color:var(--ash);padding:.65rem 1.4rem;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;cursor:none;transition:all .3s;font-family:'Outfit',sans-serif}
-.mclose:hover{border-color:var(--rg);color:var(--rg)}
-.mbody{padding:5rem 6% 7rem}
-.minfo .sh{font-size:clamp(2rem,3.5vw,3rem);margin-bottom:1rem}
-.minfo p{font-size:.95rem;line-height:1.9;color:var(--ash);font-weight:300;margin-bottom:1rem}
-.mpreco{display:flex;align-items:center;gap:1.5rem;margin-bottom:2rem;padding:1.2rem 1.5rem;background:var(--panel);border-left:2px solid var(--rg)}
-.mval{font-family:'Bodoni Moda',serif;font-size:1.8rem;font-weight:900;color:var(--rg);line-height:1}
+/* 🪐 REESTRUTURAÇÃO DOS MODAIS (EFEITO ABA FLUTUANTE) */
+.modal {
+  position: fixed; inset: 0; z-index: 2000;
+  background: rgba(8, 8, 8, 0.75); backdrop-filter: blur(14px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 2rem; opacity: 0; pointer-events: none;
+  transition: opacity 0.4s var(--ease); visibility: hidden;
+}
+.modal.open { opacity: 1; pointer-events: auto; visibility: visible; }
+
+.modal-container {
+  background: var(--charcoal); border: 1px solid var(--rg-border);
+  border-radius: 24px; width: 100%; max-width: 960px; max-height: 85vh;
+  overflow-y: auto; display: flex; flex-direction: column;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.7);
+  transform: scale(0.93) translateY(20px);
+  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1); /* Efeito bounce sutil */
+}
+.modal.open .modal-container { transform: scale(1) translateY(0); }
+
+.mtop {
+  position: sticky; top: 0; z-index: 10; padding: 1.4rem 2.5rem;
+  background: rgba(24, 24, 24, 0.9); backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--rg-border); display: flex;
+  align-items: center; justify-content: space-between;
+}
+.mbody { padding: 3rem 2.5rem; }
 
 @media(max-width:900px){
+  .modal { padding: 1rem; }
+  .modal-container { max-height: 90vh; border-radius: 16px; }
+  .mbody { padding: 2rem 1.5rem; }
   .hero{grid-template-columns:1fr;padding:8rem 6% 5rem;text-align:center}
   .hero-left{padding-right:0;order:2}
   .hero-right{order:1;margin-bottom:2.5rem}
@@ -188,7 +191,7 @@ footer{background:#080808;padding:5rem 6% 2rem;border-top:1px solid var(--rg-bor
   .sfoto-wrap{order:-1}
   .fgrid{grid-template-columns:1fr;gap:2.5rem}
 }
-@media(max-width:640px){
+@media(max-width:640px) {
   .nlinks a:not(.ncta){display:none}
   .nlinks{gap:0}
   .hero-h1{font-size:2.8rem}
@@ -196,17 +199,14 @@ footer{background:#080808;padding:5rem 6% 2rem;border-top:1px solid var(--rg-bor
   #cd,#cr{display:none !important}
 }
 
-/* ACESSIBILIDADE: foco visível para navegação por teclado (essencial já que o cursor customizado remove o cursor padrão) */
 a:focus-visible,button:focus-visible,.mitem:focus-visible{
   outline:2px solid var(--rg);outline-offset:4px;
 }
 
-/* Respeita usuários com sensibilidade a movimento */
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
 }
 
-/* BOTÃO FLUTUANTE DE WHATSAPP — sempre visível, independente do estado do menu/nav */
 .wa-float{
   position:fixed;bottom:22px;right:22px;z-index:1500;
   display:flex;align-items:center;gap:10px;
@@ -371,85 +371,170 @@ a:focus-visible,button:focus-visible,.mitem:focus-visible{
   <div class="fbot">© 2026 Thamara Teixeira · Todos os direitos reservados</div>
 </footer>
 
-<!-- MODAIS COM CONVERSÃO DIRETAMENTE NO WHATSAPP -->
+<!-- 🪐 MODAIS UNIFICADOS COM CARD DESIGN FLUTUANTE -->
 
-<div class="modal" id="m-personalizado"><div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-personalizado')" class="mclose">Fechar</button></div>
-<div class="mbody"><div class="mgrid">
-  <div><div class="msl" id="sl-perso"><img src="personalizado.jpg" alt="Personalizado - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div>
-  <div class="minfo">
-    <span class="eyebrow">VISAGISMO E SIMETRIA</span><h2 class="sh">Design <em>Personalizado</em></h2>
-    <div class="mpreco"><div class="mval">R$ 40,00</div></div>
-    <p>O Design Personalizado é o serviço base do studio, desenvolvido com técnica de visagismo facial para mapear e desenhar o traço de sobrancelha ideal para o seu rosto. Utilizamos um mapeamento facial, análise do rosto e segue com colometria para garantir um resultado natural, simétrico e exclusivo para cada cliente.</p>
-    <a href="https://wa.me/5531972574829?text=Olá!%20Gostaria%20de%20agendar%20um%20Design%20Personalizado." target="_blank" rel="noopener noreferrer" class="btn-rg" style="margin-top:2rem; width:100%; justify-content:center;"><span>Agendar este serviço</span></a>
-  </div>
-</div></div></div>
+<div class="modal" id="m-personalizado"><div class="modal-container">
+  <div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-personalizado')" class="mclose">Fechar</button></div>
+  <div class="mbody"><div class="mgrid">
+    <div><div class="msl" id="sl-perso"><img src="personalizado.jpeg" alt="Personalizado - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div>
+    <div class="minfo">
+      <span class="eyebrow">VISAGISMO E SIMETRIA</span><h2 class="sh">Design <em>Personalizado</em></h2>
+      <div class="mpreco"><div class="mval">R$ 40,00</div></div>
+      <p>O Design Personalizado é o serviço base do studio, desenvolvido com técnica de visagismo facial para mapear e desenhar o traço de sobrancelha ideal para o seu rosto. Utilizamos um mapeamento facial, análise do rosto e segue com colometria para garantir um resultado natural, simétrico e exclusivo para cada cliente.</p>
+      <a href="https://wa.me/5531972574829?text=Olá!%20Gostaria%20de%20agendar%20um%20Design%20Personalizado." target="_blank" rel="noopener noreferrer" class="btn-rg" style="margin-top:2rem; width:100%; justify-content:center;"><span>Agendar este serviço</span></a>
+    </div>
+  </div></div>
+</div></div>
 
-<div class="modal" id="m-henna"><div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-henna')" class="mclose">Fechar</button></div>
-<div class="mbody"><div class="mgrid">
-  <div><div class="msl" id="sl-henna"><img src="henna.jpg" alt="Henna - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div>
-  <div class="minfo">
-    <span class="eyebrow">DEFINIÇÃO PREMIUM</span><h2 class="sh">Design com <em>Henna</em></h2>
-    <div class="mpreco"><div class="mval">R$ 50,00</div></div>
-    <p>Com aplicação de henna de alta qualidade. E durabilidade até 7 dias.</p>
-    <a href="https://wa.me/5531972574829?text=Olá!%20Gostaria%20de%20agendar%20o%20Design%20com%20Henna." target="_blank" rel="noopener noreferrer" class="btn-rg" style="margin-top:2rem; width:100%; justify-content:center;"><span>Agendar este serviço</span></a>
-  </div>
-</div></div></div>
+<div class="modal" id="m-henna"><div class="modal-container">
+  <div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-henna')" class="mclose">Fechar</button></div>
+  <div class="mbody"><div class="mgrid">
+    <div><div class="msl" id="sl-henna"><img src="Henna.jpeg" alt="Henna - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div>
+    <div class="minfo">
+      <span class="eyebrow">DEFINIÇÃO PREMIUM</span><h2 class="sh">Design com <em>Henna</em></h2>
+      <div class="mpreco"><div class="mval">R$ 50,00</div></div>
+      <p>Com aplicação de henna de alta qualidade. E durabilidade até 7 dias.</p>
+      <a href="https://wa.me/5531972574829?text=Olá!%20Gostaria%20de%20agendar%20o%20Design%20com%20Henna." target="_blank" rel="noopener noreferrer" class="btn-rg" style="margin-top:2rem; width:100%; justify-content:center;"><span>Agendar este serviço</span></a>
+    </div>
+  </div></div>
+</div></div>
 
-<div class="modal" id="m-micro"><div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-micro')" class="mclose">Fechar</button></div>
-<div class="mbody"><div class="mgrid">
-  <div><div class="msl" id="sl-micro"><img src="micro.jpg" alt="Micro - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div>
-  <div class="minfo">
-    <h2 class="sh">Micropigmentação <em>Shadow</em></h2>
-    <div class="mpreco"><div class="mval">R$ 500,00</div></div>
-    <p>A micropigmentação shadow é uma técnica moderna de sobrancelhas que cria um efeito esfumado, delicado e sofisticado, como se a sobrancelha estivesse levemente maquiada com sombra.</p>
-    <p>Ela é feita com um dermógrafo, implantando pigmento na pele de forma suave e gradual, trazendo mais definição, preenchimento e simetria sem deixar um aspecto pesado.</p>
-    <ul class="bullet-list">
-      <li>tem falhas nas sobrancelhas</li>
-      <li>deseja praticidade no dia a dia</li>
-      <li>gosta de efeito maquiado elegante</li>
-      <li>quer sobrancelhas definidas por mais tempo</li>
-    </ul>
-    <a href="https://wa.me/5531972574829?text=Olá!%20Tenho%20interesse%20e%20gostaria%20de%20agendar%20a%20Micropigmentação%20Shadow." target="_blank" rel="noopener noreferrer" class="btn-rg" style="margin-top:2rem; width:100%; justify-content:center;"><span>Agendar este serviço</span></a>
-  </div>
-</div></div></div>
+<div class="modal" id="m-micro"><div class="modal-container">
+  <div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-micro')" class="mclose">Fechar</button></div>
+  <div class="mbody"><div class="mgrid">
+    <div><div class="msl" id="sl-micro"><img src="micro.jpeg" alt="Micro - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div>
+    <div class="minfo">
+      <h2 class="sh">Micropigmentação <em>Shadow</em></h2>
+      <div class="mpreco"><div class="mval">R$ 500,00</div></div>
+      <p>A micropigmentação shadow é uma técnica moderna de sobrancelhas que cria um efeito esfumado, delicado e sofisticado, como se a sobrancelha estivesse levemente maquiada com sombra.</p>
+      <p>Ela é feita com um dermógrafo, implantando pigmento na pele de forma suave e gradual, trazendo mais definição, preenchimento e simetria sem deixar um aspecto pesado.</p>
+      <ul class="bullet-list">
+        <li>tem falhas nas sobrancelhas</li>
+        <li>deseja praticidade no dia a dia</li>
+        <li>gosta de efeito maquiado elegante</li>
+        <li>quer sobrancelhas definidas por mais tempo</li>
+      </ul>
+      <a href="https://wa.me/5531972574829?text=Olá!%20Tenho%20interesse%20e%20gostaria%20de%20agendar%20a%20Micropigmentação%20Shadow." target="_blank" rel="noopener noreferrer" class="btn-rg" style="margin-top:2rem; width:100%; justify-content:center;"><span>Agendar este serviço</span></a>
+    </div>
+  </div></div>
+</div></div>
 
-<div class="modal" id="m-premium"><div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-premium')" class="mclose">Fechar</button></div>
-<div class="mbody"><div class="mgrid">
-  <div><div class="msl" id="sl-premium"><img src="combo_premium.jpg" alt="Combo Premium - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div>
-  <div class="minfo">
-    <span class="eyebrow">BROW LAMINATION + LASH LIFTING</span><h2 class="sh">Combo Perfect <em>Premium</em></h2>
-    <div class="mpreco"><div class="mval">R$ 170,00</div></div>
-    <p>O Combo Perfect Premium é para quem quer acordar pronta. Combina Design personalizado ou Design com Henna junto com alongamento de cílios, tudo em uma única sessão. Resultado editorial que dispensa maquiagens no seu dia a dia.</p>
-    <a href="https://wa.me/5531972574829?text=Olá!%20Quero%20agendar%20o%20Combo%20Perfect%20Premium." target="_blank" rel="noopener noreferrer" class="btn-rg" style="margin-top:2rem; width:100%; justify-content:center;"><span>Agendar este serviço</span></a>
-  </div>
-</div></div></div>
+<div class="modal" id="m-premium"><div class="modal-container">
+  <div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-premium')" class="mclose">Fechar</button></div>
+  <div class="mbody"><div class="mgrid">
+    <div><div class="msl" id="sl-premium"><img src="combo_premium.jpeg" alt="Combo Premium - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div>
+    <div class="minfo">
+      <span class="eyebrow">BROW LAMINATION + LASH LIFTING</span><h2 class="sh">Combo Perfect <em>Premium</em></h2>
+      <div class="mpreco"><div class="mval">R$ 170,00</div></div>
+      <p>O Combo Perfect Premium é para quem quer acordar pronta. Combina Design personalizado ou Design com Henna junto com alongamento de cílios, tudo em uma única sessão. Resultado editorial que dispensa maquiagens no seu dia a dia.</p>
+      <a href="https://wa.me/5531972574829?text=Olá!%20Quero%20agendar%20o%20Combo%20Perfect%20Premium." target="_blank" rel="noopener noreferrer" class="btn-rg" style="margin-top:2rem; width:100%; justify-content:center;"><span>Agendar este serviço</span></a>
+    </div>
+  </div></div>
+</div></div>
 
-<div class="modal" id="m-curso1"><div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-curso1')" class="mclose">Fechar</button></div>
-<div class="mbody"><div class="mgrid">
-  <div><div class="msl" id="sl-curso1"><img src="curso1.jpg" alt="Curso1 - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div>
-  <div class="minfo">
-    <span class="eyebrow">CURSO</span><h2 class="sh">Iniciante <em>Formação</em></h2>
-    <div class="mpreco"><div class="mval">R$ 1.000,00</div></div>
-    <p>O Curso de Iniciante é a porta de entrada para quem sonha em atuar no mercado de beleza. Você aprenderá técnicas de design de sobrancelhas, mapeamento, uso de produtos profissionais e postura no atendimento. Ao final, recebe certificado mais material e sai pronta para atender clientes.</p>
-    <a href="https://wa.me/5531972574829?text=Olá!%20Gostaria de%20mais%20informações%20sobre%20as%20vagas%20para%20o%20Curso%20Iniciante%20Formação." target="_blank" rel="noopener noreferrer" class="btn-rg" style="margin-top:2rem; width:100%; justify-content:center;"><span>Garantir minha vaga</span></a>
-  </div>
-</div></div></div>
+<div class="modal" id="m-curso1"><div class="modal-container">
+  <div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-curso1')" class="mclose">Fechar</button></div>
+  <div class="mbody"><div class="mgrid">
+    <div><div class="msl" id="sl-curso1"><img src="curso.1.jpeg" alt="Curso1 - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div>
+    <div class="minfo">
+      <span class="eyebrow">CURSO</span><h2 class="sh">Iniciante <em>Formação</em></h2>
+      <div class="mpreco"><div class="mval">R$ 1.000,00</div></div>
+      <p>O Curso de Iniciante é a porta de entrada para quem sonha em atuar no mercado de beleza. Você aprenderá técnicas de design de sobrancelhas, mapeamento, uso de produtos profissionais e postura no atendimento. Ao final, recebe certificado mais material e sai pronta para atender clientes.</p>
+      <a href="https://wa.me/5531972574829?text=Olá!%20Gostaria de%20mais%20informações%20sobre%20as%20vagas%20para%20o%20Curso%20Iniciante%20Formação." target="_blank" rel="noopener noreferrer" class="btn-rg" style="margin-top:2rem; width:100%; justify-content:center;"><span>Garantir minha vaga</span></a>
+    </div>
+  </div></div>
+</div></div>
 
-<div class="modal" id="m-curso2"><div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-curso2')" class="mclose">Fechar</button></div><div class="mbody"><div class="mgrid"><div><div class="msl"><img src="curso2.jpg" alt="Curso2 - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div><div class="minfo"><h2 class="sh">Curso <em>Aperfeiçoamento</em></h2><div class="mpreco"><div class="mval">R$ 700,00</div></div><p>Especialização para quem já atua na área.</p><a href="https://wa.me/5531972574829?text=Olá!%20Quero%20informações%20sobre%20o%20Curso%20de%20Aperfeiçoamento." target="_blank" rel="noopener noreferrer" class="btn-rg" style="margin-top:2rem; width:100%; justify-content:center;"><span>Quero me Especializar</span></a></div></div></div></div>
-<div class="modal" id="m-brow"><div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-brow')" class="mclose">Fechar</button></div><div class="mbody"><div class="mgrid"><div><div class="msl"><img src="brow.jpg" alt="Brow - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div><div class="minfo"><h2 class="sh">Brow <em>Lamination</em></h2><div class="mpreco"><div class="mval">R$ 120,00</div></div><p>Sobrancelhas alinhadas e com volume.</p><a href="https://wa.me/5531972574829?text=Olá!%20Gostaria%20de%20agendar%20o%20Brow%20Lamination." target="_blank" rel="noopener noreferrer" class="btn-rg" style="margin-top:2rem; width:100%; justify-content:center;"><span>Agendar Horário</span></a></div></div></div></div>
-<div class="modal" id="m-lash"><div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-lash')" class="mclose">Fechar</button></div><div class="mbody"><div class="mgrid"><div><div class="msl"><img src="lash.jpg" alt="Lash - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div><div class="minfo"><h2 class="sh">Lash <em>Lifting</em></h2><div class="mpreco"><div class="mval">R$ 120,00</div></div><p>Curvatura e hidratação dos cílios naturais.</p><a href="https://wa.me/5531972574829?text=Olá!%20Gostaria%20de%20agendar%20o%20Lash%20Lifting." target="_blank" rel="noopener noreferrer" class="btn-rg" style="margin-top:2rem; width:100%; justify-content:center;"><span>Agendar Horário</span></a></div></div></div></div>
-<div class="modal" id="m-alongamento"><div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-alongamento')" class="mclose">Fechar</button></div><div class="mbody"><div class="mgrid"><div><div class="msl"><img src="alongamento.jpg" alt="Alongamento - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div><div class="minfo"><h2 class="sh">Alongamento de <em>Cílios</em></h2><div class="mpreco"><div class="mval">R$ 120,00</div></div><p>Volume e olhar marcante personalizado.</p><a href="https://wa.me/5531972574829?text=Olá!%20Gostaria%20de%20agendar%20o%20Alongamento%20de%20Cílios." target="_blank" rel="noopener noreferrer" class="btn-rg" style="margin-top:2rem; width:100%; justify-content:center;"><span>Agendar Horário</span></a></div></div></div></div>
-<div class="modal" id="m-hidra"><div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-hidra')" class="mclose">Fechar</button></div><div class="mbody"><div class="mgrid"><div><div class="msl"><img src="hidra.jpg" alt="Hidra - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div><div class="minfo"><h2 class="sh">Hidralips e <em>Hidraglos</em></h2><div class="mpreco"><div class="mval">R$ 90,00</div></div><p>Tratamento de hidratação e brilho labial.</p><a href="https://wa.me/5531972574829?text=Olá!%20Gostaria%20de%20agendar%20o%20Hidralips/Hidraglos." target="_blank" rel="noopener noreferrer" class="btn-rg" style="margin-top:2rem; width:100%; justify-content:center;"><span>Agendar Horário</span></a></div></div></div></div>
-<div class="modal" id="m-reconst"><div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-reconst')" class="mclose">Fechar</button></div><div class="mbody"><div class="mgrid"><div><div class="msl"><img src="reconst.jpg" alt="Reconst - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div><div class="minfo"><h2 class="sh"><em>Reconstrução</em></h2><div class="mpreco"><div class="mval">R$ 80,00</div></div><p>Protocolo para recuperar o nascimento dos fios.</p><a href="https://wa.me/5531972574829?text=Olá!%20Gostaria%20de%20agendar%20a%20Reconstrução." target="_blank" rel="noopener noreferrer" class="btn-rg" style="margin-top:2rem; width:100%; justify-content:center;"><span>Agendar Horário</span></a></div></div></div></div>
-<div class="modal" id="m-combo"><div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-combo')" class="mclose">Fechar</button></div><div class="mbody"><div class="mgrid"><div><div class="msl"><img src="combo.jpg" alt="Combo - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div><div class="minfo"><h2 class="sh">Combo <em>Perfect</em></h2><div class="mpreco"><div class="mval">R$ 60,00</div></div><p>Henna + Buço + Spa Labial.</p><a href="https://wa.me/5531972574829?text=Olá!%20Quero%20agendar%20o%20Combo%20Perfect." target="_blank" rel="noopener noreferrer" class="btn-rg" style="margin-top:2rem; width:100%; justify-content:center;"><span>Agendar Combo</span></a></div></div></div></div>
-<div class="modal" id="m-perso-combo"><div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-perso-combo')" class="mclose">Fechar</button></div><div class="mbody"><div class="mgrid"><div><div class="msl"><img src="combo_perso.jpg" alt="Combo Perso - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div><div class="minfo"><h2 class="sh">Combo Perfect <em>Personalizado</em></h2><div class="mpreco"><div class="mval">R$ 50,00</div></div><p>Design personalizado + Spa labial.</p><a href="https://wa.me/5531972574829?text=Olá!%20Quero%20agendar%20o%20Combo%20Perfect%20Personalizado." target="_blank" rel="noopener noreferrer" class="btn-rg" style="margin-top:2rem; width:100%; justify-content:center;"><span>Agendar Combo</span></a></div></div></div></div>
-<div class="modal" id="m-spa"><div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-spa')" class="mclose">Fechar</button></div><div class="mbody"><div class="mgrid"><div><div class="msl"><img src="spa.jpg" alt="Spa - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div><div class="minfo"><h2 class="sh">Spa <em>Labial</em></h2><div class="mpreco"><div class="mval">R$ 20,00</div></div><p>Nutrição e esfoliação profunda.</p><a href="https://wa.me/5531972574829?text=Olá!%20Gostaria%20de%20agendar%20o%20Spa%20Labial." target="_blank" rel="noopener noreferrer" class="btn-rg" style="margin-top:2rem; width:100%; justify-content:center;"><span>Agendar Horário</span></a></div></div></div></div>
-<div class="modal" id="m-buco"><div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-buco')" class="mclose">Fechar</button></div><div class="mbody"><div class="mgrid"><div><div class="msl"><img src="buco.jpg" alt="Buco - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div><div class="minfo"><h2 class="sh"><em>Buço</em></h2><div class="mpreco"><div class="mval">R$ 20,00</div></div><p>Retirada de fios da região facial.</p><a href="https://wa.me/5531972574829?text=Olá!%20Gostaria%20de%20agendar%20o%20Buço." target="_blank" rel="noopener noreferrer" class="btn-rg" style="margin-top:2rem; width:100%; justify-content:center;"><span>Agendar Horário</span></a></div></div></div></div>
-<div class="modal" id="m-rosto"><div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-rosto')" class="mclose">Fechar</button></div><div class="mbody"><div class="mgrid"><div><div class="msl"><img src="rosto.jpg" alt="Rosto - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div><div class="minfo"><h2 class="sh">Epilação do <em>Rosto</em></h2><div class="mpreco"><div class="mval">R$ 20,00</div></div><p>Rosto liso e livre de penugens.</p><a href="https://wa.me/5531972574829?text=Olá!%20Gostaria%20de%20agendar%20a%20Epilação%20do%20Rosto." target="_blank" rel="noopener noreferrer" class="btn-rg" style="margin-top:2rem; width:100%; justify-content:center;"><span>Agendar Horário</span></a></div></div></div></div>
+<div class="modal" id="m-curso2"><div class="modal-container">
+  <div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-curso2')" class="mclose">Fechar</button></div>
+  <div class="mbody"><div class="mgrid">
+    <div><div class="msl"><img src="curso.jpeg" alt="Curso2 - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div>
+    <div class="minfo"><h2 class="sh">Curso <em>Aperfeiçoamento</em></h2><div class="mpreco"><div class="mval">R$ 700,00</div></div><p>Especialização para quem já atua na área.</p><a href="https://wa.me/5531972574829?text=Olá!%20Quero%20informações%20sobre%20o%20Curso%20de%20Aperfeiçoamento." target="_blank" rel="noopener noreferrer" class="btn-rg" style="margin-top:2rem; width:100%; justify-content:center;"><span>Quero me Especializar</span></a></div>
+  </div></div>
+</div></div>
+
+<div class="modal" id="m-brow"><div class="modal-container">
+  <div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-brow')" class="mclose">Fechar</button></div>
+  <div class="mbody"><div class="mgrid">
+    <div><div class="msl"><img src="brow.jpeg" alt="Brow - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div>
+    <div class="minfo"><h2 class="sh">Brow <em>Lamination</em></h2><div class="mpreco"><div class="mval">R$ 120,00</div></div><p>Sobrancelhas alinhadas e com volume.</p><a href="https://wa.me/5531972574829?text=Olá!%20Gostaria%20de%20agendar%20o%20Brow%20Lamination." target="_blank" rel="noopener noreferrer" class="btn-rg" style="margin-top:2rem; width:100%; justify-content:center;"><span>Agendar Horário</span></a></div>
+  </div></div>
+</div></div>
+
+<div class="modal" id="m-lash"><div class="modal-container">
+  <div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-lash')" class="mclose">Fechar</button></div>
+  <div class="mbody"><div class="mgrid">
+    <div><div class="msl"><img src="lash.jpeg" alt="Lash - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div>
+    <div class="minfo"><h2 class="sh">Lash <em>Lifting</em></h2><div class="mpreco"><div class="mval">R$ 120,00</div></div><p>Curvatura e hidratação dos cílios naturais.</p><a href="https://wa.me/5531972574829?text=Olá!%20Gostaria%20de%20agendar%20o%20Lash%20Lifting." target="_blank" rel="noopener noreferrer" class="btn-rg" style="margin-top:2rem; width:100%; justify-content:center;"><span>Agendar Horário</span></a></div>
+  </div></div>
+</div></div>
+
+<div class="modal" id="m-alongamento"><div class="modal-container">
+  <div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-alongamento')" class="mclose">Fechar</button></div>
+  <div class="mbody"><div class="mgrid">
+    <div><div class="msl"><img src="Alongamento.jpeg" alt="Alongamento - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div>
+    <div class="minfo"><h2 class="sh">Alongamento de <em>Cílios</em></h2><div class="mpreco"><div class="mval">R$ 120,00</div></div><p>Volume e olhar marcante personalizado.</p><a href="https://wa.me/5531972574829?text=Olá!%20Gostaria%20de%20agendar%20o%20Alongamento%20de%20Cílios." target="_blank" rel="noopener noreferrer" class="btn-rg" style="margin-top:2rem; width:100%; justify-content:center;"><span>Agendar Horário</span></a></div>
+  </div></div>
+</div></div>
+
+<div class="modal" id="m-hidra"><div class="modal-container">
+  <div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-hidra')" class="mclose">Fechar</button></div>
+  <div class="mbody"><div class="mgrid">
+    <div><div class="msl"><img src="hidra.jpeg" alt="Hidra - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div>
+    <div class="minfo"><h2 class="sh">Hidralips e <em>Hidraglos</em></h2><div class="mpreco"><div class="mval">R$ 90,00</div></div><p>Tratamento de hidratação e brilho labial.</p><a href="https://wa.me/5531972574829?text=Olá!%20Gostaria%20de%20agendar%20o%20Hidralips/Hidraglos." target="_blank" rel="noopener noreferrer" class="btn-rg" style="margin-top:2rem; width:100%; justify-content:center;"><span>Agendar Horário</span></a></div>
+  </div></div>
+</div></div>
+
+<div class="modal" id="m-reconst"><div class="modal-container">
+  <div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-reconst')" class="mclose">Fechar</button></div>
+  <div class="mbody"><div class="mgrid">
+    <div><div class="msl"><img src="reconst.jpeg" alt="Reconst - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div>
+    <div class="minfo"><h2 class="sh"><em>Reconstrução</em></h2><div class="mpreco"><div class="mval">R$ 80,00</div></div><p>Protocolo para recuperar o nascimento dos fios.</p><a href="https://wa.me/5531972574829?text=Olá!%20Gostaria%20de%20agendar%20a%20Reconstrução." target="_blank" rel="noopener noreferrer" class="btn-rg" style="margin-top:2rem; width:100%; justify-content:center;"><span>Agendar Horário</span></a></div>
+  </div></div>
+</div></div>
+
+<div class="modal" id="m-combo"><div class="modal-container">
+  <div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-combo')" class="mclose">Fechar</button></div>
+  <div class="mbody"><div class="mgrid">
+    <div><div class="msl"><img src="combo.jpeg" alt="Combo - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div>
+    <div class="minfo"><h2 class="sh">Combo <em>Perfect</em></h2><div class="mpreco"><div class="mval">R$ 60,00</div></div><p>Henna + Buço + Spa Labial.</p><a href="https://wa.me/5531972574829?text=Olá!%20Quero%20agendar%20o%20Combo%20Perfect." target="_blank" rel="noopener noreferrer" class="btn-rg" style="margin-top:2rem; width:100%; justify-content:center;"><span>Agendar Combo</span></a></div>
+  </div></div>
+</div></div>
+
+<div class="modal" id="m-perso-combo"><div class="modal-container">
+  <div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-perso-combo')" class="mclose">Fechar</button></div>
+  <div class="mbody"><div class="mgrid">
+    <div><div class="msl"><img src="combo_perso.jpeg" alt="Combo Perso - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div>
+    <div class="minfo"><h2 class="sh">Combo Perfect <em>Personalizado</em></h2><div class="mpreco"><div class="mval">R$ 50,00</div></div><p>Design personalizado + Spa labial.</p><a href="https://wa.me/5531972574829?text=Olá!%20Quero%20agendar%20o%20Combo%20Perfect%20Personalizado." target="_blank" rel="noopener noreferrer" class="btn-rg" style="margin-top:2rem; width:100%; justify-content:center;"><span>Agendar Combo</span></a></div>
+  </div></div>
+</div></div>
+
+<div class="modal" id="m-spa"><div class="modal-container">
+  <div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-spa')" class="mclose">Fechar</button></div>
+  <div class="mbody"><div class="mgrid">
+    <div><div class="msl"><img src="spa_labial.jpeg" alt="Spa - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div>
+    <div class="minfo"><h2 class="sh">Spa <em>Labial</em></h2><div class="mpreco"><div class="mval">R$ 20,00</div></div><p>Nutrição e esfoliação profunda.</p><a href="https://wa.me/5531972574829?text=Olá!%20Gostaria%20de%20agendar%20o%20Spa%20Labial." target="_blank" rel="noopener noreferrer" class="btn-rg" style="margin-top:2rem; width:100%; justify-content:center;"><span>Agendar Horário</span></a></div>
+  </div></div>
+</div></div>
+
+<!-- Obs: 'buço' e 'rosto' utilizam a imagem da maca do estúdio como preenchimento contextual fino, já que não contam com arquivos de imagem isolados no Git -->
+<div class="modal" id="m-buco"><div class="modal-container">
+  <div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-buco')" class="mclose">Fechar</button></div>
+  <div class="mbody"><div class="mgrid">
+    <div><div class="msl"><img src="studio.maca.jpeg" alt="Buço - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div>
+    <div class="minfo"><h2 class="sh"><em>Buço</em></h2><div class="mpreco"><div class="mval">R$ 20,00</div></div><p>Retirada de fios da região facial.</p><a href="https://wa.me/5531972574829?text=Olá!%20Gostaria%20de%20agendar%20o%20Buço." target="_blank" rel="noopener noreferrer" class="btn-rg" style="margin-top:2rem; width:100%; justify-content:center;"><span>Agendar Horário</span></a></div>
+  </div></div>
+</div></div>
+
+<div class="modal" id="m-rosto"><div class="modal-container">
+  <div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-rosto')" class="mclose">Fechar</button></div>
+  <div class="mbody"><div class="mgrid">
+    <div><div class="msl"><img src="studio.maca.jpeg" alt="Rosto - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div>
+    <div class="minfo"><h2 class="sh">Epilação do <em>Rosto</em></h2><div class="mpreco"><div class="mval">R$ 20,00</div></div><p>Rosto liso e livre de penugens.</p><a href="https://wa.me/5531972574829?text=Olá!%20Gostaria%20de%20agendar%20a%20Epilação%20do%20Rosto." target="_blank" rel="noopener noreferrer" class="btn-rg" style="margin-top:2rem; width:100%; justify-content:center;"><span>Agendar Horário</span></a></div>
+  </div></div>
+</div></div>
 
 <script>
-// Detecta dispositivo touch (tablets/celulares): nesses casos o cursor customizado nunca
-// aparece via mousemove, e a regra "cursor:none" deixava o ponteiro literalmente invisível.
 const isTouch = matchMedia('(hover:none),(pointer:coarse)').matches;
 
 if(!isTouch){
@@ -473,8 +558,6 @@ if(!isTouch){
   document.getElementById('cr')?.remove();
 }
 
-// ACESSIBILIDADE: itens de serviço usam onclick em <div>, o que os torna invisíveis para
-// navegação por teclado e leitores de tela. Torna-os focáveis e ativáveis via Enter/Espaço.
 document.querySelectorAll('.mitem[onclick]').forEach(el=>{
   el.setAttribute('role','button');
   el.setAttribute('tabindex','0');
