@@ -16,12 +16,12 @@
 <meta property="og:title" content="Thamara Teixeira | Especialista em Sobrancelhas">
 <meta property="og:description" content="Design personalizado, Micropigmentação e estética facial em Betim - MG. Agende seu horário.">
 <meta property="og:image" content="https://thamarateixeira.com.br/img_recepcao.jpeg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="1200">
+<meta property="og:image:width" content="450">
+<meta property="og:image:height" content="531">
 <meta property="og:image:alt" content="Studio Thamara Teixeira - Especialista em Sobrancelhas em Betim MG">
 <meta property="og:locale" content="pt_BR">
 
-<!-- Schema.org LocalBusiness atualizado com o endereço exato para melhor ranqueamento no Google Maps -->
+<!-- Schema.org LocalBusiness -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -86,8 +86,6 @@ nav.sc{background:rgba(12,12,12,.93);backdrop-filter:blur(22px);padding:1rem 6%;
 .nlinks a::after{content:'';position:absolute;left:0;bottom:-4px;width:0;height:1px;background:var(--rg);transition:width .4s var(--ease)}
 .nlinks a:hover{color:var(--frost)}
 .nlinks a:hover::after{width:100%}
-
-/* CORREÇÃO DO SINTOMA DA IMAGE_0C8CE8.PNG: Remoção do resíduo "Cambiar" */
 .ncta{background:var(--rg)!important;color:var(--black)!important;padding:.65rem 1.5rem;font-weight:600!important;letter-spacing:.16em!important}
 .ncta::after{display:none!important}
 .ncta:hover{background:var(--rg-lt)!important;transform:translateY(-2px)}
@@ -142,15 +140,9 @@ nav.sc{background:rgba(12,12,12,.93);backdrop-filter:blur(22px);padding:1rem 6%;
 .bullet-list li { margin-bottom: 0.8rem; display: flex; align-items: center; gap: 10px; }
 .bullet-list li::before { content: ''; width: 5px; height: 5px; background: var(--rg); border-radius: 50%; flex-shrink: 0; }
 
-/* 🌟 CORREÇÃO DO BUG TÉCNICO: Definição estrutural da classe .eyebrow */
 .eyebrow {
-  display: inline-block;
-  font-size: 0.62rem;
-  letter-spacing: 0.38em;
-  text-transform: uppercase;
-  color: var(--rg);
-  font-weight: 500;
-  margin-bottom: 1rem;
+  display: inline-block; font-size: 0.62rem; letter-spacing: 0.38em;
+  text-transform: uppercase; color: var(--rg); font-weight: 500; margin-bottom: 1rem;
 }
 
 /* ⭐ SEÇÃO DE AVALIAÇÕES (DEPOIMENTOS) */
@@ -163,7 +155,7 @@ nav.sc{background:rgba(12,12,12,.93);backdrop-filter:blur(22px);padding:1rem 6%;
 .r-text { font-size: 0.88rem; color: var(--ash); font-weight: 300; line-height: 1.75; }
 
 /* CONTATO E FOOTER */
-#contato{padding:10rem 6%;border-top:1px solid rgba(255,255,255,.04);display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+#contato{padding:10rem 6%; border-top: 1px solid rgba(255,255,255,.04); display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:center}
 .ccol .sh{font-size:clamp(2.2rem,4vw,3.5rem);margin-bottom:2.5rem}
 .cblock{margin-bottom:1.8rem}
 .cblock strong{display:block;font-size:.6rem;letter-spacing:.38em;text-transform:uppercase;color:var(--rg);margin-bottom:.45rem}
@@ -203,7 +195,6 @@ footer{background:#080808;padding:5rem 6% 2rem;border-top:1px solid var(--rg-bor
 .mbody { padding: 3rem 2.5rem; }
 .mgrid { display: grid; grid-template-columns: 1.1fr 1.9fr; gap: 3.5rem; align-items: start; }
 
-/* 💎 RESET COMPLETO DO BOTÃO FECHAR (CORREÇÃO DE BUG DA IMAGE_0C8CE8.PNG) */
 .mclose {
   appearance: none; -webkit-appearance: none; -moz-appearance: none;
   background: none; border: none; outline: none; box-shadow: none;
@@ -214,7 +205,7 @@ footer{background:#080808;padding:5rem 6% 2rem;border-top:1px solid var(--rg-bor
 }
 .mclose:hover { color: var(--rg-lt); }
 
-/* 📸 PROPORÇÃO E RENDERIZAÇÃO DAS FOTOS */
+/* 📸 PROPORÇÃO DAS FOTOS */
 .msl {
   position: relative; width: 100%; max-width: 320px;
   aspect-ratio: 3 / 4; margin: 0 auto; overflow: hidden;
@@ -305,7 +296,7 @@ a:focus-visible,button:focus-visible,.mitem:focus-visible{
     <p class="hero-missao">
       Especialista em Sobrancelhas, serviços faciais e reconstrução.<br>
       Formação somente nacional.<br>
-      Trago ao meu espaço mais de 10 serviços oferecidos por mim.
+      Trago ao meu espaço mais de 10 serviços oferecidos por mi.
     </p>
     <div class="hero-btns">
       <a href="https://wa.me/5531972574829?text=Olá!%20Gostaria%20de%20conhecer%20os%20horários%20disponíveis%20para%20atendimento." class="btn-rg" target="_blank" rel="noopener noreferrer"><span>Agendar agora</span></a>
@@ -345,6 +336,16 @@ a:focus-visible,button:focus-visible,.mitem:focus-visible{
     <div class="mitem rv" onclick="openM('m-curso2')">
       <div><span class="sbadge" style="background:var(--white)">Aperfeiçoamento</span><div class="mname">Curso Aperfeiçoamento</div><div class="mdesc">Evolua suas técnicas profissionais.</div></div>
       <div class="mpc"><div class="mprice">R$ 700,00</div><span class="mlink">Ver detalhes →</span></div>
+    </div>
+
+    <!-- ➕ INJEÇÃO DOS DOIS NOVOS SERVIÇOS NA LISTA -->
+    <div class="mitem rv" onclick="openM('m-limpeza')">
+      <div><div class="mname">Limpeza de Pele</div><div class="mdesc">Remoção de impurezas, cravos e renovação celular profunda.</div></div>
+      <div class="mpc"><div class="mprice">R$ 120,00</div><span class="mlink">Ver detalhes →</span></div>
+    </div>
+    <div class="mitem rv" onclick="openM('m-dermaplaning')">
+      <div><div class="mname">Dermaplaning</div><div class="mdesc">Esfoliação mecânica suave para remoção de células mortas e penugens.</div></div>
+      <div class="mpc"><div class="mprice">R$ 80,00</div><span class="mlink">Ver detalhes →</span></div>
     </div>
 
     <div class="mitem rv" onclick="openM('m-micro')">
@@ -398,7 +399,6 @@ a:focus-visible,button:focus-visible,.mitem:focus-visible{
   </div>
 </section>
 
-<!-- ⭐ SEÇÃO DE AVALIAÇÕES INTEGRADA (RESOLVE IMAGENS 0C8D63 E 0C8D83) -->
 <section id="depoimentos" class="rv">
   <div class="sec-head">
     <span class="eyebrow">Experiência Real</span>
@@ -444,11 +444,10 @@ a:focus-visible,button:focus-visible,.mitem:focus-visible{
 
 <section id="contato">
   <div class="ccol">
-    <span class="eyebrow rv">Localização e Agendamento</span>
+    <span class="eyebrow">Localização e Agendamento</span>
     <h2 class="sh rv d1">Studio Thamara <em>Teixeira</em></h2>
     <div class="cblock rv d2"><strong>Horário de Atendimento</strong><p style="font-size: 1.2rem; color: var(--white); font-weight: 500;">08 às 18</p></div>
     <div class="cblock rv d3"><strong>WhatsApp</strong><p><a href="https://wa.me/5531972574829">(31) 9 7257-4829</a></p></div>
-    <!-- Endereço oficializado estruturalmente -->
     <div class="cblock rv d4"><strong>Endereço</strong><p>R. Caio Martins, 187 - Filadélfia<br>Betim - MG, 32670-170</p></div>
     <div class="rv d4" style="margin-top:2rem">
       <a href="https://wa.me/5531972574829?text=Olá!%20Estou%20no%20site%20e%20gostaria%20de%20solicitar%20um%20agendamento." class="btn-rg" target="_blank" rel="noopener noreferrer"><span>AGENDAR VIA WHATSAPP</span></a>
@@ -467,7 +466,37 @@ a:focus-visible,button:focus-visible,.mitem:focus-visible{
   <div class="fbot">© 2026 Thamara Teixeira · Todos os direitos reservados</div>
 </footer>
 
-<!-- 🪐 MODAIS COM ACESSIBILIDADE WAI-ARIA DE DIÁLOGO E CARD FLUTUANTE -->
+<!-- MODAIS ATUALIZADOS -->
+
+<!-- 🪐 NOVO MODAL: LIMPEZA DE PELE -->
+<div class="modal" id="m-limpeza" role="dialog" aria-modal="true" aria-hidden="true"><div class="modal-container">
+  <div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-limpeza')" class="mclose">Fechar</button></div>
+  <div class="mbody"><div class="mgrid">
+    <div><div class="msl"><img src="limpeza.jpeg" alt="Limpeza de Pele - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div>
+    <div class="minfo">
+      <span class="eyebrow">Tratamento Facial</span><h2 class="sh">Limpeza de <em>Pele</em></h2>
+      <div class="mpreco"><div class="mval">R$ 120,00</div></div>
+      <p>A limpeza de pele é um tratamento estético que tem como objetivo remover impurities, células mortas, cravos e o excesso de oleosidade da pele, promovendo uma aparência mais saudável, limpa e renovada.</p>
+      <p>O procedimento geralmente inclui higienização, esfoliação, emoliência, extração de cravos, aplicação de máscara calmante e finalização com produtos específicos para cada tipo de pele. É indicada para todos os tipos de pele e pode ser realizada periodicamente para manter a saúde e a beleza da pele.</p>
+      <a href="https://wa.me/5531972574829?text=Olá!%20Gostaria%20de%20agendar%20uma%20Limpeza%20de%20Pele." target="_blank" rel="noopener noreferrer" class="btn-rg" style="margin-top:2rem; width:100%; justify-content:center;"><span>Agendar este serviço</span></a>
+    </div>
+  </div></div>
+</div></div>
+
+<!-- 🪐 NOVO MODAL: DERMAPLANING -->
+<div class="modal" id="m-dermaplaning" role="dialog" aria-modal="true" aria-hidden="true"><div class="modal-container">
+  <div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-dermaplaning')" class="mclose">Fechar</button></div>
+  <div class="mbody"><div class="mgrid">
+    <div><div class="msl"><img src="Derma.jpeg" alt="Dermaplaning - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div>
+    <div class="minfo">
+      <span class="eyebrow">Esfoliação Mecânica</span><h2 class="sh"><em>Dermaplaning</em></h2>
+      <div class="mpreco"><div class="mval">R$ 80,00</div></div>
+      <p>O dermaplaning é um procedimento estético que promove uma esfoliação mecânica suave da pele por meio de uma lâmina específica, removendo células mortas e os pelos finos da face (conhecidos como “penugem” ou “vellus”).</p>
+      <p>O dermaplaning não faz os pelos crescerem mais grossos ou escuros. Os pelos voltam a crescer com as mesmas características de antes.</p>
+      <a href="https://wa.me/5531972574829?text=Olá!%20Gostaria%20de%20agendar%20o%20Dermaplaning." target="_blank" rel="noopener noreferrer" class="btn-rg" style="margin-top:2rem; width:100%; justify-content:center;"><span>Agendar este serviço</span></a>
+    </div>
+  </div></div>
+</div></div>
 
 <div class="modal" id="m-personalizado" role="dialog" aria-modal="true" aria-hidden="true"><div class="modal-container">
   <div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-personalizado')" class="mclose">Fechar</button></div>
@@ -503,7 +532,7 @@ a:focus-visible,button:focus-visible,.mitem:focus-visible{
       <h2 class="sh">Micropigmentação <em>Shadow</em></h2>
       <div class="mpreco"><div class="mval">R$ 500,00</div></div>
       <p>A micropigmentação shadow é uma técnica moderna de sobrancelhas que cria um efeito esfumado, delicado e sofisticado, como se a sobrancelha estivesse levemente maquiada com sombra.</p>
-      <p>Ela é feita com um dermógrafo, implantando pigmento na pele de forma suave e gradual, trazendo mais definição, preenchimento e simetria sem deixar um aspect pesado.</p>
+      <p>Ela é feita com um dermógrafo, implantando pigmento na pele de forma suave e gradual, trazendo mais definição, preenchimento e simetria sem deixar um aspecto pesado.</p>
       <ul class="bullet-list">
         <li>tem falhas nas sobrancelhas</li>
         <li>deseja praticidade no dia a dia</li>
@@ -613,10 +642,11 @@ a:focus-visible,button:focus-visible,.mitem:focus-visible{
   </div></div>
 </div></div>
 
+<!-- 🪐 VINCULAÇÃO DAS IMAGENS REAIS ATUALIZADAS (RESOLVE PLACEHOLDERS) -->
 <div class="modal" id="m-buco" role="dialog" aria-modal="true" aria-hidden="true"><div class="modal-container">
   <div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-buco')" class="mclose">Fechar</button></div>
   <div class="mbody"><div class="mgrid">
-    <div><div class="msl"><img src="studio.maca.jpeg" alt="Buço - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div>
+    <div><div class="msl"><img src="Buco.jpeg" alt="Buço - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div>
     <div class="minfo"><h2 class="sh"><em>Buço</em></h2><div class="mpreco"><div class="mval">R$ 20,00</div></div><p>Retirada de fios da região facial.</p><a href="https://wa.me/5531972574829?text=Olá!%20Gostaria%20de%20agendar%20o%20Buço." target="_blank" rel="noopener noreferrer" class="btn-rg" style="margin-top:2rem; width:100%; justify-content:center;"><span>Agendar Horário</span></a></div>
   </div></div>
 </div></div>
@@ -624,7 +654,7 @@ a:focus-visible,button:focus-visible,.mitem:focus-visible{
 <div class="modal" id="m-rosto" role="dialog" aria-modal="true" aria-hidden="true"><div class="modal-container">
   <div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-rosto')" class="mclose">Fechar</button></div>
   <div class="mbody"><div class="mgrid">
-    <div><div class="msl"><img src="studio.maca.jpeg" alt="Rosto - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div>
+    <div><div class="msl"><img src="Rosto.jpeg" alt="Rosto - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div>
     <div class="minfo"><h2 class="sh">Epilação do <em>Rosto</em></h2><div class="mpreco"><div class="mval">R$ 20,00</div></div><p>Rosto liso e livre de penugens.</p><a href="https://wa.me/5531972574829?text=Olá!%20Gostaria%20de%20agendar%20a%20Epilação%20do%20Rosto." target="_blank" rel="noopener noreferrer" class="btn-rg" style="margin-top:2rem; width:100%; justify-content:center;"><span>Agendar Horário</span></a></div>
   </div></div>
 </div></div>
@@ -665,18 +695,16 @@ window.addEventListener('scroll',()=>document.getElementById('nav').classList.to
 const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on')}),{threshold:.08});
 document.querySelectorAll('.rv').forEach(r=>obs.observe(r));
 
-// 🪐 ENGENHARIA DE ACESSIBILIDADE OPERACIONAL NOS DIÁLOGOS (MODAIS)
 let lastFocusedElement = null;
 
 function openM(id){
   const el = document.getElementById(id);
   if(el){
-    lastFocusedElement = document.activeElement; // Armazena quem abriu para devolver o foco depois
+    lastFocusedElement = document.activeElement;
     el.classList.add('open');
     el.setAttribute('aria-hidden', 'false');
     document.body.style.overflow='hidden';
     
-    // Transfere o foco automaticamente para o primeiro elemento útil interno do diálogo (Garante conformidade ARIA)
     const focusable = el.querySelectorAll('button, a, [tabindex="0"]');
     if(focusable.length > 0) { focusable[0].focus(); }
   }
@@ -688,11 +716,10 @@ function closeM(id){
     el.classList.remove('open');
     el.setAttribute('aria-hidden', 'true');
     document.body.style.overflow='';
-    if(lastFocusedElement) { lastFocusedElement.focus(); } // Devolve o foco de forma limpa
+    if(lastFocusedElement) { lastFocusedElement.focus(); }
   }
 }
 
-// Interceptador global para Aprisionamento de Foco (Focus Trap) e fechar via ESC
 document.addEventListener('keydown', e=>{
   if(e.key==='Escape') document.querySelectorAll('.modal.open').forEach(m=>closeM(m.id));
   
