@@ -21,6 +21,7 @@
 <meta property="og:image:alt" content="Studio Thamara Teixeira - Especialista em Sobrancelhas em Betim MG">
 <meta property="og:locale" content="pt_BR">
 
+<!-- Schema.org LocalBusiness atualizado com o endereço exato para melhor ranqueamento no Google Maps -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -31,8 +32,10 @@
   "priceRange": "R$20-R$1000",
   "address": {
     "@type": "PostalAddress",
-    "addressLocality": "Betim",
+    "streetAddress": "R. Caio Martins, 187",
+    "addressLocality": "Filadélfia, Betim",
     "addressRegion": "MG",
+    "postalCode": "32670-170",
     "addressCountry": "BR"
   },
   "openingHoursSpecification": {
@@ -83,7 +86,9 @@ nav.sc{background:rgba(12,12,12,.93);backdrop-filter:blur(22px);padding:1rem 6%;
 .nlinks a::after{content:'';position:absolute;left:0;bottom:-4px;width:0;height:1px;background:var(--rg);transition:width .4s var(--ease)}
 .nlinks a:hover{color:var(--frost)}
 .nlinks a:hover::after{width:100%}
-.ncta{background:var(--rg)!important;color:var(--black)!important;padding:.65rem 1.5rem;font-weight:600!important;letter-spacing Cambiar:.16em!important}
+
+/* CORREÇÃO DO SINTOMA DA IMAGE_0C8CE8.PNG: Remoção do resíduo "Cambiar" */
+.ncta{background:var(--rg)!important;color:var(--black)!important;padding:.65rem 1.5rem;font-weight:600!important;letter-spacing:.16em!important}
 .ncta::after{display:none!important}
 .ncta:hover{background:var(--rg-lt)!important;transform:translateY(-2px)}
 
@@ -137,6 +142,26 @@ nav.sc{background:rgba(12,12,12,.93);backdrop-filter:blur(22px);padding:1rem 6%;
 .bullet-list li { margin-bottom: 0.8rem; display: flex; align-items: center; gap: 10px; }
 .bullet-list li::before { content: ''; width: 5px; height: 5px; background: var(--rg); border-radius: 50%; flex-shrink: 0; }
 
+/* 🌟 CORREÇÃO DO BUG TÉCNICO: Definição estrutural da classe .eyebrow */
+.eyebrow {
+  display: inline-block;
+  font-size: 0.62rem;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--rg);
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+/* ⭐ SEÇÃO DE AVALIAÇÕES (DEPOIMENTOS) */
+#depoimentos { padding: 10rem 6% 6rem; border-top: 1px solid rgba(255,255,255,.04); }
+.reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1100px; margin: 0 auto 4.5rem; }
+.review-card { background: var(--panel); border: 1px solid rgba(255,255,255,0.03); padding: 2.5rem; border-radius: 20px; transition: border-color 0.4s var(--ease); }
+.review-card:hover { border-color: var(--rg-border); }
+.r-name { font-size: 1.05rem; font-weight: 500; color: var(--white); margin-bottom: 0.2rem; display: flex; align-items: center; gap: 6px; }
+.r-stars { color: #F5A623; font-size: 0.8rem; margin-bottom: 1.2rem; letter-spacing: 2px; }
+.r-text { font-size: 0.88rem; color: var(--ash); font-weight: 300; line-height: 1.75; }
+
 /* CONTATO E FOOTER */
 #contato{padding:10rem 6%;border-top:1px solid rgba(255,255,255,.04);display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
 .ccol .sh{font-size:clamp(2.2rem,4vw,3.5rem);margin-bottom:2.5rem}
@@ -149,7 +174,7 @@ footer{background:#080808;padding:5rem 6% 2rem;border-top:1px solid var(--rg-bor
 .fsub{font-size:.52rem;letter-spacing:.44em;text-transform:uppercase;color:var(--rg);display:block;margin-bottom:1.5rem}
 .fbot{text-align:center;padding-top:2rem;border-top:1px solid rgba(255,255,255,.04);font-size:.6rem;letter-spacing:.25em;color:#3A3A3A;text-transform:uppercase}
 
-/* 🪐 LAYOUT DA JANELA FLUTUANTE (MODAL RECALIBRADO) */
+/* 🪐 LAYOUT DA JANELA FLUTUANTE MODAL */
 .modal {
   position: fixed; inset: 0; z-index: 2000;
   background: rgba(8, 8, 8, 0.65); backdrop-filter: blur(16px);
@@ -165,7 +190,7 @@ footer{background:#080808;padding:5rem 6% 2rem;border-top:1px solid var(--rg-bor
   overflow-y: auto; display: flex; flex-direction: column;
   box-shadow: 0 40px 80px rgba(0,0,0,0.8);
   transform: scale(0.92) translateY(30px);
-  transition: transform 0.5s cubic-bezier(0.34, 1.6, 0.64, 1); /* Efeito de flutuação elástica */
+  transition: transform 0.5s cubic-bezier(0.34, 1.6, 0.64, 1);
 }
 .modal.open .modal-container { transform: scale(1) translateY(0); }
 
@@ -176,24 +201,29 @@ footer{background:#080808;padding:5rem 6% 2rem;border-top:1px solid var(--rg-bor
   align-items: center; justify-content: space-between;
 }
 .mbody { padding: 3rem 2.5rem; }
-
-/* Ajuste fino na distribuição do Grid interno para priorizar a leitura */
 .mgrid { display: grid; grid-template-columns: 1.1fr 1.9fr; gap: 3.5rem; align-items: start; }
 
-/* 📸 CORREÇÃO DA QUALIDADE E FILTRAGEM DO ZOOM */
+/* 💎 RESET COMPLETO DO BOTÃO FECHAR (CORREÇÃO DE BUG DA IMAGE_0C8CE8.PNG) */
+.mclose {
+  appearance: none; -webkit-appearance: none; -moz-appearance: none;
+  background: none; border: none; outline: none; box-shadow: none;
+  color: var(--ash); font-family: 'Outfit', sans-serif;
+  font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
+  font-weight: 500; cursor: none; transition: color 0.3s var(--ease);
+  padding: 0.5rem 1rem; margin: 0; display: inline-block;
+}
+.mclose:hover { color: var(--rg-lt); }
+
+/* 📸 PROPORÇÃO E RENDERIZAÇÃO DAS FOTOS */
 .msl {
-  position: relative; width: 100%;
-  max-width: 320px; /* Evita que fotos mobile estiquem demais e percam definição */
-  aspect-ratio: 3 / 4; /* Proporção padrão vertical elegante */
-  margin: 0 auto; overflow: hidden;
+  position: relative; width: 100%; max-width: 320px;
+  aspect-ratio: 3 / 4; margin: 0 auto; overflow: hidden;
   background: var(--panel); border-radius: 16px;
   border: 1px solid rgba(255,255,255,0.03);
 }
 .ms {
   position: absolute; inset: 0; width: 100%; height: 100%;
-  object-fit: contain; /* Exibe a foto INTEIRA, eliminando o corte/zoom artificial */
-  padding: 8px; /* Margem de respiro para valorizar as bordas da imagem */
-  opacity: 0; transition: opacity 0.6s var(--ease);
+  object-fit: contain; padding: 8px; opacity: 0; transition: opacity 0.6s var(--ease);
 }
 .ms.on { opacity: 1; }
 
@@ -209,9 +239,7 @@ footer{background:#080808;padding:5rem 6% 2rem;border-top:1px solid var(--rg-bor
   .hphoto-wrap{max-width:280px;margin:0 auto}
   .hero-missao{border-left:none;padding-left:0;border-top:2px solid var(--rg);padding-top:1rem}
   .hero-btns{justify-content:center}
-  #sobre,#contato{grid-template-columns:1fr;gap:3rem}
-  .sfoto-wrap{order:-1}
-  .fgrid{grid-template-columns:1fr;gap:2.5rem}
+  #contato{grid-template-columns:1fr;gap:3rem}
 }
 @media(max-width:640px) {
   .nlinks a:not(.ncta){display:none}
@@ -264,6 +292,7 @@ a:focus-visible,button:focus-visible,.mitem:focus-visible{
   </a>
   <ul class="nlinks">
     <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#depoimentos">Avaliações</a></li>
     <li><a href="#contato">Contato</a></li>
     <li><a href="https://wa.me/5531972574829?text=Olá,%20gostaria%20de%20agendar%20um%20horário!" target="_blank" rel="noopener noreferrer" class="ncta">Agendar</a></li>
   </ul>
@@ -369,20 +398,65 @@ a:focus-visible,button:focus-visible,.mitem:focus-visible{
   </div>
 </section>
 
+<!-- ⭐ SEÇÃO DE AVALIAÇÕES INTEGRADA (RESOLVE IMAGENS 0C8D63 E 0C8D83) -->
+<section id="depoimentos" class="rv">
+  <div class="sec-head">
+    <span class="eyebrow">Experiência Real</span>
+    <h2 class="sh">Opinião de Quem <em>Confia</em></h2>
+  </div>
+  
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="r-name">Vanessa Geralda</div>
+      <div class="r-stars">★★★★★</div>
+      <p class="r-text">"Excelente atendimento! Fui muito bem recebida e atendida com respeito, atenção e profissionalismo. Recomendo sem dúvidas a melhor 😍"</p>
+    </div>
+    
+    <div class="review-card">
+      <div class="r-name">Fernanda Amaral</div>
+      <div class="r-stars">★★★★★</div>
+      <p class="r-text">"Espaço lindo e aconchegante, profissional muito simpática e alto astral, além de realizar um atendimento personalizado e entregar um resultado impecável. Nota 1000!!"</p>
+    </div>
+    
+    <div class="review-card">
+      <div class="r-name">Valdeci Carneiro</div>
+      <div class="r-stars">★★★★★</div>
+      <p class="r-text">"Muito bom atendimento de ecelente qualidade super indico. Profissional foca no seu trabalho e serviço de qualidade 🥰😘😘😘😘 Amo esse lugar"</p>
+    </div>
+    
+    <div class="review-card">
+      <div class="r-name">Alyne Reis</div>
+      <div class="r-stars">★★★★★</div>
+      <p class="r-text">"Excelente profissional, trabalho efetuado com técnica e precisão. Local de fácil acesso e agradável. Indico a todos e sempre volto"</p>
+    </div>
+    
+    <div class="review-card">
+      <div class="r-name">Jennifer Lany</div>
+      <div class="r-stars">★★★★★</div>
+      <p class="r-text">"Excelente profissional, sempre saio de lá me sentindo linda, tudo sempre feito com muita dedicação e cuidado!!! Indico demais!!!"</p>
+    </div>
+  </div>
+
+  <div style="text-align: center;">
+    <a href="https://g.page/r/CS-gkPBKmFMmEAE/review" target="_blank" rel="noopener noreferrer" class="btn-ghost"><span>Sua vez: Deixe sua Avaliação</span></a>
+  </div>
+</section>
+
 <section id="contato">
   <div class="ccol">
     <span class="eyebrow rv">Localização e Agendamento</span>
     <h2 class="sh rv d1">Studio Thamara <em>Teixeira</em></h2>
     <div class="cblock rv d2"><strong>Horário de Atendimento</strong><p style="font-size: 1.2rem; color: var(--white); font-weight: 500;">08 às 18</p></div>
     <div class="cblock rv d3"><strong>WhatsApp</strong><p><a href="https://wa.me/5531972574829">(31) 9 7257-4829</a></p></div>
-    <div class="cblock rv d4"><strong>Endereço</strong><p>Betim — Minas Gerais</p></div>
+    <!-- Endereço oficializado estruturalmente -->
+    <div class="cblock rv d4"><strong>Endereço</strong><p>R. Caio Martins, 187 - Filadélfia<br>Betim - MG, 32670-170</p></div>
     <div class="rv d4" style="margin-top:2rem">
       <a href="https://wa.me/5531972574829?text=Olá!%20Estou%20no%20site%20e%20gostaria%20de%20solicitar%20um%20agendamento." class="btn-rg" target="_blank" rel="noopener noreferrer"><span>AGENDAR VIA WHATSAPP</span></a>
     </div>
   </div>
   <div class="rv d2" style="height:400px;overflow:hidden;border:1px solid var(--rg-border);position:relative">
     <div style="position:absolute;inset:10px;border:1px solid rgba(196,133,106,.1);z-index:1;pointer-events:none"></div>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15003.5678!2d-44.1956!3d-19.9678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDU4JzAzLjYiUyA0NMKwMTEnNDQuMiJX!5e0!3m2!1spt-BR!2sbr!4v1700000000000" style="width:100%;height:100%;border:0;filter:grayscale(70%)brightness(.85)contrast(1.1)" allowfullscreen loading="lazy" title="Localização Studio Thamara Teixeira - Betim MG"></iframe>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3749.972352877901!2d-44.195655!3d-19.967832!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDU4JzAzLjYiUyA0NMKwMTEnNDQuMiJX!5e0!3m2!1spt-BR!2sbr!4v1700000000000" style="width:100%;height:100%;border:0;filter:grayscale(70%)brightness(.85)contrast(1.1)" allowfullscreen loading="lazy" title="Localização Studio Thamara Teixeira - Betim MG"></iframe>
   </div>
 </section>
 
@@ -393,9 +467,9 @@ a:focus-visible,button:focus-visible,.mitem:focus-visible{
   <div class="fbot">© 2026 Thamara Teixeira · Todos os direitos reservados</div>
 </footer>
 
-<!-- MODAIS ATUALIZADOS COM FORMATO FLUTUANTE (CONTAIN ACTIVED) -->
+<!-- 🪐 MODAIS COM ACESSIBILIDADE WAI-ARIA DE DIÁLOGO E CARD FLUTUANTE -->
 
-<div class="modal" id="m-personalizado"><div class="modal-container">
+<div class="modal" id="m-personalizado" role="dialog" aria-modal="true" aria-hidden="true"><div class="modal-container">
   <div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-personalizado')" class="mclose">Fechar</button></div>
   <div class="mbody"><div class="mgrid">
     <div><div class="msl" id="sl-perso"><img src="personalizado.jpeg" alt="Personalizado - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div>
@@ -408,7 +482,7 @@ a:focus-visible,button:focus-visible,.mitem:focus-visible{
   </div></div>
 </div></div>
 
-<div class="modal" id="m-henna"><div class="modal-container">
+<div class="modal" id="m-henna" role="dialog" aria-modal="true" aria-hidden="true"><div class="modal-container">
   <div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-henna')" class="mclose">Fechar</button></div>
   <div class="mbody"><div class="mgrid">
     <div><div class="msl" id="sl-henna"><img src="Henna.jpeg" alt="Henna - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div>
@@ -421,7 +495,7 @@ a:focus-visible,button:focus-visible,.mitem:focus-visible{
   </div></div>
 </div></div>
 
-<div class="modal" id="m-micro"><div class="modal-container">
+<div class="modal" id="m-micro" role="dialog" aria-modal="true" aria-hidden="true"><div class="modal-container">
   <div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-micro')" class="mclose">Fechar</button></div>
   <div class="mbody"><div class="mgrid">
     <div><div class="msl" id="sl-micro"><img src="micro.jpeg" alt="Micro - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div>
@@ -429,7 +503,7 @@ a:focus-visible,button:focus-visible,.mitem:focus-visible{
       <h2 class="sh">Micropigmentação <em>Shadow</em></h2>
       <div class="mpreco"><div class="mval">R$ 500,00</div></div>
       <p>A micropigmentação shadow é uma técnica moderna de sobrancelhas que cria um efeito esfumado, delicado e sofisticado, como se a sobrancelha estivesse levemente maquiada com sombra.</p>
-      <p>Ela é feita com um dermógrafo, implantando pigmento na pele de forma suave e gradual, trazendo mais definição, preenchimento e simetria sem deixar um aspecto pesado.</p>
+      <p>Ela é feita com um dermógrafo, implantando pigmento na pele de forma suave e gradual, trazendo mais definição, preenchimento e simetria sem deixar um aspect pesado.</p>
       <ul class="bullet-list">
         <li>tem falhas nas sobrancelhas</li>
         <li>deseja praticidade no dia a dia</li>
@@ -441,7 +515,7 @@ a:focus-visible,button:focus-visible,.mitem:focus-visible{
   </div></div>
 </div></div>
 
-<div class="modal" id="m-premium"><div class="modal-container">
+<div class="modal" id="m-premium" role="dialog" aria-modal="true" aria-hidden="true"><div class="modal-container">
   <div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-premium')" class="mclose">Fechar</button></div>
   <div class="mbody"><div class="mgrid">
     <div><div class="msl" id="sl-premium"><img src="combo_premium.jpeg" alt="Combo Premium - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div>
@@ -454,7 +528,7 @@ a:focus-visible,button:focus-visible,.mitem:focus-visible{
   </div></div>
 </div></div>
 
-<div class="modal" id="m-curso1"><div class="modal-container">
+<div class="modal" id="m-curso1" role="dialog" aria-modal="true" aria-hidden="true"><div class="modal-container">
   <div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-curso1')" class="mclose">Fechar</button></div>
   <div class="mbody"><div class="mgrid">
     <div><div class="msl" id="sl-curso1"><img src="curso.1.jpeg" alt="Curso1 - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div>
@@ -467,7 +541,7 @@ a:focus-visible,button:focus-visible,.mitem:focus-visible{
   </div></div>
 </div></div>
 
-<div class="modal" id="m-curso2"><div class="modal-container">
+<div class="modal" id="m-curso2" role="dialog" aria-modal="true" aria-hidden="true"><div class="modal-container">
   <div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-curso2')" class="mclose">Fechar</button></div>
   <div class="mbody"><div class="mgrid">
     <div><div class="msl"><img src="curso.jpeg" alt="Curso2 - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div>
@@ -475,7 +549,7 @@ a:focus-visible,button:focus-visible,.mitem:focus-visible{
   </div></div>
 </div></div>
 
-<div class="modal" id="m-brow"><div class="modal-container">
+<div class="modal" id="m-brow" role="dialog" aria-modal="true" aria-hidden="true"><div class="modal-container">
   <div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-brow')" class="mclose">Fechar</button></div>
   <div class="mbody"><div class="mgrid">
     <div><div class="msl"><img src="brow.jpeg" alt="Brow - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div>
@@ -483,7 +557,7 @@ a:focus-visible,button:focus-visible,.mitem:focus-visible{
   </div></div>
 </div></div>
 
-<div class="modal" id="m-lash"><div class="modal-container">
+<div class="modal" id="m-lash" role="dialog" aria-modal="true" aria-hidden="true"><div class="modal-container">
   <div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-lash')" class="mclose">Fechar</button></div>
   <div class="mbody"><div class="mgrid">
     <div><div class="msl"><img src="lash.jpeg" alt="Lash - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div>
@@ -491,7 +565,7 @@ a:focus-visible,button:focus-visible,.mitem:focus-visible{
   </div></div>
 </div></div>
 
-<div class="modal" id="m-alongamento"><div class="modal-container">
+<div class="modal" id="m-alongamento" role="dialog" aria-modal="true" aria-hidden="true"><div class="modal-container">
   <div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-alongamento')" class="mclose">Fechar</button></div>
   <div class="mbody"><div class="mgrid">
     <div><div class="msl"><img src="Alongamento.jpeg" alt="Alongamento - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div>
@@ -499,7 +573,7 @@ a:focus-visible,button:focus-visible,.mitem:focus-visible{
   </div></div>
 </div></div>
 
-<div class="modal" id="m-hidra"><div class="modal-container">
+<div class="modal" id="m-hidra" role="dialog" aria-modal="true" aria-hidden="true"><div class="modal-container">
   <div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-hidra')" class="mclose">Fechar</button></div>
   <div class="mbody"><div class="mgrid">
     <div><div class="msl"><img src="hidra.jpeg" alt="Hidra - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div>
@@ -507,7 +581,7 @@ a:focus-visible,button:focus-visible,.mitem:focus-visible{
   </div></div>
 </div></div>
 
-<div class="modal" id="m-reconst"><div class="modal-container">
+<div class="modal" id="m-reconst" role="dialog" aria-modal="true" aria-hidden="true"><div class="modal-container">
   <div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-reconst')" class="mclose">Fechar</button></div>
   <div class="mbody"><div class="mgrid">
     <div><div class="msl"><img src="reconst.jpeg" alt="Reconst - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div>
@@ -515,7 +589,7 @@ a:focus-visible,button:focus-visible,.mitem:focus-visible{
   </div></div>
 </div></div>
 
-<div class="modal" id="m-combo"><div class="modal-container">
+<div class="modal" id="m-combo" role="dialog" aria-modal="true" aria-hidden="true"><div class="modal-container">
   <div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-combo')" class="mclose">Fechar</button></div>
   <div class="mbody"><div class="mgrid">
     <div><div class="msl"><img src="combo.jpeg" alt="Combo - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div>
@@ -523,7 +597,7 @@ a:focus-visible,button:focus-visible,.mitem:focus-visible{
   </div></div>
 </div></div>
 
-<div class="modal" id="m-perso-combo"><div class="modal-container">
+<div class="modal" id="m-perso-combo" role="dialog" aria-modal="true" aria-hidden="true"><div class="modal-container">
   <div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-perso-combo')" class="mclose">Fechar</button></div>
   <div class="mbody"><div class="mgrid">
     <div><div class="msl"><img src="combo_perso.jpeg" alt="Combo Perso - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div>
@@ -531,7 +605,7 @@ a:focus-visible,button:focus-visible,.mitem:focus-visible{
   </div></div>
 </div></div>
 
-<div class="modal" id="m-spa"><div class="modal-container">
+<div class="modal" id="m-spa" role="dialog" aria-modal="true" aria-hidden="true"><div class="modal-container">
   <div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-spa')" class="mclose">Fechar</button></div>
   <div class="mbody"><div class="mgrid">
     <div><div class="msl"><img src="spa_labial.jpeg" alt="Spa - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div>
@@ -539,7 +613,7 @@ a:focus-visible,button:focus-visible,.mitem:focus-visible{
   </div></div>
 </div></div>
 
-<div class="modal" id="m-buco"><div class="modal-container">
+<div class="modal" id="m-buco" role="dialog" aria-modal="true" aria-hidden="true"><div class="modal-container">
   <div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-buco')" class="mclose">Fechar</button></div>
   <div class="mbody"><div class="mgrid">
     <div><div class="msl"><img src="studio.maca.jpeg" alt="Buço - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div>
@@ -547,7 +621,7 @@ a:focus-visible,button:focus-visible,.mitem:focus-visible{
   </div></div>
 </div></div>
 
-<div class="modal" id="m-rosto"><div class="modal-container">
+<div class="modal" id="m-rosto" role="dialog" aria-modal="true" aria-hidden="true"><div class="modal-container">
   <div class="mtop"><span class="mtop-n">Thamara Teixeira</span><button onclick="closeM('m-rosto')" class="mclose">Fechar</button></div>
   <div class="mbody"><div class="mgrid">
     <div><div class="msl"><img src="studio.maca.jpeg" alt="Rosto - Studio Thamara Teixeira, Betim MG" loading="lazy" decoding="async" class="ms on"></div></div>
@@ -591,15 +665,50 @@ window.addEventListener('scroll',()=>document.getElementById('nav').classList.to
 const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on')}),{threshold:.08});
 document.querySelectorAll('.rv').forEach(r=>obs.observe(r));
 
+// 🪐 ENGENHARIA DE ACESSIBILIDADE OPERACIONAL NOS DIÁLOGOS (MODAIS)
+let lastFocusedElement = null;
+
 function openM(id){
   const el = document.getElementById(id);
-  if(el){ el.classList.add('open'); document.body.style.overflow='hidden'; }
+  if(el){
+    lastFocusedElement = document.activeElement; // Armazena quem abriu para devolver o foco depois
+    el.classList.add('open');
+    el.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow='hidden';
+    
+    // Transfere o foco automaticamente para o primeiro elemento útil interno do diálogo (Garante conformidade ARIA)
+    const focusable = el.querySelectorAll('button, a, [tabindex="0"]');
+    if(focusable.length > 0) { focusable[0].focus(); }
+  }
 }
+
 function closeM(id){
   const el = document.getElementById(id);
-  if(el){ el.classList.remove('open'); document.body.style.overflow=''; }
+  if(el){
+    el.classList.remove('open');
+    el.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow='';
+    if(lastFocusedElement) { lastFocusedElement.focus(); } // Devolve o foco de forma limpa
+  }
 }
-document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.modal.open').forEach(m=>closeM(m.id))});
+
+// Interceptador global para Aprisionamento de Foco (Focus Trap) e fechar via ESC
+document.addEventListener('keydown', e=>{
+  if(e.key==='Escape') document.querySelectorAll('.modal.open').forEach(m=>closeM(m.id));
+  
+  const openModal = document.querySelector('.modal.open');
+  if(openModal && e.key==='Tab'){
+    const focusables = openModal.querySelectorAll('button, a, [tabindex="0"]');
+    const first = focusables[0];
+    const last = focusables[focusables.length - 1];
+    
+    if(e.shiftKey && document.activeElement === first){
+      last.focus(); e.preventDefault();
+    } else if(!e.shiftKey && document.activeElement === last){
+      first.focus(); e.preventDefault();
+    }
+  }
+});
 
 function initSliders(){
   const sliders = document.querySelectorAll('.msl');
